@@ -33,7 +33,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok' // Lombok
 
 	// 민감정보 암호화
-
+	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
 
 	// jwt
 
