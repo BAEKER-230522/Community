@@ -56,7 +56,6 @@ dependencies {
 	implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
 
 	// test
-	runtimeOnly 'com.h2database:h2' // test 용 db
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

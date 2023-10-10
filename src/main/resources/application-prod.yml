@@ -1,0 +1,13 @@
+custom:
+
+  db:
+    host: localhost
+    db: community
+    usr: ENC()
+    pw: ENC()
+
+
+spring:
+  config:
+    activate:
+      on-profile: prod
