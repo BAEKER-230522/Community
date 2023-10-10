@@ -32,7 +32,10 @@ public class initData {
 
         public void resetData() {
             ArrayList<String> collections = new ArrayList<>();
+            collections.add("posts");
             collections.add("post");
+            collections.add("content");
+            collections.add("followers");
             collections.add("pageView");
 
             for (String collection : collections)

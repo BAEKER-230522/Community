@@ -1,7 +1,7 @@
 package com.baeker.Community.community.adapter.in.web.post;
 
-import com.baeker.Community.community.adapter.in.reqDto.CreatePostDto;
-import com.baeker.Community.community.adapter.in.resDto.PostResDto;
+import com.baeker.Community.global.dto.reqDto.CreatePostDto;
+import com.baeker.Community.global.dto.resDto.PostResDto;
 import com.baeker.Community.community.application.port.in.post.PostCreateUseCase;
 import com.baeker.Community.global.jwt.JwtDecrypt;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.baeker.Community.community.domain;
+package com.baeker.Community.comment.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,19 +18,20 @@ import static lombok.AccessLevel.PROTECTED;
 @Builder(toBuilder = true, access = PRIVATE)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class Followers {
+public class Comments {
 
     @Id
     private String id;
-    private List<Long> followerList;
+    private List<Long> comments;
 
-    public static Followers create() {
-        Followers follower = new Followers();
-        follower.followerList = new ArrayList<>();
-        return follower;
+    public static Comments create() {
+        Comments comments = new Comments();
+        List<Long> commentList = comments.getComments();
+        commentList = new ArrayList<>();
+        return comments;
     }
 
-    public void following(Long memberId) {
-        this.followerList.add(memberId);
+    public void writeComment(Long id) {
+        this.comments.add(id);
     }
 }

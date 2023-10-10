@@ -1,14 +1,12 @@
 package com.baeker.Community.community.domain;
 
+import com.baeker.Community.global.dto.reqDto.CreatePostDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
@@ -18,19 +16,18 @@ import static lombok.AccessLevel.PROTECTED;
 @Builder(toBuilder = true, access = PRIVATE)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class Followers {
+public class Content {
 
     @Id
     private String id;
-    private List<Long> followerList;
+    private String title;
+    private String body;
 
-    public static Followers create() {
-        Followers follower = new Followers();
-        follower.followerList = new ArrayList<>();
-        return follower;
-    }
 
-    public void following(Long memberId) {
-        this.followerList.add(memberId);
+    public static Content create(CreatePostDto dto) {
+        return Content.builder()
+                .title(dto.getTitle())
+                .body(dto.getBody())
+                .build();
     }
 }

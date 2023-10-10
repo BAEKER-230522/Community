@@ -1,4 +1,4 @@
-package com.baeker.Community.community.domain;
+package com.baeker.Community.comment.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
@@ -18,19 +17,19 @@ import static lombok.AccessLevel.PROTECTED;
 @Builder(toBuilder = true, access = PRIVATE)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class Followers {
+public class Comment {
 
     @Id
     private String id;
-    private List<Long> followerList;
+    private Long memberId;
+    private LocalDateTime createDate;
+    private String comment;
 
-    public static Followers create() {
-        Followers follower = new Followers();
-        follower.followerList = new ArrayList<>();
-        return follower;
-    }
 
-    public void following(Long memberId) {
-        this.followerList.add(memberId);
+    public static Comment create(Long memberId, String comment) {
+        return Comment.builder()
+                .memberId(memberId)
+                .comment(comment)
+                .build();
     }
 }

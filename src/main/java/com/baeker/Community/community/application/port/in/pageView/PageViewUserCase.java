@@ -4,5 +4,5 @@ import com.baeker.Community.community.domain.PageView;
 
 public interface PageViewUserCase {
 
-    PageView create();
+    PageView pageView();
 }

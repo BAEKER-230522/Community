@@ -1,4 +1,4 @@
-package com.baeker.Community.community.adapter.in.resDto;
+package com.baeker.Community.global.dto.resDto;
 
 import com.baeker.Community.community.domain.Post;
 import lombok.Data;
