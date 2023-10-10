@@ -1,3 +1,12 @@
+custom:
+  mapping:
+    post:
+      web: /web/post
+
+  jwt:
+    secret-key: ENC(+GbV3Ykx/t5XFlaFHBZnXTzsSf9b3YChS2cVPTvCgwQmevtbB1Hfw91VMC/fTizxVssJvYiAMeQICsuoSrH5zNLh/jxJsXq/)
+
+
 spring:
 
 
@@ -5,4 +14,3 @@ spring:
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
-    password:
