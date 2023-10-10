@@ -1,7 +1,5 @@
 package com.baeker.Community.global.mongoDB;
 
-import com.baeker.Community.community.application.port.in.pageView.PageViewDeleteUseCase;
-import com.baeker.Community.community.application.port.in.post.PostDeleteUseCase;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -9,7 +7,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 @Profile("dev")

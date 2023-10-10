@@ -22,16 +22,15 @@ public class Comments {
 
     @Id
     private String id;
-    private List<Long> comments;
+
+    @Builder.Default
+    private List<String> comments = new ArrayList<>();
 
     public static Comments create() {
-        Comments comments = new Comments();
-        List<Long> commentList = comments.getComments();
-        commentList = new ArrayList<>();
-        return comments;
+        return new Comments();
     }
 
-    public void writeComment(Long id) {
-        this.comments.add(id);
+    public void writeComment(String commentId) {
+        this.comments.add(commentId);
     }
 }

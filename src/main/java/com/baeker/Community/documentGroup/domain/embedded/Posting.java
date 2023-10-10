@@ -1,7 +1,6 @@
 package com.baeker.Community.documentGroup.domain.embedded;
 
-import com.baeker.Community.community.domain.Category;
-import com.baeker.Community.community.domain.Post;
+import com.baeker.Community.post.domain.Category;
 import lombok.Data;
 
 @Data

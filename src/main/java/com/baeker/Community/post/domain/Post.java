@@ -1,4 +1,4 @@
-package com.baeker.Community.community.domain;
+package com.baeker.Community.post.domain;
 
 import com.baeker.Community.comment.domain.Comments;
 import com.baeker.Community.global.dto.reqDto.CreatePostDto;
@@ -25,6 +25,7 @@ public class Post {
     @Id
     private String id;
     private Long memberId;
+    private Long personalId;
     private LocalDateTime createDate;
 
     private Category category;
@@ -52,5 +53,11 @@ public class Post {
                 .pageView(dto.getPageView())
                 .followers(dto.getFollowers())
                 .build();
+    }
+
+    public static Post createMission(Long memberId, CreatePostDto dto) {
+        Post post = create(memberId, dto);
+        post.personalId = dto.getPersonalId();
+        return post;
     }
 }
