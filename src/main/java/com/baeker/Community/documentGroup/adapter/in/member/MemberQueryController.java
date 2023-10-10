@@ -12,4 +12,5 @@ public class MemberQueryController {
 
     private final MemberQueryUseCase memberQueryUseCase;
 
+
 }
