@@ -44,7 +44,7 @@ public class PostCreateService implements PostCreateUseCase {
     }
 
     private void updateMember(Long memberId, Post post) {
-        Posting posting = new Posting(post);
+        Posting posting = new Posting(post.getId(), memberId, post.getCategory(),post.getContent().getTitle());
         memberModifyUseCase.posting(memberId, posting);
     }
 }
