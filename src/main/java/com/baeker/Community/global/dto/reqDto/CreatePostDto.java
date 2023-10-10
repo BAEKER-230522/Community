@@ -11,6 +11,7 @@ import lombok.Data;
 @Data
 public class CreatePostDto {
 
+    private Long missionId;
     private String title;
     private String body;
 
@@ -24,4 +25,12 @@ public class CreatePostDto {
     private PageView pageView;
     @Null
     private Followers followers;
+
+    public void setting(Category category, Content content, Comments comments, PageView pageView, Followers followers) {
+        this.category = category;
+        this.content = content;
+        this.comments = comments;
+        this.pageView = pageView;
+        this.followers = followers;
+    }
 }

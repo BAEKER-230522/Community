@@ -1,4 +1,4 @@
-package com.baeker.Community.global.jwt;
+package com.baeker.Community.global.exception.jwt;
 
 public class InvalidJwtException extends RuntimeException {
 

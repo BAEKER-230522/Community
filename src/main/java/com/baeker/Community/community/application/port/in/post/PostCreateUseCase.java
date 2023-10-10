@@ -5,5 +5,5 @@ import com.baeker.Community.global.dto.resDto.PostResDto;
 
 public interface PostCreateUseCase {
 
-    PostResDto post(Long memberId, CreatePostDto dto);
+    PostResDto Mission(Long memberId, CreatePostDto dto);
 }

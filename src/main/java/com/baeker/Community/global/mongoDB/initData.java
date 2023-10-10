@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 @Profile("dev")
 @Component
@@ -31,12 +32,7 @@ public class initData {
 
 
         public void resetData() {
-            ArrayList<String> collections = new ArrayList<>();
-            collections.add("posts");
-            collections.add("post");
-            collections.add("content");
-            collections.add("followers");
-            collections.add("pageView");
+            Set<String> collections = mongoTemplate.getCollectionNames();
 
             for (String collection : collections)
                 deleteData(collection);

@@ -17,12 +17,12 @@ public class PostCreateController {
     private final JwtDecrypt decrypt;
 
     @PostMapping("/v1")
-    public ResponseEntity create(
+    public ResponseEntity createMission(
             @RequestHeader("Authorization") String token,
             @RequestBody CreatePostDto dto
     ) {
         Long memberId = decrypt.getMemberId(token);
-        PostResDto resDto = postCreateUseCase.post(memberId, dto);
+        PostResDto resDto = postCreateUseCase.Mission(memberId, dto);
         return ResponseEntity.ok(resDto);
     }
 }
