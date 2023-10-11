@@ -1,7 +1,7 @@
 package com.baeker.Community.post.application.port.in.post;
 
 import com.baeker.Community.global.dto.resDto.PostResDto;
-import com.baeker.Community.post.domain.Post;
+import com.baeker.Community.post.domain.post.Post;
 
 public interface PostQueryUseCase {
 

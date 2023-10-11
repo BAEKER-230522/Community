@@ -1,11 +1,9 @@
 package com.baeker.Community.global.dto.resDto;
 
 import com.baeker.Community.comment.domain.Comment;
-import com.baeker.Community.comment.domain.Comments;
-import com.baeker.Community.post.domain.Category;
-import com.baeker.Community.post.domain.Content;
-import com.baeker.Community.post.domain.Followers;
-import com.baeker.Community.post.domain.Post;
+import com.baeker.Community.post.domain.post.Category;
+import com.baeker.Community.post.domain.post.Content;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.Data;
 
 import java.time.LocalDateTime;

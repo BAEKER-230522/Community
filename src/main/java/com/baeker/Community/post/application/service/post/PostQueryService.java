@@ -6,7 +6,7 @@ import com.baeker.Community.global.dto.resDto.PostResDto;
 import com.baeker.Community.global.exception.service.NotFoundException;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
 import com.baeker.Community.post.application.port.out.PostRepositoryPort;
-import com.baeker.Community.post.domain.Post;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -38,7 +38,7 @@ public class PostQueryService implements PostQueryUseCase {
     public PostResDto byPersonalId(Long personalId) {
         Optional<Post> byPersonalId = repository.findByPersonalId(personalId);
 
-        if (byPersonalId.isPresent())
+        if (!byPersonalId.isPresent())
             throw new NotFoundException("존재하지 않는 게시물");
 
         Post post = byPersonalId.get();
