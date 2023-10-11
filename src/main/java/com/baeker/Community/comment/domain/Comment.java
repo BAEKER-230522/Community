@@ -30,6 +30,7 @@ public class Comment {
         return Comment.builder()
                 .memberId(memberId)
                 .comment(comment)
+                .createDate(LocalDateTime.now())
                 .build();
     }
 }

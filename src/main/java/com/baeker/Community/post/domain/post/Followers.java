@@ -33,4 +33,8 @@ public class Followers {
     public void following(Long memberId) {
         this.followerList.add(memberId);
     }
+
+    public void unfollow(Long memberId) {
+        this.followerList.remove(memberId);
+    }
 }

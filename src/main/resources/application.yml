@@ -5,6 +5,8 @@ custom:
     posts:
       web: /web/posts
       api: /api/posts
+    comment:
+      web: /web/comment
     member:
       web: /web/member
 

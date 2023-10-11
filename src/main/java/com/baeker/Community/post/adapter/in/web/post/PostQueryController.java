@@ -1,7 +1,10 @@
 package com.baeker.Community.post.adapter.in.web.post;
 
+import com.baeker.Community.comment.application.port.in.comment.CommentQueryUseCase;
+import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.dto.resDto.PostResDto;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
+import com.baeker.Community.post.domain.post.Post;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Tag(name = "POST - 게시물 조회")
 @RestController
 @RequestMapping("${custom.mapping.post.web}")
@@ -18,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PostQueryController {
 
     private final PostQueryUseCase postQueryUseCase;
+    private final CommentQueryUseCase commentQueryUseCase;
 
 
     @Operation(summary = "personal study rule id 로 게시물 조회")
@@ -25,7 +31,8 @@ public class PostQueryController {
     public ResponseEntity<PostResDto> findByPersonalId(
             @PathVariable Long personalId
     ) {
-        PostResDto resDto = postQueryUseCase.byPersonalId(personalId);
-        return ResponseEntity.ok(resDto);
+        Post post = postQueryUseCase.byPersonalId(personalId);
+        List<Comment> comments = commentQueryUseCase.byPost(post);
+        return ResponseEntity.ok(new PostResDto(post, comments));
     }
 }

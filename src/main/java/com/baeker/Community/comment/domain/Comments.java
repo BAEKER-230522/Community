@@ -30,7 +30,7 @@ public class Comments {
         return new Comments();
     }
 
-    public void writeComment(String commentId) {
+    public void addComment(String commentId) {
         this.comments.add(commentId);
     }
 }
