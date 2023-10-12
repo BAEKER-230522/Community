@@ -1,4 +1,4 @@
-name: CI_TEST
+name: 지속 통합
 
 on:
   pull_request:
