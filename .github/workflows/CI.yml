@@ -2,12 +2,12 @@ name: 지속 통합
 
 on:
   pull_request:
-    branches:
-      - develop
+    branches-ignore:
       - dk
       - park
   push:
     branches-ignore:
+      - main
       - develop
 
 jobs:
