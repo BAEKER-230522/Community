@@ -41,6 +41,7 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
 	// cloud watch
+	implementation'ca.pjer:logback-awslogs-appender:1.6.0'
 
 	// spring doc open api
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
