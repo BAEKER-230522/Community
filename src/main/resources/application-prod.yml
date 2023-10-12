@@ -1,5 +1,4 @@
 custom:
-
   db:
     host: localhost
     db: community
