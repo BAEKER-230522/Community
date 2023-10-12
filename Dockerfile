@@ -1,5 +1,5 @@
 FROM gradle:7.6.1-jdk17 AS build
-COPY . /home/gradle/src
+COPY .github /home/gradle/src
 WORKDIR /home/gradle/src
 ARG JAR_FILE=build/libs/*.jar
 
