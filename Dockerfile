@@ -1,4 +1,4 @@
-FROM gradle:7.6.1-jdk17 AS build
+FROM gradle:8.2.1-jdk17 AS build
 COPY .github /home/gradle/src
 WORKDIR /home/gradle/src
 ARG JAR_FILE=build/libs/*.jar
