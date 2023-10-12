@@ -35,4 +35,13 @@ public class PostQueryController {
         List<Comment> comments = commentQueryUseCase.byPost(post);
         return ResponseEntity.ok(new PostResDto(post, comments));
     }
+
+    @Operation(summary = "게시물을 추천한 회원 목록")
+    @GetMapping("/v1/follower/{postId}")
+    public ResponseEntity findFollowers(
+            @PathVariable String postId
+    ) {
+        Post post = postQueryUseCase.byId(postId);
+        return ResponseEntity.ok(post.getFollowers());
+    }
 }

@@ -30,6 +30,10 @@ public class Member {
     @Builder.Default
     private List<Posting> postings = new ArrayList<>();
 
+    @Field("following")
+    @Builder.Default
+    private List<String> following = new ArrayList<>();
+
 
     public static Member create(Long memberId) {
         return Member.builder()
@@ -39,5 +43,13 @@ public class Member {
 
     public void writePost(Posting posting) {
         this.postings.add(posting);
+    }
+
+    public void followContent(String postId) {
+        this.following.add(postId);
+    }
+
+    public void unfollow(String postId) {
+        this.following.remove(postId);
     }
 }

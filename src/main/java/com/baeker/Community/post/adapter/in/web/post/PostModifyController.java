@@ -1,6 +1,8 @@
 package com.baeker.Community.post.adapter.in.web.post;
 
 import com.baeker.Community.global.jwt.JwtDecrypt;
+import com.baeker.Community.member.application.in.member.MemberQueryUseCase;
+import com.baeker.Community.member.domain.Member;
 import com.baeker.Community.post.application.port.in.post.PostModifyUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class PostModifyController {
 
     private final PostModifyUseCase postModifyUseCase;
+    private final MemberQueryUseCase memberQueryUseCase;
     private final JwtDecrypt decrypt;
 
 
@@ -25,7 +28,8 @@ public class PostModifyController {
             @PathVariable Long personalId
     ) {
         Long memberId = decrypt.getMemberId(token);
-        postModifyUseCase.follow(memberId, personalId);
+        Member member = memberQueryUseCase.byMemberId(memberId);
+        postModifyUseCase.follow(member, personalId);
         return ResponseEntity.noContent().build();
     }
 }
