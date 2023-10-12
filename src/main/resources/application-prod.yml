@@ -1,9 +1,9 @@
 custom:
   db:
-    host: localhost
+    host: bk-mongo.1ll.ca
     db: community
-    usr: ENC()
-    pw: ENC()
+    usr: ENC(TuSTzDfaXulxyLygEX1Tww==)
+    pw: ENC(4RNpu1OuY0cWyZvwNor1Ew==)
 
 
 spring:
