@@ -46,4 +46,4 @@ jobs:
     steps:
       - name: deploy run
         run: |
-          sh /kube/study/run.sh
+          sh /kube/comm/run.sh
