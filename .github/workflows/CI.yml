@@ -7,7 +7,6 @@ on:
       - park
   push:
     branches-ignore:
-      - main
       - develop
 
 jobs:
