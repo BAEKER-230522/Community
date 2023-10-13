@@ -17,7 +17,7 @@ import java.util.List;
 
 @Tag(name = "Member - 커뮤니티 활동 내역 조회")
 @RestController
-@RequestMapping("${custom.mapping.member.web}")
+@RequestMapping("${custom.mapping.member.web_usr}")
 @RequiredArgsConstructor
 public class MemberQueryController {
 

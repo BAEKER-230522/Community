@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "POSTS - 미션별 게시물 목록 조회")
 @RestController
-@RequestMapping("${custom.mapping.posts.web}")
+@RequestMapping("${custom.mapping.posts.web_pub}")
 @RequiredArgsConstructor
 public class PostsQueryController {
 

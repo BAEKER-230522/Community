@@ -18,7 +18,7 @@ import java.util.List;
 
 @Tag(name = "POST - 게시물 조회")
 @RestController
-@RequestMapping("${custom.mapping.post.web}")
+@RequestMapping("${custom.mapping.post.web_pub}")
 @RequiredArgsConstructor
 public class PostQueryController {
 
