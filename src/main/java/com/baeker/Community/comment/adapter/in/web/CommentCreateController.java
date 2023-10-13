@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "COMMENT - 댓글 작성")
 @RestController
-@RequestMapping("${custom.mapping.comment.web}")
+@RequestMapping("${custom.mapping.comment.web_usr}")
 @RequiredArgsConstructor
 public class CommentCreateController {
 

@@ -1,14 +1,19 @@
 custom:
   mapping:
+    base:
+      public: /pub/comm
+      user: /usr/comm
+
     post:
-      web: /web/post
+      web_pub: ${custom.mapping.base.public}/web/post
+      web_usr: ${custom.mapping.base.user}/web/post
     posts:
-      web: /web/posts
-      api: /api/posts
+      web_pub: ${custom.mapping.base.public}/web/posts
+      api: ${custom.mapping.base.public}/api/posts
     comment:
-      web: /web/comment
+      web_usr: ${custom.mapping.base.user}/web/comment
     member:
-      web: /web/member
+      web_usr: ${custom.mapping.base.user}/web/member
 
   jwt:
     secret-key: ENC(+GbV3Ykx/t5XFlaFHBZnXTzsSf9b3YChS2cVPTvCgwQmevtbB1Hfw91VMC/fTizxVssJvYiAMeQICsuoSrH5zNLh/jxJsXq/)

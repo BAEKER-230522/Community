@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "POST - 게시물 관련 수정")
 @RestController
-@RequestMapping("${custom.mapping.post.web}")
+@RequestMapping("${custom.mapping.post.web_usr}")
 @RequiredArgsConstructor
 public class PostModifyController {
 
