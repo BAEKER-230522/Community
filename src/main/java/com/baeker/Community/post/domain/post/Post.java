@@ -1,6 +1,6 @@
 package com.baeker.Community.post.domain.post;
 
-import com.baeker.Community.comment.domain.Comments;
+import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.dto.reqDto.CreatePostDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
@@ -25,39 +28,28 @@ public class Post {
     @Id
     private String id;
     private Long memberId;
-    private Long personalId;
     private LocalDateTime createDate;
+    private String title;
+    private String content;
 
-    private Category category;
-
-    @DBRef
-    private Content content;
-
-    @DBRef
-    private Comments comments;
-
-    @DBRef
+    @Field
     private PageView pageView;
+    @Field
+    private Followers followers;
 
     @DBRef
-    private Followers followers;
+    @Builder.Default
+    private List<Comment> commentList = new ArrayList<>();
 
 
     public static Post create(Long memberId, CreatePostDto dto) {
         return Post.builder()
                 .memberId(memberId)
                 .createDate(LocalDateTime.now())
-                .category(dto.getCategory())
+                .title(dto.getTitle())
                 .content(dto.getContent())
-                .comments(dto.getComments())
-                .pageView(dto.getPageView())
-                .followers(dto.getFollowers())
+                .pageView(PageView.create())
+                .followers(Followers.create())
                 .build();
-    }
-
-    public static Post createMission(Long memberId, CreatePostDto dto) {
-        Post post = create(memberId, dto);
-        post.personalId = dto.getPersonalId();
-        return post;
     }
 }

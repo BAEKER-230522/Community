@@ -2,9 +2,10 @@ package com.baeker.Community.global.mongoDB;
 
 import com.baeker.Community.global.dto.reqDto.CreatePostDto;
 import com.baeker.Community.global.dto.reqDto.CreatePostsReqDto;
-import com.baeker.Community.post.application.port.in.post.PostCreateUseCase;
-import com.baeker.Community.post.application.port.in.posts.PostsCreateUseCase;
-import com.baeker.Community.post.domain.post.Category;
+import com.baeker.Community.mission.application.prot.in.MissionCreateUseCase;
+import com.baeker.Community.mission.application.prot.in.MissionQueryUseCase;
+import com.baeker.Community.mission.domain.Mission;
+import com.baeker.Community.post.application.port.in.PostCreateUseCase;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -16,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static com.baeker.Community.post.domain.post.Category.MISSION;
-
 @Profile("dev")
 @Component
 @RequiredArgsConstructor
@@ -27,9 +26,11 @@ public class initData {
 
     @PostConstruct
     public void init() {
+        Long missionId = 1L;
+
         initService.reset_data();
-        initService.posts1_setting();
-        initService.mission_post_posting();
+        initService.mission1_setting(missionId);
+        initService.posting_to_mission1(missionId);
     }
 
     @Component
@@ -37,7 +38,8 @@ public class initData {
     static class InitService{
 
         private final MongoTemplate mongoTemplate;
-        private final PostsCreateUseCase postsCreateUseCase;
+        private final MissionCreateUseCase missionCreateUseCase;
+        private final MissionQueryUseCase missionQueryUseCase;
         private final PostCreateUseCase postCreateUseCase;
 
         public void reset_data() {
@@ -46,27 +48,28 @@ public class initData {
                 mongoTemplate.remove(new Query(), collection);
         }
 
-        public void posts1_setting() {
+        public void mission1_setting(Long missionId) {
             List<Long> memberIdList = new ArrayList<>();
-            List<String> titleList = new ArrayList<>();
+            List<Long> titleList = new ArrayList<>();
 
-            String[] titles = {"A+B", "A-B"};
-            for (int i = 0; i < titles.length; i++) {
+            for (int i = 0; i < 3; i++) {
                 memberIdList.add((long) (i + 1));
-                titleList.add(titles[i]);
+                titleList.add((long) (i + 1));
             }
 
-            CreatePostsReqDto reqDto = new CreatePostsReqDto(1L, memberIdList, titleList);
-            postsCreateUseCase.setting(reqDto);
+            CreatePostsReqDto reqDto = new CreatePostsReqDto(missionId, memberIdList, titleList);
+            missionCreateUseCase.setting(reqDto);
         }
 
-        public void mission_post_posting() {
+        public void posting_to_mission1(Long missionId) {
+            Mission mission = missionQueryUseCase.byMissionId(missionId);
+
             CreatePostDto reqDto = new CreatePostDto();
-            reqDto.setMissionId(1L);
-            reqDto.setPersonalId(1L);
+            reqDto.setMissionId(missionId);
+            reqDto.setProblemStatusId(1L);
             reqDto.setTitle("A+B");
-            reqDto.setBody("import java.util.*;");
-            postCreateUseCase.Mission(1L, reqDto);
+            reqDto.setContent("import java.util.*;");
+            postCreateUseCase.mission(1L, reqDto, mission);
         }
     }
 }
