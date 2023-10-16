@@ -40,15 +40,15 @@ public class Posts {
                 .build();
 
         for (Long memberId : dto.getMemberIdList())
-            posts.settingMember(memberId, dto.getTitleList());
+            posts.settingMember(memberId, dto.getProblemStatusIdList());
 
         return posts;
     }
 
-    private void settingMember(Long memberId, List<String> titleList) {
+    private void settingMember(Long memberId, List<Long> problemStatusIdList) {
         List<Posting> postings =  new ArrayList<>();
-        for (String title : titleList)
-            postings.add(new Posting(memberId, title));
+        for (Long problemStatusId : problemStatusIdList)
+            postings.add(new Posting(memberId, problemStatusId));
 
         PersonalPosts posts = new PersonalPosts(memberId, postings);
         this.postings.put(memberId, posts);

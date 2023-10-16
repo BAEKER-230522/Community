@@ -12,6 +12,7 @@ public class Posting {
 
     private String postId;
     private Long memberId;
+    private Long problemStatusId;
     private Category category;
     private String title;
 
@@ -22,9 +23,9 @@ public class Posting {
         this.title = title;
     }
 
-    public Posting(Long memberId, String title) {
+    public Posting(Long memberId, Long problemStatusId) {
         this.memberId = memberId;
-        this.title = title;
+        this.problemStatusId = problemStatusId;
         this.category = MISSION;
     }
 }

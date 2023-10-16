@@ -13,5 +13,5 @@ public class CreatePostsReqDto {
 
     private Long missionId;
     private List<Long> memberIdList;
-    private List<String> titleList;
+    private List<Long> problemStatusIdList;
 }
