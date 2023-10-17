@@ -3,7 +3,7 @@ package com.baeker.Community.post.adapter.in.web;
 import com.baeker.Community.global.jwt.JwtDecrypt;
 import com.baeker.Community.member.application.in.MemberQueryUseCase;
 import com.baeker.Community.member.domain.Member;
-import com.baeker.Community.post.application.port.in.PostModifyUseCase;
+import com.baeker.Community.post.application.port.in.codeReview.PostModifyUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

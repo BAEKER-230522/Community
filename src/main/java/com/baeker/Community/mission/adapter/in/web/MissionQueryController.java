@@ -2,8 +2,7 @@ package com.baeker.Community.mission.adapter.in.web;
 
 import com.baeker.Community.global.dto.resDto.ChallengerResDto;
 import com.baeker.Community.mission.application.prot.in.MissionQueryUseCase;
-import com.baeker.Community.mission.domain.Mission;
-import com.baeker.Community.post.application.port.in.CodeReviewQueryUseCase;
+import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

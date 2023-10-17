@@ -1,4 +1,4 @@
-package com.baeker.Community.post.application.port.in;
+package com.baeker.Community.post.application.port.in.codeReview;
 
 import com.baeker.Community.global.dto.resDto.ChallengerResDto;
 import com.baeker.Community.mission.domain.Challenger;

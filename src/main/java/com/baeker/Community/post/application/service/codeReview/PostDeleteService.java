@@ -1,6 +1,6 @@
-package com.baeker.Community.post.application.service;
+package com.baeker.Community.post.application.service.codeReview;
 
-import com.baeker.Community.post.application.port.in.PostDeleteUseCase;
+import com.baeker.Community.post.application.port.in.codeReview.PostDeleteUseCase;
 import com.baeker.Community.post.domain.post.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;

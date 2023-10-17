@@ -2,9 +2,9 @@ package com.baeker.Community.post.adapter.in.web;
 
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
-import com.baeker.Community.post.application.port.in.CodeReviewCreateUseCase;
+import com.baeker.Community.post.application.port.in.codeReview.CodeReviewCreateUseCase;
 import com.baeker.Community.global.jwt.JwtDecrypt;
-import com.baeker.Community.post.application.port.in.CodeReviewQueryUseCase;
+import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
 import com.baeker.Community.post.domain.category.CodeReview;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

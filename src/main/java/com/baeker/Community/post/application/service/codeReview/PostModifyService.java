@@ -1,9 +1,9 @@
-package com.baeker.Community.post.application.service;
+package com.baeker.Community.post.application.service.codeReview;
 
 import com.baeker.Community.member.application.in.MemberModifyUseCase;
 import com.baeker.Community.member.domain.Member;
-import com.baeker.Community.post.application.port.in.CodeReviewQueryUseCase;
-import com.baeker.Community.post.application.port.in.PostModifyUseCase;
+import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.post.application.port.in.codeReview.PostModifyUseCase;
 import com.baeker.Community.post.application.port.out.CodeReviewRepositoryPort;
 import com.baeker.Community.post.domain.category.CodeReview;
 import com.baeker.Community.post.domain.post.Followers;

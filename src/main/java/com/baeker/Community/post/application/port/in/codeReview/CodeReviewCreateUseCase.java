@@ -1,4 +1,4 @@
-package com.baeker.Community.post.application.port.in;
+package com.baeker.Community.post.application.port.in.codeReview;
 
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
