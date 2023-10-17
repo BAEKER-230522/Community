@@ -22,14 +22,14 @@ public class PostModifyController {
 
 
     @Operation(summary = "게시물 추천, 추천 취소")
-    @PatchMapping("/v1/follow/{personalId}")
+    @PatchMapping("/v1/follow/{problemStatusId}")
     public ResponseEntity follow(
             @RequestHeader("Authorization") String token,
-            @PathVariable Long personalId
+            @PathVariable Long problemStatusId
     ) {
         Long memberId = decrypt.getMemberId(token);
         Member member = memberQueryUseCase.byMemberId(memberId);
-        postModifyUseCase.follow(member, personalId);
+        postModifyUseCase.follow(member, problemStatusId);
         return ResponseEntity.noContent().build();
     }
 }

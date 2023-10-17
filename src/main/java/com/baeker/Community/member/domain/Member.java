@@ -26,11 +26,11 @@ public class Member {
     private String id;
     private Long memberId;
 
-    @Field("postings")
+    @Field
     @Builder.Default
     private List<CodeReview> codeReviewList = new ArrayList<>();
 
-    @Field("following")
+    @Field
     @Builder.Default
     private List<String> following = new ArrayList<>();
 
@@ -45,11 +45,11 @@ public class Member {
         this.codeReviewList.add(codeReview);
     }
 
-    public void followContent(String postId) {
-        this.following.add(postId);
+    public void followContent(String codeReviewId) {
+        this.following.add(codeReviewId);
     }
 
-    public void unfollow(String postId) {
-        this.following.remove(postId);
+    public void unfollow(String codeReviewId) {
+        this.following.remove(codeReviewId);
     }
 }

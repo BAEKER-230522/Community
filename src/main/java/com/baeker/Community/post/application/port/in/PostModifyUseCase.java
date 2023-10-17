@@ -4,7 +4,5 @@ import com.baeker.Community.member.domain.Member;
 
 public interface PostModifyUseCase {
 
-
-
-    void follow(Member member, Long postId);
+    void follow(Member member, Long problemStatusId);
 }

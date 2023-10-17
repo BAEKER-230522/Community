@@ -47,4 +47,10 @@ public class Post {
                 .followers(Followers.create())
                 .build();
     }
+
+    public void modifyFollow(Followers followers) {
+        this.toBuilder()
+                .followers(followers)
+                .build();
+    }
 }

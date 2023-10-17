@@ -1,5 +1,6 @@
 package com.baeker.Community.post.domain.category;
 
+import com.baeker.Community.post.domain.post.Followers;
 import com.baeker.Community.post.domain.post.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,5 +40,9 @@ public class CodeReview {
         return CodeReview.builder()
                 .problemStatusId(problemStatusId)
                 .build();
+    }
+
+    public void modifyFollow(Followers followers) {
+        this.post.modifyFollow(followers);
     }
 }

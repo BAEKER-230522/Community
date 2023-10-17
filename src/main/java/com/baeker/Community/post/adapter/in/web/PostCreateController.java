@@ -25,7 +25,7 @@ public class PostCreateController {
 
     @Operation(summary = "미션 코드리뷰 게시물 작성")
     @PostMapping("/v1/code-review")
-    public ResponseEntity createMission(
+    public ResponseEntity<CodeReviewDto> createMission(
             @RequestHeader("Authorization") String token,
             @RequestBody @Valid CreateCodeReviewDto dto
     ) {

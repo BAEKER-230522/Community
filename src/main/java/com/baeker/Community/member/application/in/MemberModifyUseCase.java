@@ -7,7 +7,7 @@ public interface MemberModifyUseCase {
 
     void posting(Long memberId, CodeReview codeReview);
 
-    void follow(Member member, String postId);
+    void follow(Member member, String codeReviewId);
 
-    void unfollow(Member member, String postId);
+    void unfollow(Member member, String codeReviewId);
 }

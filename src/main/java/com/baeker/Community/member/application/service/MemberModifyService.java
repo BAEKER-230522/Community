@@ -25,14 +25,14 @@ public class MemberModifyService implements MemberModifyUseCase {
     }
 
     @Override
-    public void follow(Member member, String postId) {
-        member.followContent(postId);
+    public void follow(Member member, String codeReviewId) {
+        member.followContent(codeReviewId);
         repository.save(member);
     }
 
     @Override
-    public void unfollow(Member member, String postId) {
-        member.unfollow(postId);
+    public void unfollow(Member member, String codeReviewId) {
+        member.unfollow(codeReviewId);
         repository.save(member);
     }
 }
