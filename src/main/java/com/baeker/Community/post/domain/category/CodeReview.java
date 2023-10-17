@@ -53,4 +53,20 @@ public class CodeReview {
                 .getFollowers()
                 .getMemberList();
     }
+
+    public int getFollowerCount() {
+        return this.getFollowers().size();
+    }
+
+    public int getPageViews() {
+        return this.getPost()
+                .getPageView()
+                .getCount();
+    }
+
+    public int getCommentCount() {
+        return this.getPost()
+                .getCommentList()
+                .size();
+    }
 }
