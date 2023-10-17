@@ -27,12 +27,11 @@ public class Member {
     private Long memberId;
 
     @Field
-    @Builder.Default
-    private List<CodeReview> codeReviewList = new ArrayList<>();
+    private Following following;
 
     @Field
     @Builder.Default
-    private List<String> following = new ArrayList<>();
+    private List<CodeReview> codeReviewList = new ArrayList<>();
 
 
     public static Member create(Long memberId) {
@@ -45,11 +44,11 @@ public class Member {
         this.codeReviewList.add(codeReview);
     }
 
-    public void followContent(String codeReviewId) {
-        this.following.add(codeReviewId);
+    public void followContent(CodeReview codeReview) {
+        this.following.follow(codeReview);
     }
 
-    public void unfollow(String codeReviewId) {
-        this.following.remove(codeReviewId);
+    public void unfollow(CodeReview codeReview) {
+        this.following.unfollow(codeReview);
     }
 }

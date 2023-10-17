@@ -33,9 +33,9 @@ public class PostModifyService implements PostModifyUseCase {
         Followers followers = codeReview.getPost().getFollowers();
 
         if (isFollow(member.getMemberId(), followers))
-            unfollow(member, codeReview.getId(), followers);
+            unfollow(member, codeReview, followers);
         else
-            doFollow(member, codeReview.getId(), followers);
+            doFollow(member, codeReview, followers);
 
         return followers;
     }
@@ -48,13 +48,13 @@ public class PostModifyService implements PostModifyUseCase {
         return false;
     }
 
-    private void unfollow(Member member, String codeReviewId, Followers followers) {
+    private void unfollow(Member member, CodeReview codeReview, Followers followers) {
         followers.unfollow(member.getMemberId());
-        memberModifyUseCase.unfollow(member, codeReviewId);
+        memberModifyUseCase.unfollow(member, codeReview);
     }
 
-    private void doFollow(Member member, String codeReviewId, Followers followers) {
+    private void doFollow(Member member, CodeReview codeReview, Followers followers) {
         followers.following(member.getMemberId());
-        memberModifyUseCase.follow(member,codeReviewId);
+        memberModifyUseCase.follow(member,codeReview);
     }
 }
