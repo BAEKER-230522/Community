@@ -10,6 +10,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -44,5 +46,11 @@ public class CodeReview {
 
     public void modifyFollow(Followers followers) {
         this.post.modifyFollow(followers);
+    }
+
+    public List<Long> getFollowers() {
+        return this.getPost()
+                .getFollowers()
+                .getMemberList();
     }
 }
