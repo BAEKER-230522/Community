@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "POST - 게시물 관련 수정")
+@Tag(name = "POST")
 @RestController
 @RequestMapping("${custom.mapping.post.web_usr}")
 @RequiredArgsConstructor

@@ -1,11 +1,11 @@
 package com.baeker.Community.post.adapter.in.web;
 
-import com.baeker.Community.global.dto.reqDto.CreatePostDto;
-import com.baeker.Community.global.dto.resDto.CodeReviewResDto;
-import com.baeker.Community.mission.application.prot.in.MissionQueryUseCase;
-import com.baeker.Community.mission.domain.Mission;
-import com.baeker.Community.post.application.port.in.PostCreateUseCase;
+import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
+import com.baeker.Community.global.dto.resDto.CodeReviewDto;
+import com.baeker.Community.post.application.port.in.CodeReviewCreateUseCase;
 import com.baeker.Community.global.jwt.JwtDecrypt;
+import com.baeker.Community.post.application.port.in.CodeReviewQueryUseCase;
+import com.baeker.Community.post.domain.category.CodeReview;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -13,25 +13,25 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "POST - 게시물 게재")
+@Tag(name = "POST")
 @RestController
 @RequestMapping("${custom.mapping.post.web_usr}")
 @RequiredArgsConstructor
 public class PostCreateController {
 
-    private final PostCreateUseCase postCreateUseCase;
-    private final MissionQueryUseCase missionQueryUseCase;
+    private final CodeReviewCreateUseCase codeReviewCreateUseCase;
+    private final CodeReviewQueryUseCase codeReviewQueryUseCase;
     private final JwtDecrypt decrypt;
 
-    @Operation(summary = "미션 문제 해결 게시물 게재")
-    @PostMapping("/v1/mission")
+    @Operation(summary = "미션 코드리뷰 게시물 작성")
+    @PostMapping("/v1/code-review")
     public ResponseEntity createMission(
             @RequestHeader("Authorization") String token,
-            @RequestBody @Valid CreatePostDto dto
+            @RequestBody @Valid CreateCodeReviewDto dto
     ) {
         Long memberId = decrypt.getMemberId(token);
-        Mission mission = missionQueryUseCase.byMissionId(dto.getMissionId());
-        CodeReviewResDto resDto = postCreateUseCase.mission(memberId, dto, mission);
+        CodeReview codeReview = codeReviewQueryUseCase.byProblemStatusId(dto.getProblemStatusId());
+        CodeReviewDto resDto = codeReviewCreateUseCase.write(memberId, dto, codeReview);
         return ResponseEntity.ok(resDto);
     }
 }

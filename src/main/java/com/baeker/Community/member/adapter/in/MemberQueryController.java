@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "Member - 커뮤니티 활동 내역 조회")
+@Tag(name = "Member")
 @RestController
 @RequestMapping("${custom.mapping.member.web_usr}")
 @RequiredArgsConstructor

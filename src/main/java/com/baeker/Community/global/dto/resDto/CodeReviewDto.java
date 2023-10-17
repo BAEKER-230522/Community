@@ -1,6 +1,7 @@
 package com.baeker.Community.global.dto.resDto;
 
 import com.baeker.Community.comment.domain.Comment;
+import com.baeker.Community.post.domain.category.CodeReview;
 import com.baeker.Community.post.domain.post.Post;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class CodeReviewResDto {
+public class CodeReviewDto {
 
     private String id;
     private Long memberId;
@@ -27,10 +28,12 @@ public class CodeReviewResDto {
     private String content;
     private List<Comment> comments;
 
-    public CodeReviewResDto(Post post, Long problemStatusId) {
-        this.id = post.getId();
+    public CodeReviewDto(CodeReview codeReview) {
+        Post post = codeReview.getPost();
+
+        this.id = codeReview.getId();
         this.memberId = post.getMemberId();
-        this.problemStatusId = problemStatusId;
+        this.problemStatusId = codeReview.getProblemStatusId();
         this.createDate = post.getCreateDate();
         this.pageView = post.getPageView().getCount();
         this.follower = post.getFollowers().getMemberList().size();

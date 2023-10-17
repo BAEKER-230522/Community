@@ -1,7 +1,6 @@
 package com.baeker.Community.mission.domain;
 
-import com.baeker.Community.global.dto.reqDto.CreatePostsReqDto;
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,26 +31,10 @@ public class Mission {
     private List<Challenger> challengerList = new ArrayList<>();
 
 
-    public static Mission setting(CreatePostsReqDto dto) {
-        Mission mission = Mission.builder()
+    public static Mission setting(SettingMissionDto dto, List<Challenger> challengerList) {
+        return Mission.builder()
                 .missionId(dto.getMissionId())
+                .challengerList(challengerList)
                 .build();
-
-        for (Long memberId : dto.getMemberIdList())
-            mission.challengerList.add(
-                    Challenger.create(
-                            memberId,
-                            dto.getProblemStatusIdList()
-                    ));
-
-        return mission;
-    }
-
-    public CodeReview getCodeReview(Long memberId, Long problemStatusId) {
-        for (Challenger challenger : this.challengerList)
-            if (challenger.getMemberId() == memberId)
-                return challenger.getCodeReview(problemStatusId);
-
-        return null;
     }
 }

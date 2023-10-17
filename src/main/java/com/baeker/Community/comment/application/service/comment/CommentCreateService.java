@@ -24,7 +24,7 @@ public class CommentCreateService implements CommentCreateUseCase {
         Comment comment = repository.save(
                 Comment.create(memberId, content));
 
-        updateComments(comment, post.getComments());
+//        updateComments(comment, post.getComments());
     }
 
     private void updateComments(Comment comment, Comments comments) {

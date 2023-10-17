@@ -9,9 +9,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreatePostsReqDto {
+public class SettingMissionDto {
 
     private Long missionId;
-    private List<Long> memberIdList;
-    private List<Long> problemStatusIdList;
+    private List<SettingChallengerDto> memberList;
 }

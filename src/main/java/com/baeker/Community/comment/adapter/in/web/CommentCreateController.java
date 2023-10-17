@@ -3,7 +3,7 @@ package com.baeker.Community.comment.adapter.in.web;
 import com.baeker.Community.comment.application.port.in.comment.CommentCreateUseCase;
 import com.baeker.Community.global.dto.reqDto.CreateCommentReqDto;
 import com.baeker.Community.global.jwt.JwtDecrypt;
-import com.baeker.Community.post.application.port.in.PostQueryUseCase;
+import com.baeker.Community.post.application.port.in.CodeReviewQueryUseCase;
 import com.baeker.Community.post.domain.post.Post;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class CommentCreateController {
 
     private final CommentCreateUseCase commentCreateUseCase;
-    private final PostQueryUseCase postQueryUseCase;
+    private final CodeReviewQueryUseCase postQueryUseCase;
     private final JwtDecrypt decrypt;
 
 
@@ -29,8 +29,8 @@ public class CommentCreateController {
             @RequestBody CreateCommentReqDto dto
             ) {
         Long memberId = decrypt.getMemberId(token);
-        Post post = postQueryUseCase.byId(dto.getPostId());
-        commentCreateUseCase.write(memberId, dto.getComment(), post);
+//        Post post = postQueryUseCase.byId(dto.getPostId());
+//        commentCreateUseCase.write(memberId, dto.getComment(), post);
         return ResponseEntity.noContent().build();
     }
 }
