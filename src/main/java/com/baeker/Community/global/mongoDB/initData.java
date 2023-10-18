@@ -1,10 +1,12 @@
 package com.baeker.Community.global.mongoDB;
 
-import com.baeker.Community.global.dto.reqDto.CreatePostDto;
-import com.baeker.Community.global.dto.reqDto.CreatePostsReqDto;
-import com.baeker.Community.post.application.port.in.post.PostCreateUseCase;
-import com.baeker.Community.post.application.port.in.posts.PostsCreateUseCase;
-import com.baeker.Community.post.domain.post.Category;
+import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
+import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
+import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
+import com.baeker.Community.mission.application.prot.in.MissionCreateUseCase;
+import com.baeker.Community.post.application.port.in.codeReview.CodeReviewCreateUseCase;
+import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.post.domain.category.CodeReview;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -16,8 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static com.baeker.Community.post.domain.post.Category.MISSION;
-
 @Profile("dev")
 @Component
 @RequiredArgsConstructor
@@ -27,18 +27,21 @@ public class initData {
 
     @PostConstruct
     public void init() {
+        Long missionId = 1L;
+
         initService.reset_data();
-        initService.posts1_setting();
-        initService.mission_post_posting();
+        initService.mission1_setting(missionId);
+        initService.posting_to_mission1();
     }
 
     @Component
     @RequiredArgsConstructor
-    static class InitService{
+    static class InitService {
 
         private final MongoTemplate mongoTemplate;
-        private final PostsCreateUseCase postsCreateUseCase;
-        private final PostCreateUseCase postCreateUseCase;
+        private final MissionCreateUseCase missionCreateUseCase;
+        private final CodeReviewCreateUseCase postCreateUseCase;
+        private final CodeReviewQueryUseCase postQueryUseCase;
 
         public void reset_data() {
             Set<String> collections = mongoTemplate.getCollectionNames();
@@ -46,27 +49,37 @@ public class initData {
                 mongoTemplate.remove(new Query(), collection);
         }
 
-        public void posts1_setting() {
-            List<Long> memberIdList = new ArrayList<>();
-            List<String> titleList = new ArrayList<>();
+        public void mission1_setting(Long missionId) {
+            Long problemStatusId = 1L;
 
-            String[] titles = {"A+B", "A-B"};
-            for (int i = 0; i < titles.length; i++) {
-                memberIdList.add((long) (i + 1));
-                titleList.add(titles[i]);
+            SettingMissionDto reqDto = new SettingMissionDto();
+            reqDto.setMissionId(missionId);
+
+            List<SettingChallengerDto> challengerDtos = new ArrayList<>();
+            for (int i = 1; i < 3; i++) {
+                SettingChallengerDto dto = new SettingChallengerDto();
+                dto.setMemberId((long) i);
+
+                List<Long> problemStatusIdList = new ArrayList<>();
+                for (int j = 0; j < 2; j++) {
+                    problemStatusIdList.add(problemStatusId);
+                    problemStatusId++;
+                }
+                dto.setProblemStatusId(problemStatusIdList);
+                challengerDtos.add(dto);
             }
+            reqDto.setMemberList(challengerDtos);
 
-            CreatePostsReqDto reqDto = new CreatePostsReqDto(1L, memberIdList, titleList);
-            postsCreateUseCase.setting(reqDto);
+            missionCreateUseCase.setting(reqDto);
         }
 
-        public void mission_post_posting() {
-            CreatePostDto reqDto = new CreatePostDto();
-            reqDto.setMissionId(1L);
-            reqDto.setPersonalId(1L);
+        public void posting_to_mission1() {
+            CodeReview codeReview = postQueryUseCase.byProblemStatusId(1L);
+            CreateCodeReviewDto reqDto = new CreateCodeReviewDto();
+            reqDto.setProblemStatusId(1L);
             reqDto.setTitle("A+B");
-            reqDto.setBody("import java.util.*;");
-            postCreateUseCase.Mission(1L, reqDto);
+            reqDto.setContent("import java.util.*;");
+            postCreateUseCase.write(1L, reqDto, codeReview);
         }
     }
 }

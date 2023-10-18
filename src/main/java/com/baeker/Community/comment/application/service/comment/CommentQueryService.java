@@ -20,8 +20,9 @@ public class CommentQueryService implements CommentQueryUseCase {
 
     @Override
     public List<Comment> byPost(Post post) {
-        List<String> comments = post.getComments().getComments();
-        Query query = new Query(Criteria.where("id").is(comments));
-        return mongoTemplate.find(query, Comment.class);
+//        List<String> comments = post.getComments().getComments();
+//        Query query = new Query(Criteria.where("id").is(comments));
+//        return mongoTemplate.find(query, Comment.class);
+        return null;
     }
 }

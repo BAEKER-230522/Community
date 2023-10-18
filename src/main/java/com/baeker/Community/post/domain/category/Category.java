@@ -1,4 +1,4 @@
-package com.baeker.Community.post.domain.post;
+package com.baeker.Community.post.domain.category;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,13 +12,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Builder(toBuilder = true, access = PRIVATE)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class PageView {
+public class Category {
 
-    private int count;
-
-    public static PageView create() {
-        return PageView.builder()
-                .count(0)
-                .build();
-    }
+    private String category;
 }

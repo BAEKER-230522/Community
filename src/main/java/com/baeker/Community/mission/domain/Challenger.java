@@ -1,12 +1,12 @@
-package com.baeker.Community.member.domain;
+package com.baeker.Community.mission.domain;
 
+import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
 import com.baeker.Community.post.domain.category.CodeReview;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
@@ -15,40 +15,21 @@ import java.util.List;
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
-@Document
 @Getter
 @Builder(toBuilder = true, access = PRIVATE)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class Member {
+public class Challenger {
 
-    @Id
-    private String id;
     private Long memberId;
 
-    @Field
-    private Following following;
-
-    @Field
+    @DBRef
     @Builder.Default
     private List<CodeReview> codeReviewList = new ArrayList<>();
 
-
-    public static Member create(Long memberId) {
-        return Member.builder()
+    public static Challenger create(Long memberId) {
+       return Challenger.builder()
                 .memberId(memberId)
                 .build();
-    }
-
-    public void writePost(CodeReview codeReview) {
-        this.codeReviewList.add(codeReview);
-    }
-
-    public void followContent(CodeReview codeReview) {
-        this.following.follow(codeReview);
-    }
-
-    public void unfollow(CodeReview codeReview) {
-        this.following.unfollow(codeReview);
     }
 }
