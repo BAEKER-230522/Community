@@ -19,4 +19,11 @@ public class Mission extends BaseCategory {
 
     private Long missionId;
     private Long problemStatusId;
+
+    public static Mission setting(Long missionId, Long problemStatusId) {
+        return Mission.builder()
+                .missionId(missionId)
+                .problemStatusId(problemStatusId)
+                .build();
+    }
 }

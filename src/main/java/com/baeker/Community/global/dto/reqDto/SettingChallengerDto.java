@@ -8,5 +8,5 @@ import java.util.List;
 public class SettingChallengerDto {
 
     private Long memberId;
-    private List<Long> problemStatusId;
+    private List<Long> problemStatusIdList;
 }

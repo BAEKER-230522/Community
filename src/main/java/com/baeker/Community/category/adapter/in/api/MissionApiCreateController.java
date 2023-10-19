@@ -1,7 +1,7 @@
 package com.baeker.Community.category.adapter.in.api;
 
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
-import com.baeker.Community.category.application.prot.in.MissionCreateUseCase;
+import com.baeker.Community.category.application.prot.in.mission.MissionCreateUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("${custom.mapping.mission.api}")
 @RequiredArgsConstructor
-public class MissionApiCreateUseCase {
+public class MissionApiCreateController {
 
     private final MissionCreateUseCase missionCreateUseCase;
 

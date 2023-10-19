@@ -1,6 +1,6 @@
 package com.baeker.Community.category.application.service;
 
-import com.baeker.Community.category.application.prot.in.MissionModifyUseCase;
+import com.baeker.Community.category.application.prot.in.mission.MissionModifyUseCase;
 import com.baeker.Community.category.application.prot.out.MissionRepositoryPort;
 import com.baeker.Community.category.domain.Mission;
 import lombok.RequiredArgsConstructor;

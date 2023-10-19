@@ -1,7 +1,7 @@
 package com.baeker.Community.category.application.service;
 
 import com.baeker.Community.global.exception.service.NotFoundException;
-import com.baeker.Community.category.application.prot.in.MissionQueryUseCase;
+import com.baeker.Community.category.application.prot.in.mission.MissionQueryUseCase;
 import com.baeker.Community.category.application.prot.out.MissionRepositoryPort;
 import com.baeker.Community.category.domain.Mission;
 import lombok.RequiredArgsConstructor;
