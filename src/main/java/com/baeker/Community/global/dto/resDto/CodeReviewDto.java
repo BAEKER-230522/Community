@@ -3,6 +3,7 @@ package com.baeker.Community.global.dto.resDto;
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.post.domain.Post;
 import com.querydsl.core.annotations.QueryProjection;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 import static lombok.AccessLevel.PROTECTED;
 
-@Getter
+@Data
 @NoArgsConstructor(access = PROTECTED)
 public class CodeReviewDto {
 

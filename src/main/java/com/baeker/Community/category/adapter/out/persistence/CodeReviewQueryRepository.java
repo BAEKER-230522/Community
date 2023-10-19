@@ -2,16 +2,11 @@ package com.baeker.Community.category.adapter.out.persistence;
 
 import com.baeker.Community.category.application.prot.out.CodeReviewQueryRepositoryPort;
 import com.baeker.Community.category.domain.QCodeReview;
-import com.baeker.Community.comment.domain.QComment;
 import com.baeker.Community.global.dto.resDto.ChallengerDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
-import com.baeker.Community.global.dto.resDto.QChallengerDto;
 import com.baeker.Community.global.dto.resDto.QCodeReviewDto;
 import com.baeker.Community.post.domain.QPost;
 import com.querydsl.core.Tuple;
-import com.querydsl.core.types.Expression;
-import com.querydsl.core.types.ExpressionUtils;
-import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
