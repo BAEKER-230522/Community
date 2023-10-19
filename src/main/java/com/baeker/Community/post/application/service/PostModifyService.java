@@ -1,9 +1,10 @@
 package com.baeker.Community.post.application.service;
 
+import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewModifyUseCase;
+import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
-import com.baeker.Community.member.application.in.MemberModifyUseCase;
 import com.baeker.Community.member.domain.Member;
 import com.baeker.Community.post.application.port.in.PostModifyUseCase;
 import com.baeker.Community.post.application.port.out.PostRepositoryPort;
@@ -17,16 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class PostModifyService implements PostModifyUseCase {
 
-    private final MemberModifyUseCase memberModifyUseCase;
     private final PostRepositoryPort repository;
+    private final CodeReviewModifyUseCase codeReviewModifyUseCase;
 
 
     @Override
-    public CodeReviewDto write(Long memberId, CreateCodeReviewDto dto, Post post) {
-        Post updatePost = repository.save(
-                post.write(memberId, dto)
+    public CodeReviewDto write(Long memberId, CreateCodeReviewDto dto, CodeReview codeReview) {
+        Post post = repository.save(
+                Post.write(memberId, dto)
         );
-        return new CodeReviewDto(updatePost);
+        codeReviewModifyUseCase.write(codeReview, post);
+        return new CodeReviewDto(post);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.baeker.Community.post.domain;
 
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.baseEntity.BaseComm;
+import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -36,4 +37,8 @@ public class Post extends BaseComm {
     @OneToMany
     @Builder.Default
     private List<Comment> commentList = new ArrayList<>();
+
+    public static Post write(Long memberId, CreateCodeReviewDto dto) {
+        return null;
+    }
 }

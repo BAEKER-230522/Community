@@ -1,6 +1,7 @@
 package com.baeker.Community.category.domain;
 
 import com.baeker.Community.global.baseEntity.BaseCategory;
+import com.baeker.Community.post.domain.Post;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +25,12 @@ public class CodeReview extends BaseCategory {
         return CodeReview.builder()
                 .missionId(missionId)
                 .problemStatusId(problemStatusId)
+                .build();
+    }
+
+    public CodeReview write(Post post) {
+        return this.toBuilder()
+                .post(post)
                 .build();
     }
 }

@@ -25,4 +25,13 @@ public class CodeReviewQueryService implements CodeReviewQueryUseCase {
         throw new NotFoundException("존재하지 않는 미션");
     }
 
+    @Override
+    public CodeReview byProblemStatusId(Long problemStatusId) {
+        Optional<CodeReview> byProblemStatusId = repository.findByProblemStatusId(problemStatusId);
+
+        if (byProblemStatusId.isPresent())
+            return byProblemStatusId.get();
+
+        throw new NotFoundException("존재하지 않는 게시물");
+    }
 }

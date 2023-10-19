@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface CodeReviewRepositoryPort extends JpaRepository<CodeReview, Long> {
 
     Optional<CodeReview> findByMissionId(Long missionId);
+
+    Optional<CodeReview> findByProblemStatusId(Long problemStatusId);
 }

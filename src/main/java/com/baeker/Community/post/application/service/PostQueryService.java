@@ -30,16 +30,6 @@ public class PostQueryService implements PostQueryUseCase {
     }
 
     @Override
-    public Post byProblemStatusId(Long problemStatusId) {
-        Optional<Post> byProblemStatusId = repository.findByProblemStatusId(problemStatusId);
-
-        if (byProblemStatusId.isPresent())
-            return byProblemStatusId.get();
-
-        throw new NotFoundException("존재하지 않는 게시물");
-    }
-
-    @Override
     public List<PostDto> byMemberId(Long memberId) {
         List<Post> postList = repository.findByMemberId(memberId);
         return postList.stream()

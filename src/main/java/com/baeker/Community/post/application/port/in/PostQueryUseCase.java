@@ -9,8 +9,5 @@ public interface PostQueryUseCase {
 
     Post byId(String postId);
 
-
-    Post byProblemStatusId(Long problemStatusId);
-
     List<PostDto> byMemberId(Long memberId);
 }
