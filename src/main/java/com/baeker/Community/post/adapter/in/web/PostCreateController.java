@@ -5,7 +5,7 @@ import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.jwt.JwtDecrypt;
-import com.baeker.Community.post.application.port.in.PostModifyUseCase;
+import com.baeker.Community.post.application.port.in.PostCreateUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class PostCreateController {
 
-    private final PostModifyUseCase postModifyUseCase;
+    private final PostCreateUseCase postCreateUseCase;
     private final CodeReviewQueryUseCase codeReviewQueryUseCase;
     private final JwtDecrypt decrypt;
 
@@ -31,7 +31,7 @@ public class PostCreateController {
     ) {
         Long memberId = decrypt.getMemberId(token);
         CodeReview codeReview = codeReviewQueryUseCase.byProblemStatusId(dto.getProblemStatusId());
-        CodeReviewDto resDto = postModifyUseCase.write(memberId, dto, codeReview);
+        CodeReviewDto resDto = postCreateUseCase.write(memberId, dto, codeReview);
         return ResponseEntity.ok(resDto);
     }
 }

@@ -20,7 +20,7 @@ public class PostQueryService implements PostQueryUseCase {
 
 
     @Override
-    public Post byId(String postId) {
+    public Post byId(Long postId) {
         Optional<Post> byId = repository.findById(postId);
 
         if (byId.isPresent())

@@ -41,4 +41,21 @@ public class Post extends BaseComm {
     public static Post write(Long memberId, CreateCodeReviewDto dto) {
         return null;
     }
+
+    public void follow(Long memberId) {
+        if (this.followList.contains(memberId))
+            unfollow(memberId);
+        else
+            doFollow(memberId);
+    }
+
+    private void doFollow(Long memberId) {
+        this.followList
+                .add(memberId);
+    }
+
+    private void unfollow(Long memberId) {
+        this.followList
+                .remove(memberId);
+    }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PostQueryUseCase {
 
-    Post byId(String postId);
+    Post byId(Long postId);
 
     List<PostDto> byMemberId(Long memberId);
 }
