@@ -1,6 +1,5 @@
 package com.baeker.Community.global.dto.resDto;
 
-import com.baeker.Community.mission.domain.Challenger;
 import lombok.Data;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.baeker.Community.mission.application.prot.out;
+package com.baeker.Community.category.application.prot.out;
 
 import java.util.Optional;
 

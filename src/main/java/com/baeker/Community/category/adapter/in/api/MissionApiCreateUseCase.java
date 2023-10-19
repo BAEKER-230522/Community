@@ -1,7 +1,7 @@
-package com.baeker.Community.mission.adapter.in.api;
+package com.baeker.Community.category.adapter.in.api;
 
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
-import com.baeker.Community.mission.application.prot.in.MissionCreateUseCase;
+import com.baeker.Community.category.application.prot.in.MissionCreateUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

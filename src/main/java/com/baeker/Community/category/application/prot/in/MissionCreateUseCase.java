@@ -1,7 +1,7 @@
-package com.baeker.Community.mission.application.prot.in;
+package com.baeker.Community.category.application.prot.in;
 
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
-import com.baeker.Community.mission.domain.Mission;
+import com.baeker.Community.category.domain.Mission;
 
 public interface MissionCreateUseCase {
 

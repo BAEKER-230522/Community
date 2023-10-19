@@ -1,31 +1,39 @@
 package com.baeker.Community.post.domain;
 
+import com.baeker.Community.comment.domain.Comment;
+import com.baeker.Community.global.baseEntity.BaseComm;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
-//@Getter
-@Builder(toBuilder = true, access = PRIVATE)
+@Entity
+@Getter
+@SuperBuilder(toBuilder = true)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class Post {
+public class Post extends BaseComm {
 
-    private String id;
     private Long memberId;
-    private Long problemStatusId;
-    private LocalDateTime createDate;
     private String title;
     private String content;
+    private int pageView;
 
-//    private PageView pageView;
-//    private Followers followers;
-//
-//    @Builder.Default
-//    private List<Comment> commentList = new ArrayList<>();
+    @Builder.Default
+    @ElementCollection
+    private List<Long> followList = new ArrayList<>();
 
+    @OneToMany
+    @Builder.Default
+    private List<Comment> commentList = new ArrayList<>();
 }

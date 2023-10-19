@@ -1,11 +1,10 @@
-package com.baeker.Community.mission.application.service;
+package com.baeker.Community.category.application.service;
 
 import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
-import com.baeker.Community.mission.application.prot.in.MissionCreateUseCase;
-import com.baeker.Community.mission.application.prot.out.MissionRepositoryPort;
-import com.baeker.Community.mission.domain.Challenger;
-import com.baeker.Community.mission.domain.Mission;
+import com.baeker.Community.category.application.prot.in.MissionCreateUseCase;
+import com.baeker.Community.category.application.prot.out.MissionRepositoryPort;
+import com.baeker.Community.category.domain.Mission;
 import com.baeker.Community.post.application.port.in.PostCreateUseCase;
 import com.baeker.Community.post.domain.Post;
 import lombok.RequiredArgsConstructor;

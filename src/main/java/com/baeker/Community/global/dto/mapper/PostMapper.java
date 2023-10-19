@@ -2,8 +2,7 @@ package com.baeker.Community.global.dto.mapper;
 
 import com.baeker.Community.global.dto.resDto.ChallengerDto;
 import com.baeker.Community.global.dto.resDto.PostDto;
-import com.baeker.Community.mission.domain.Challenger;
-import com.baeker.Community.mission.domain.Mission;
+import com.baeker.Community.category.domain.Mission;
 import com.baeker.Community.post.domain.Post;
 import org.springframework.stereotype.Component;
 

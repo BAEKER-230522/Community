@@ -1,9 +1,9 @@
-package com.baeker.Community.global.mongoDB;
+package com.baeker.Community.global.initData;
 
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
-import com.baeker.Community.mission.application.prot.in.MissionCreateUseCase;
+import com.baeker.Community.category.application.prot.in.MissionCreateUseCase;
 import com.baeker.Community.post.application.port.in.PostModifyUseCase;
 import com.baeker.Community.post.application.port.in.PostQueryUseCase;
 import com.baeker.Community.post.domain.Post;

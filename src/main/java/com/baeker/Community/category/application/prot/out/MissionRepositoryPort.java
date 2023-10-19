@@ -1,6 +1,6 @@
-package com.baeker.Community.mission.application.prot.out;
+package com.baeker.Community.category.application.prot.out;
 
-import com.baeker.Community.mission.domain.Mission;
+import com.baeker.Community.category.domain.Mission;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
