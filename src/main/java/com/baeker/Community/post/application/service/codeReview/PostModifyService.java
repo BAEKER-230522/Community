@@ -1,5 +1,6 @@
 package com.baeker.Community.post.application.service.codeReview;
 
+import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.member.application.in.MemberModifyUseCase;
@@ -33,6 +34,12 @@ public class PostModifyService implements PostModifyUseCase {
     public void follow(Member member, Post post) {
         Followers followers = following(member, post);
         post.modifyFollow(followers); // 변수 최신화 안해도 됨?
+        repository.save(post);
+    }
+
+    @Override
+    public void addComment(Post post, Comment comment) {
+        post.addComment(comment);
         repository.save(post);
     }
 

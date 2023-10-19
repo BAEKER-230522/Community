@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommentCreateService implements CommentCreateUseCase {
 
     private final PostModifyUseCase postModifyUseCase;
-    private final MemberModifyUseCase memberModifyUseCase;
     private final CommentRepositoryPort repository;
 
 
@@ -24,8 +23,6 @@ public class CommentCreateService implements CommentCreateUseCase {
     public void write(Long memberId, String content, Post post) {
         Comment comment = repository.save(
                 Comment.create(memberId, post, content));
-
         postModifyUseCase.addComment(post, comment);
-        memberModifyUseCase.addComment()
     }
 }

@@ -70,6 +70,11 @@ public class Post {
                 .build();
     }
 
+    public void addComment(Comment comment) {
+        this.getCommentList()
+                .add(comment);
+    }
+
     public List<Long> getFollowList() {
         return this.getFollowers()
                 .getMemberList();

@@ -1,8 +1,9 @@
 package com.baeker.Community.mission.adapter.in.web;
 
-import com.baeker.Community.global.dto.resDto.ChallengerResDto;
+import com.baeker.Community.global.dto.mapper.PostMapper;
+import com.baeker.Community.global.dto.resDto.ChallengerDto;
 import com.baeker.Community.mission.application.prot.in.MissionQueryUseCase;
-import com.baeker.Community.post.application.port.in.PostQueryUseCase;
+import com.baeker.Community.mission.domain.Mission;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -21,16 +22,16 @@ import java.util.List;
 public class MissionQueryController {
 
     private final MissionQueryUseCase missionQueryUseCase;
-    private final PostQueryUseCase postQueryUseCase;
+    private final PostMapper mapper;
+
 
     @Operation(summary = "mission id 로 미션 코드리뷰 목록 조회")
     @GetMapping("/v1/mission/{missionId}")
-    public ResponseEntity<List<ChallengerResDto>> byMissionId(
+    public ResponseEntity<List<ChallengerDto>> byMissionId(
             @PathVariable Long missionId
     ) {
-//        Mission mission = missionQueryUseCase.byMissionId(missionId);
-//        List<ChallengerResDto> resDtos = postQueryUseCase.toChallengerDto(mission.getChallengerList());
-//        return ResponseEntity.ok(resDtos);
-        return null;
+        Mission mission = missionQueryUseCase.byMissionId(missionId);
+        List<ChallengerDto> resDtos = mapper.toChallengers(mission);
+        return ResponseEntity.ok(resDtos);
     }
 }
