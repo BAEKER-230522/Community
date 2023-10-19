@@ -84,4 +84,9 @@ public class Post {
         return this.getFollowList()
                 .size();
     }
+
+    public int getCommentCount() {
+        return this.getCommentList()
+                .size();
+    }
 }

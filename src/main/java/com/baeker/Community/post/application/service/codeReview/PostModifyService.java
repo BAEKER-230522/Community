@@ -26,8 +26,6 @@ public class PostModifyService implements PostModifyUseCase {
         Post updatePost = repository.save(
                 post.write(memberId, dto)
         );
-
-        memberModifyUseCase.posting(memberId, updatePost);
         return new CodeReviewDto(updatePost);
     }
 

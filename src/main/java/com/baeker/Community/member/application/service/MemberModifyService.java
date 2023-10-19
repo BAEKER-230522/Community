@@ -15,14 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberModifyService implements MemberModifyUseCase {
 
     private final MemberRepositoryPort repository;
-    private final MemberQueryUseCase memberQueryUseCase;
-
-    @Override
-    public void posting(Long memberId, Post post) {
-        Member member = memberQueryUseCase.byMemberId(memberId);
-        member.writePost(post);
-        repository.save(member);
-    }
 
     @Override
     public void follow(Member member, Post post) {

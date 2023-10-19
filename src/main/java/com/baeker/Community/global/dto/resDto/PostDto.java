@@ -1,6 +1,6 @@
 package com.baeker.Community.global.dto.resDto;
 
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -15,12 +15,12 @@ public class PostDto {
     private int followers;
     private int comments;
 
-    public PostDto(CodeReview codeReview) {
-        this.category = "CODE REVIEW";
-        this.createDate = codeReview.getPost().getCreateDate();
-        this.title = codeReview.getTitle();
-        this.pageView = codeReview.getPageViews();
-        this.followers = codeReview.getFollowerCount();
-        this.comments = codeReview.getCommentCount();
+    public PostDto(Post post) {
+        this.category = "CODE_REVIEW";
+        this.createDate = post.getCreateDate();
+        this.title = post.getTitle();
+        this.pageView = post.getPageViewCount();
+        this.followers = post.getFollowCount();
+        this.comments = post.getCommentCount();
     }
 }

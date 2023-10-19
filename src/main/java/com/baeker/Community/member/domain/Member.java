@@ -9,9 +9,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -29,19 +26,11 @@ public class Member {
     @Field
     private Following following;
 
-    @Field
-    @Builder.Default
-    private List<Post> postList = new ArrayList<>();
-
 
     public static Member create(Long memberId) {
         return Member.builder()
                 .memberId(memberId)
                 .build();
-    }
-
-    public void writePost(Post post) {
-        this.postList.add(post);
     }
 
     public void followContent(Post post) {
