@@ -9,6 +9,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -24,7 +28,8 @@ public class Member {
     private Long memberId;
 
     @Field
-    private Following following;
+    @Builder.Default
+    private List<Post> followingList = new ArrayList<>();
 
 
     public static Member create(Long memberId) {
@@ -34,10 +39,10 @@ public class Member {
     }
 
     public void followContent(Post post) {
-        this.following.follow(post);
+        this.followingList.add(post);
     }
 
     public void unfollow(Post post) {
-        this.following.unfollow(post);
+        this.followingList.remove(post);
     }
 }

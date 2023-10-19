@@ -1,7 +1,6 @@
 package com.baeker.Community.member.adapter.in;
 
 import com.baeker.Community.global.dto.mapper.PostMapper;
-import com.baeker.Community.global.dto.resDto.FollowingDto;
 import com.baeker.Community.global.dto.resDto.PostDto;
 import com.baeker.Community.global.jwt.JwtDecrypt;
 import com.baeker.Community.member.application.in.MemberQueryUseCase;
@@ -42,12 +41,12 @@ public class MemberQueryController {
 
     @Operation(summary = "추천한 게시물 목록")
     @GetMapping("/v1/following")
-    public ResponseEntity<FollowingDto> findFollowing(
+    public ResponseEntity<List<PostDto>> findFollowing(
             @RequestHeader("Authorization") String token
     ) {
         Long memberId = decrypt.getMemberId(token);
         Member member = memberQueryUseCase.byMemberId(memberId);
-        FollowingDto resDto = mapper.toFollowingDto(member.getFollowing());
-        return ResponseEntity.ok(resDto);
+        List<PostDto> resDtos = mapper.toPostDtos(member.getFollowingList());
+        return ResponseEntity.ok(resDtos);
     }
 }

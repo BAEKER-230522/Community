@@ -30,8 +30,13 @@ public class CodeReviewDto {
 
     public CodeReviewDto(Post post) {
         this.id = post.getId();
-        this.memberId = post.getMemberId();
         this.problemStatusId = post.getProblemStatusId();
+
+        if (post.getTitle() != null) toDto(post);
+    }
+
+    private void toDto(Post post) {
+        this.memberId = post.getMemberId();
         this.createDate = post.getCreateDate();
         this.pageView = post.getPageViewCount();
         this.follower = post.getFollowCount();
