@@ -2,6 +2,7 @@ package com.baeker.Community.mission.domain;
 
 import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
 import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,7 +26,7 @@ public class Challenger {
 
     @DBRef
     @Builder.Default
-    private List<CodeReview> codeReviewList = new ArrayList<>();
+    private List<Post> codeReviewList = new ArrayList<>();
 
     public static Challenger create(Long memberId) {
        return Challenger.builder()

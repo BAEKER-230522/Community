@@ -28,15 +28,13 @@ public class CodeReviewDto {
     private String content;
     private List<Comment> comments;
 
-    public CodeReviewDto(CodeReview codeReview) {
-        Post post = codeReview.getPost();
-
-        this.id = codeReview.getId();
+    public CodeReviewDto(Post post) {
+        this.id = post.getId();
         this.memberId = post.getMemberId();
-        this.problemStatusId = codeReview.getProblemStatusId();
+        this.problemStatusId = post.getProblemStatusId();
         this.createDate = post.getCreateDate();
-        this.pageView = post.getPageView().getCount();
-        this.follower = post.getFollowers().getMemberList().size();
+        this.pageView = post.getPageViewCount();
+        this.follower = post.getFollowCount();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.comments = post.getCommentList();

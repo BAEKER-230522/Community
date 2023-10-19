@@ -1,9 +1,9 @@
 package com.baeker.Community.post.application.service.codeReview;
 
 import com.baeker.Community.global.exception.service.NotFoundException;
-import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
-import com.baeker.Community.post.application.port.out.CodeReviewRepositoryPort;
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.application.port.in.PostQueryUseCase;
+import com.baeker.Community.post.application.port.out.PostRepositoryPort;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +11,14 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CodeReviewQueryService implements CodeReviewQueryUseCase {
+public class CodeReviewQueryService implements PostQueryUseCase {
 
-    private final CodeReviewRepositoryPort repository;
+    private final PostRepositoryPort repository;
 
 
     @Override
-    public CodeReview byId(String codeReviewId) {
-        Optional<CodeReview> byId = repository.findById(codeReviewId);
+    public Post byId(String postId) {
+        Optional<Post> byId = repository.findById(postId);
 
         if (byId.isPresent())
             return byId.get();
@@ -27,8 +27,8 @@ public class CodeReviewQueryService implements CodeReviewQueryUseCase {
     }
 
     @Override
-    public CodeReview byProblemStatusId(Long problemStatusId) {
-        Optional<CodeReview> byProblemStatusId = repository.findByProblemStatusId(problemStatusId);
+    public Post byProblemStatusId(Long problemStatusId) {
+        Optional<Post> byProblemStatusId = repository.findByProblemStatusId(problemStatusId);
 
         if (byProblemStatusId.isPresent())
             return byProblemStatusId.get();

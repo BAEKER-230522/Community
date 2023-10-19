@@ -6,8 +6,8 @@ import com.baeker.Community.mission.application.prot.in.MissionCreateUseCase;
 import com.baeker.Community.mission.application.prot.out.MissionRepositoryPort;
 import com.baeker.Community.mission.domain.Challenger;
 import com.baeker.Community.mission.domain.Mission;
-import com.baeker.Community.post.application.port.in.codeReview.CodeReviewCreateUseCase;
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.application.port.in.PostCreateUseCase;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ import java.util.List;
 public class MissionCreateService implements MissionCreateUseCase {
 
     private final MissionRepositoryPort repository;
-    private final CodeReviewCreateUseCase codeReviewCreateUseCase;
+    private final PostCreateUseCase postCreateUseCase;
 
     @Override
     public Mission setting(SettingMissionDto dto) {
@@ -35,11 +35,11 @@ public class MissionCreateService implements MissionCreateUseCase {
 
     private Challenger settingCodeReview(SettingChallengerDto dto) {
         Challenger challenger = Challenger.create(dto.getMemberId());
-        List<CodeReview> codeReviewList = challenger.getCodeReviewList();
+        List<Post> codeReviewList = challenger.getCodeReviewList();
 
         for (Long problemStatusId : dto.getProblemStatusId())
             codeReviewList.add(
-                    codeReviewCreateUseCase.setting(problemStatusId)
+                    postCreateUseCase.setting(problemStatusId)
             );
 
         return challenger;

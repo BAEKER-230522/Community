@@ -1,6 +1,6 @@
 package com.baeker.Community.global.dto.resDto;
 
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.Data;
 
 import java.util.List;
@@ -11,8 +11,8 @@ public class FollowerDto {
     private int count;
     private List<Long> followerList;
 
-    public FollowerDto(CodeReview codeReview) {
-        List<Long> followers = codeReview.getFollowers();
+    public FollowerDto(Post post) {
+        List<Long> followers = post.getFollowList();
         this.count = followers.size();
         this.followerList = followers;
     }

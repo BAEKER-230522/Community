@@ -1,6 +1,6 @@
 package com.baeker.Community.member.domain;
 
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,7 +31,7 @@ public class Member {
 
     @Field
     @Builder.Default
-    private List<CodeReview> codeReviewList = new ArrayList<>();
+    private List<Post> postList = new ArrayList<>();
 
 
     public static Member create(Long memberId) {
@@ -40,15 +40,15 @@ public class Member {
                 .build();
     }
 
-    public void writePost(CodeReview codeReview) {
-        this.codeReviewList.add(codeReview);
+    public void writePost(Post post) {
+        this.postList.add(post);
     }
 
-    public void followContent(CodeReview codeReview) {
-        this.following.follow(codeReview);
+    public void followContent(Post post) {
+        this.following.follow(post);
     }
 
-    public void unfollow(CodeReview codeReview) {
-        this.following.unfollow(codeReview);
+    public void unfollow(Post post) {
+        this.following.unfollow(post);
     }
 }

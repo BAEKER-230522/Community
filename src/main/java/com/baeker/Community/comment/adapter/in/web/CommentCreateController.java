@@ -3,7 +3,7 @@ package com.baeker.Community.comment.adapter.in.web;
 import com.baeker.Community.comment.application.port.in.comment.CommentCreateUseCase;
 import com.baeker.Community.global.dto.reqDto.CreateCommentReqDto;
 import com.baeker.Community.global.jwt.JwtDecrypt;
-import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.post.application.port.in.PostQueryUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class CommentCreateController {
 
     private final CommentCreateUseCase commentCreateUseCase;
-    private final CodeReviewQueryUseCase postQueryUseCase;
+    private final PostQueryUseCase postQueryUseCase;
     private final JwtDecrypt decrypt;
 
 

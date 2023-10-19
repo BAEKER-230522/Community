@@ -1,12 +1,13 @@
 package com.baeker.Community.post.application.service.codeReview;
 
+import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
+import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.member.application.in.MemberModifyUseCase;
 import com.baeker.Community.member.domain.Member;
-import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
-import com.baeker.Community.post.application.port.in.codeReview.PostModifyUseCase;
-import com.baeker.Community.post.application.port.out.CodeReviewRepositoryPort;
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.application.port.in.PostModifyUseCase;
+import com.baeker.Community.post.application.port.out.PostRepositoryPort;
 import com.baeker.Community.post.domain.post.Followers;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,25 +18,33 @@ import org.springframework.transaction.annotation.Transactional;
 public class PostModifyService implements PostModifyUseCase {
 
     private final MemberModifyUseCase memberModifyUseCase;
-    private final CodeReviewQueryUseCase codeReviewQueryUseCase;
-    private final CodeReviewRepositoryPort repository;
+    private final PostRepositoryPort repository;
 
 
     @Override
-    public void follow(Member member, Long problemStatusId) {
-        CodeReview codeReview = codeReviewQueryUseCase.byProblemStatusId(problemStatusId);
-        Followers followers = following(member, codeReview);
-        codeReview.modifyFollow(followers);
-        repository.save(codeReview);
+    public CodeReviewDto write(Long memberId, CreateCodeReviewDto dto, Post post) {
+        Post updatePost = repository.save(
+                post.write(memberId, dto)
+        );
+
+        memberModifyUseCase.posting(memberId, updatePost);
+        return new CodeReviewDto(updatePost);
     }
 
-    private Followers following(Member member, CodeReview codeReview) {
-        Followers followers = codeReview.getPost().getFollowers();
+    @Override
+    public void follow(Member member, Post post) {
+        Followers followers = following(member, post);
+        post.modifyFollow(followers); // 변수 최신화 안해도 됨?
+        repository.save(post);
+    }
+
+    private Followers following(Member member, Post post) {
+        Followers followers = post.getFollowers();
 
         if (isFollow(member.getMemberId(), followers))
-            unfollow(member, codeReview, followers);
+            unfollow(member, post, followers);
         else
-            doFollow(member, codeReview, followers);
+            doFollow(member, post, followers);
 
         return followers;
     }
@@ -48,13 +57,13 @@ public class PostModifyService implements PostModifyUseCase {
         return false;
     }
 
-    private void unfollow(Member member, CodeReview codeReview, Followers followers) {
+    private void unfollow(Member member, Post post, Followers followers) {
         followers.unfollow(member.getMemberId());
-        memberModifyUseCase.unfollow(member, codeReview);
+        memberModifyUseCase.unfollow(member, post);
     }
 
-    private void doFollow(Member member, CodeReview codeReview, Followers followers) {
+    private void doFollow(Member member, Post post, Followers followers) {
         followers.following(member.getMemberId());
-        memberModifyUseCase.follow(member,codeReview);
+        memberModifyUseCase.follow(member,post);
     }
 }

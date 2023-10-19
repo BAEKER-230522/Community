@@ -4,9 +4,9 @@ import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
 import com.baeker.Community.mission.application.prot.in.MissionCreateUseCase;
-import com.baeker.Community.post.application.port.in.codeReview.CodeReviewCreateUseCase;
-import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.application.port.in.PostModifyUseCase;
+import com.baeker.Community.post.application.port.in.PostQueryUseCase;
+import com.baeker.Community.post.domain.post.Post;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -40,8 +40,8 @@ public class initData {
 
         private final MongoTemplate mongoTemplate;
         private final MissionCreateUseCase missionCreateUseCase;
-        private final CodeReviewCreateUseCase postCreateUseCase;
-        private final CodeReviewQueryUseCase postQueryUseCase;
+        private final PostModifyUseCase postModifyUseCase;
+        private final PostQueryUseCase postQueryUseCase;
 
         public void reset_data() {
             Set<String> collections = mongoTemplate.getCollectionNames();
@@ -74,12 +74,12 @@ public class initData {
         }
 
         public void posting_to_mission1() {
-            CodeReview codeReview = postQueryUseCase.byProblemStatusId(1L);
+            Post post = postQueryUseCase.byProblemStatusId(1L);
             CreateCodeReviewDto reqDto = new CreateCodeReviewDto();
             reqDto.setProblemStatusId(1L);
             reqDto.setTitle("A+B");
             reqDto.setContent("import java.util.*;");
-            postCreateUseCase.write(1L, reqDto, codeReview);
+            postModifyUseCase.write(1L, reqDto, post);
         }
     }
 }

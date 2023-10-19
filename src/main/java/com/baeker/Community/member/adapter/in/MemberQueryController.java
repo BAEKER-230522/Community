@@ -35,7 +35,7 @@ public class MemberQueryController {
     ) {
         Long memberId = decrypt.getMemberId(token);
         Member member = memberQueryUseCase.byMemberId(memberId);
-        List<PostDto> resDtos = mapper.toPostDtos(member.getCodeReviewList());
+        List<PostDto> resDtos = mapper.toPostDtos(member.getPostList());
         return ResponseEntity.ok(resDtos);
     }
 

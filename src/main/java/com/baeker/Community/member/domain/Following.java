@@ -1,6 +1,6 @@
 package com.baeker.Community.member.domain;
 
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,13 +21,13 @@ public class Following {
 
     @DBRef
     @Builder.Default
-    private List<CodeReview> codeReviewList = new ArrayList<>();
+    private List<Post> codeReviewList = new ArrayList<>();
 
-    protected void follow(CodeReview codeReview) {
-        this.codeReviewList.add(codeReview);
+    protected void follow(Post post) {
+        this.codeReviewList.add(post);
     }
 
-    protected void unfollow(CodeReview codeReview) {
-        this.codeReviewList.remove(codeReview);
+    protected void unfollow(Post post) {
+        this.codeReviewList.remove(post);
     }
 }

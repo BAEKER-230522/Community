@@ -2,7 +2,7 @@ package com.baeker.Community.mission.adapter.in.web;
 
 import com.baeker.Community.global.dto.resDto.ChallengerResDto;
 import com.baeker.Community.mission.application.prot.in.MissionQueryUseCase;
-import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.post.application.port.in.PostQueryUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ import java.util.List;
 public class MissionQueryController {
 
     private final MissionQueryUseCase missionQueryUseCase;
-    private final CodeReviewQueryUseCase postQueryUseCase;
+    private final PostQueryUseCase postQueryUseCase;
 
     @Operation(summary = "mission id 로 미션 코드리뷰 목록 조회")
     @GetMapping("/v1/mission/{missionId}")
