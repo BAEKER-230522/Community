@@ -4,7 +4,7 @@ import com.baeker.Community.member.application.in.MemberModifyUseCase;
 import com.baeker.Community.member.application.in.MemberQueryUseCase;
 import com.baeker.Community.member.application.out.MemberRepositoryPort;
 import com.baeker.Community.member.domain.Member;
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,24 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberModifyService implements MemberModifyUseCase {
 
     private final MemberRepositoryPort repository;
-    private final MemberQueryUseCase memberQueryUseCase;
 
     @Override
-    public void posting(Long memberId, CodeReview codeReview) {
-        Member member = memberQueryUseCase.byMemberId(memberId);
-        member.writePost(codeReview);
+    public void follow(Member member, Post post) {
+        member.followContent(post);
         repository.save(member);
     }
 
     @Override
-    public void follow(Member member, CodeReview codeReview) {
-        member.followContent(codeReview);
-        repository.save(member);
-    }
-
-    @Override
-    public void unfollow(Member member, CodeReview codeReview) {
-        member.unfollow(codeReview);
+    public void unfollow(Member member, Post post) {
+        member.unfollow(post);
         repository.save(member);
     }
 }

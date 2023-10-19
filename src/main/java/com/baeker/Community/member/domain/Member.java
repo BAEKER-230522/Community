@@ -1,6 +1,6 @@
 package com.baeker.Community.member.domain;
 
-import com.baeker.Community.post.domain.category.CodeReview;
+import com.baeker.Community.post.domain.post.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
@@ -27,11 +28,8 @@ public class Member {
     private Long memberId;
 
     @Field
-    private Following following;
-
-    @Field
     @Builder.Default
-    private List<CodeReview> codeReviewList = new ArrayList<>();
+    private List<Post> followingList = new ArrayList<>();
 
 
     public static Member create(Long memberId) {
@@ -40,15 +38,11 @@ public class Member {
                 .build();
     }
 
-    public void writePost(CodeReview codeReview) {
-        this.codeReviewList.add(codeReview);
+    public void followContent(Post post) {
+        this.followingList.add(post);
     }
 
-    public void followContent(CodeReview codeReview) {
-        this.following.follow(codeReview);
-    }
-
-    public void unfollow(CodeReview codeReview) {
-        this.following.unfollow(codeReview);
+    public void unfollow(Post post) {
+        this.followingList.remove(post);
     }
 }
