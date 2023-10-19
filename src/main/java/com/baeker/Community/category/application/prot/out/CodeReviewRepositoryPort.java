@@ -5,9 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface CodeReviewRepositoryPort extends JpaRepository<CodeReview, Long> {
-
-    Optional<CodeReview> findByMissionId(Long missionId);
+public interface CodeReviewRepositoryPort extends JpaRepository<CodeReview, Long>, CodeReviewQueryRepositoryPort{
 
     Optional<CodeReview> findByProblemStatusId(Long problemStatusId);
 }

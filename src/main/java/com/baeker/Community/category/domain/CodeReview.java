@@ -19,6 +19,7 @@ import static lombok.AccessLevel.PROTECTED;
 public class CodeReview extends BaseCategory {
 
     private Long missionId;
+    private Long memberId;
     private Long problemStatusId;
 
     public static CodeReview setting(Long missionId, Long problemStatusId) {
@@ -30,6 +31,7 @@ public class CodeReview extends BaseCategory {
 
     public CodeReview write(Post post) {
         return this.toBuilder()
+                .memberId(post.getMemberId())
                 .post(post)
                 .build();
     }

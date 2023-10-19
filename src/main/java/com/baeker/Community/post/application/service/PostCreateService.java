@@ -25,6 +25,6 @@ public class PostCreateService implements PostCreateUseCase {
                 Post.write(memberId, dto)
         );
         codeReviewModifyUseCase.write(codeReview, post);
-        return new CodeReviewDto(post);
+        return new CodeReviewDto(post, codeReview.getProblemStatusId());
     }
 }

@@ -1,6 +1,5 @@
 package com.baeker.Community.post.application.service;
 
-import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.post.application.port.in.PostModifyUseCase;
 import com.baeker.Community.post.application.port.out.PostRepositoryPort;
 import com.baeker.Community.post.domain.Post;
@@ -18,12 +17,6 @@ public class PostModifyService implements PostModifyUseCase {
     @Override
     public void follow(Long memberId, Post post) {
         post.follow(memberId);
-        repository.save(post);
-    }
-
-    @Override
-    public void addComment(Post post, Comment comment) {
-        post.addComment(comment);
         repository.save(post);
     }
 }

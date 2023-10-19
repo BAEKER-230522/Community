@@ -1,5 +1,7 @@
 package com.baeker.Community.post.adapter.in.web;
 
+import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.global.dto.resDto.FollowerDto;
 import com.baeker.Community.post.application.port.in.PostQueryUseCase;
 import com.baeker.Community.post.domain.Post;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PostQueryController {
 
-    private final PostQueryUseCase codeReviewQueryUseCase;
+    private final CodeReviewQueryUseCase codeReviewQueryUseCase;
 
 
     @Operation(summary = "게시물을 추천한 회원 목록")
@@ -26,8 +28,8 @@ public class PostQueryController {
     public ResponseEntity<FollowerDto> findFollowers(
             @PathVariable Long problemStatusId
     ) {
-        Post post = codeReviewQueryUseCase.byProblemStatusId(problemStatusId);
-        FollowerDto resDto = new FollowerDto(post);
-        return ResponseEntity.ok(resDto);
+        CodeReview codeReview = codeReviewQueryUseCase.byProblemStatusId(problemStatusId);
+
+        return ResponseEntity.noContent().build();
     }
 }

@@ -3,6 +3,7 @@ package com.baeker.Community.post.domain;
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.baseEntity.BaseComm;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -15,6 +16,7 @@ import lombok.experimental.SuperBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.ALL;
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -34,12 +36,16 @@ public class Post extends BaseComm {
     @ElementCollection
     private List<Long> followList = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(cascade = ALL)
     @Builder.Default
     private List<Comment> commentList = new ArrayList<>();
 
     public static Post write(Long memberId, CreateCodeReviewDto dto) {
-        return null;
+        return Post.builder()
+                .memberId(memberId)
+                .title(dto.getTitle())
+                .content(dto.getContent())
+                .build();
     }
 
     public void follow(Long memberId) {
@@ -57,5 +63,11 @@ public class Post extends BaseComm {
     private void unfollow(Long memberId) {
         this.followList
                 .remove(memberId);
+    }
+
+
+    public int getFollowCount() {
+        return this.followList
+                .size();
     }
 }

@@ -25,4 +25,16 @@ public class Comment extends BaseComm {
 
     @ManyToOne(fetch = LAZY)
     private Post post;
+
+
+    public static Comment create(Long memberId, Post post, String content) {
+        Comment comment = Comment.builder()
+                .memberId(memberId)
+                .content(content)
+                .post(post)
+                .build();
+
+        post.getCommentList().add(comment);
+        return comment;
+    }
 }
