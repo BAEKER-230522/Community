@@ -2,8 +2,8 @@ package com.baeker.Community.category.adapter.in.web;
 
 import com.baeker.Community.global.dto.mapper.PostMapper;
 import com.baeker.Community.global.dto.resDto.ChallengerDto;
-import com.baeker.Community.category.application.prot.in.mission.MissionQueryUseCase;
-import com.baeker.Community.category.domain.Mission;
+import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.category.domain.CodeReview;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +19,9 @@ import java.util.List;
 @RestController
 @RequestMapping("${custom.mapping.mission.web_pub}")
 @RequiredArgsConstructor
-public class MissionQueryController {
+public class CodeReviewQueryController {
 
-    private final MissionQueryUseCase missionQueryUseCase;
+    private final CodeReviewQueryUseCase missionQueryUseCase;
     private final PostMapper mapper;
 
 
@@ -30,7 +30,7 @@ public class MissionQueryController {
     public ResponseEntity<List<ChallengerDto>> byMissionId(
             @PathVariable Long missionId
     ) {
-        Mission mission = missionQueryUseCase.byMissionId(missionId);
+        CodeReview mission = missionQueryUseCase.byMissionId(missionId);
         List<ChallengerDto> resDtos = mapper.toChallengers(mission);
         return ResponseEntity.ok(resDtos);
     }

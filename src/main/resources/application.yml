@@ -8,8 +8,8 @@ custom:
       web_pub: ${custom.mapping.base.public}/web/post
       web_usr: ${custom.mapping.base.user}/web/post
     mission:
-      web_pub: ${custom.mapping.base.public}/web/mission
-      api: ${custom.mapping.base.public}/api/mission
+      web_pub: ${custom.mapping.base.public}/web/code-review
+      api: ${custom.mapping.base.public}/api/code-review
     comment:
       web_usr: ${custom.mapping.base.user}/web/comment
     member:

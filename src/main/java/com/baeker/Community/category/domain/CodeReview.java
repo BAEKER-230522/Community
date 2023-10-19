@@ -15,13 +15,13 @@ import static lombok.AccessLevel.PROTECTED;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class Mission extends BaseCategory {
+public class CodeReview extends BaseCategory {
 
     private Long missionId;
     private Long problemStatusId;
 
-    public static Mission setting(Long missionId, Long problemStatusId) {
-        return Mission.builder()
+    public static CodeReview setting(Long missionId, Long problemStatusId) {
+        return CodeReview.builder()
                 .missionId(missionId)
                 .problemStatusId(problemStatusId)
                 .build();

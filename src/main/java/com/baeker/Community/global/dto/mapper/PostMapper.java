@@ -2,7 +2,7 @@ package com.baeker.Community.global.dto.mapper;
 
 import com.baeker.Community.global.dto.resDto.ChallengerDto;
 import com.baeker.Community.global.dto.resDto.PostDto;
-import com.baeker.Community.category.domain.Mission;
+import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.post.domain.Post;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ public class PostMapper {
                 .collect(Collectors.toList());
     }
 
-    public List<ChallengerDto> toChallengers(Mission mission) {
+    public List<ChallengerDto> toChallengers(CodeReview mission) {
         List<Challenger> challengerList = mission.getChallengerList();
         return challengerList.stream()
                 .map(ChallengerDto::new)

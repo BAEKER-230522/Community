@@ -1,10 +1,10 @@
 package com.baeker.Community.category.application.service;
 
-import com.baeker.Community.category.domain.Mission;
+import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewCreateUseCase;
+import com.baeker.Community.category.application.prot.out.CodeReviewRepositoryPort;
+import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
-import com.baeker.Community.category.application.prot.in.mission.MissionCreateUseCase;
-import com.baeker.Community.category.application.prot.out.MissionRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +14,9 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class MissionCreateService implements MissionCreateUseCase {
+public class CodeReviewCreateService implements CodeReviewCreateUseCase {
 
-    private final MissionRepositoryPort repository;
+    private final CodeReviewRepositoryPort repository;
 
     @Override
     public void setting(SettingMissionDto dto) {
@@ -30,7 +30,7 @@ public class MissionCreateService implements MissionCreateUseCase {
     private void challengeSetting(Long memberId, List<Long> problemStatusIdList) {
         for (Long problemStatusId : problemStatusIdList)
             repository.save(
-                    Mission.setting(memberId, problemStatusId)
+                    CodeReview.setting(memberId, problemStatusId)
             );
     }
 }

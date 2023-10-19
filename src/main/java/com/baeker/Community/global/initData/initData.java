@@ -3,7 +3,7 @@ package com.baeker.Community.global.initData;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
-import com.baeker.Community.category.application.prot.in.mission.MissionCreateUseCase;
+import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewCreateUseCase;
 import com.baeker.Community.post.application.port.in.PostModifyUseCase;
 import com.baeker.Community.post.application.port.in.PostQueryUseCase;
 import com.baeker.Community.post.domain.Post;
@@ -39,7 +39,7 @@ public class initData {
     static class InitService {
 
         private final MongoTemplate mongoTemplate;
-        private final MissionCreateUseCase missionCreateUseCase;
+        private final CodeReviewCreateUseCase missionCreateUseCase;
         private final PostModifyUseCase postModifyUseCase;
         private final PostQueryUseCase postQueryUseCase;
 
