@@ -19,7 +19,6 @@ public class Post {
     private Long memberId;
     private Long problemStatusId;
     private LocalDateTime createDate;
-    private Category category;
     private String title;
     private String content;
 
