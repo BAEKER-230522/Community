@@ -1,6 +1,6 @@
 package com.baeker.Community.global.dto.resDto;
 
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 import lombok.Data;
 
 import java.util.List;

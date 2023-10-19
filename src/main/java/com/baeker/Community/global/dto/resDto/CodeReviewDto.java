@@ -1,8 +1,7 @@
 package com.baeker.Community.global.dto.resDto;
 
 import com.baeker.Community.comment.domain.Comment;
-import com.baeker.Community.post.domain.category.CodeReview;
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

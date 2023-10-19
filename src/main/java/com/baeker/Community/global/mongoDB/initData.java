@@ -6,7 +6,7 @@ import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
 import com.baeker.Community.mission.application.prot.in.MissionCreateUseCase;
 import com.baeker.Community.post.application.port.in.PostModifyUseCase;
 import com.baeker.Community.post.application.port.in.PostQueryUseCase;
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;

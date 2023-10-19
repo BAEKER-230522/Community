@@ -4,7 +4,7 @@ import com.baeker.Community.global.dto.resDto.ChallengerDto;
 import com.baeker.Community.global.dto.resDto.PostDto;
 import com.baeker.Community.mission.domain.Challenger;
 import com.baeker.Community.mission.domain.Mission;
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

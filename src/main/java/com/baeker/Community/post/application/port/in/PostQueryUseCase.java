@@ -1,7 +1,7 @@
 package com.baeker.Community.post.application.port.in;
 
 import com.baeker.Community.global.dto.resDto.PostDto;
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 
 import java.util.List;
 

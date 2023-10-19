@@ -4,7 +4,7 @@ import com.baeker.Community.comment.application.port.in.comment.CommentCreateUse
 import com.baeker.Community.global.dto.reqDto.CreateCommentReqDto;
 import com.baeker.Community.global.jwt.JwtDecrypt;
 import com.baeker.Community.post.application.port.in.PostQueryUseCase;
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

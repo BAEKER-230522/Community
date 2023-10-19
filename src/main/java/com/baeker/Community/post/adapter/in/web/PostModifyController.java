@@ -5,7 +5,7 @@ import com.baeker.Community.member.application.in.MemberQueryUseCase;
 import com.baeker.Community.member.domain.Member;
 import com.baeker.Community.post.application.port.in.PostModifyUseCase;
 import com.baeker.Community.post.application.port.in.PostQueryUseCase;
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

@@ -5,7 +5,7 @@ import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.jwt.JwtDecrypt;
 import com.baeker.Community.post.application.port.in.PostModifyUseCase;
 import com.baeker.Community.post.application.port.in.PostQueryUseCase;
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

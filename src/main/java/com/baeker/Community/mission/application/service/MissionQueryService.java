@@ -4,7 +4,6 @@ import com.baeker.Community.global.exception.service.NotFoundException;
 import com.baeker.Community.mission.application.prot.in.MissionQueryUseCase;
 import com.baeker.Community.mission.application.prot.out.MissionRepositoryPort;
 import com.baeker.Community.mission.domain.Mission;
-import com.baeker.Community.post.domain.category.CodeReview;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
