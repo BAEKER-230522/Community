@@ -4,8 +4,10 @@ import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewMo
 import com.baeker.Community.category.application.prot.out.CodeReviewRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class CodeReviewModifyService implements CodeReviewModifyUseCase {
 

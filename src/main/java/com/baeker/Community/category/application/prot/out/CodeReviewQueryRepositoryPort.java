@@ -7,4 +7,6 @@ import java.util.List;
 public interface CodeReviewQueryRepositoryPort {
 
     List<CodeReviewDto> problemStatusId(Long problemStatusId);
+
+    List<CodeReviewDto> findCodeReviewDtoList(Long missionId, Long memberId);
 }

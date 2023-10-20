@@ -29,6 +29,17 @@ public class CodeReviewQueryRepositoryImpl implements CodeReviewQueryRepositoryP
                 .fetch();
     }
 
+    @Override
+    public List<CodeReviewDto> findCodeReviewDtoList(Long missionId, Long memberId) {
+        return query
+                .select(codeReviewDto())
+                .from(cr)
+                .join(cr.post, p)
+                .where(cr.missionId.eq(missionId)
+                        .and(cr.memberId.eq(memberId)))
+                .fetch();
+    }
+
     private QCodeReviewDto codeReviewDto() {
         return new QCodeReviewDto(
                 p.id,
@@ -40,12 +51,6 @@ public class CodeReviewQueryRepositoryImpl implements CodeReviewQueryRepositoryP
                 p.title,
                 p.content,
                 p.commentList
-        );
-    }
-
-    private QCodeReviewDto testing() {
-        return new QCodeReviewDto(
-                cr.problemStatusId
         );
     }
 }
