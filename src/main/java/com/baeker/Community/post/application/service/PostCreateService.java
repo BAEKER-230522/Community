@@ -1,6 +1,6 @@
 package com.baeker.Community.post.application.service;
 
-import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewModifyUseCase;
+import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewModifyUseCase;
 import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;

@@ -1,12 +1,10 @@
 package com.baeker.Community.post.domain;
 
+import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.baseEntity.BaseComm;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static jakarta.persistence.CascadeType.ALL;
+import static jakarta.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -31,6 +30,9 @@ public class Post extends BaseComm {
     private String title;
     private String content;
     private int pageView;
+
+    @OneToOne(fetch = LAZY, mappedBy = "post")
+    private CodeReview codeReview;
 
     @Builder.Default
     @ElementCollection

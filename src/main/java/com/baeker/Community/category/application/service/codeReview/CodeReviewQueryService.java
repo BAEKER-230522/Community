@@ -1,6 +1,6 @@
-package com.baeker.Community.category.application.service;
+package com.baeker.Community.category.application.service.codeReview;
 
-import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewQueryUseCase;
 import com.baeker.Community.category.application.prot.out.CodeReviewRepositoryPort;
 import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.global.dto.resDto.ChallengerDto;
@@ -16,11 +16,6 @@ import java.util.Optional;
 public class CodeReviewQueryService implements CodeReviewQueryUseCase {
 
     private final CodeReviewRepositoryPort repository;
-
-    @Override
-    public List<ChallengerDto> byMissionId(Long missionId) {
-        return repository.findByMissionId(missionId);
-    }
 
     @Override
     public CodeReview byProblemStatusId(Long problemStatusId) {

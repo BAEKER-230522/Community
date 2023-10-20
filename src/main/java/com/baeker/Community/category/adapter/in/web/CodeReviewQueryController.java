@@ -1,6 +1,6 @@
 package com.baeker.Community.category.adapter.in.web;
 
-import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.category.application.prot.in.mission.MissionQueryUseCase;
 import com.baeker.Community.global.dto.resDto.ChallengerDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CodeReviewQueryController {
 
-    private final CodeReviewQueryUseCase codeReviewQueryUseCase;
+    private final MissionQueryUseCase missionQueryUseCase;
 
 
     @Operation(summary = "mission id 로 미션 코드리뷰 목록 조회")
@@ -27,7 +27,7 @@ public class CodeReviewQueryController {
     public ResponseEntity<List<ChallengerDto>> byMissionId(
             @PathVariable Long missionId
     ) {
-        List<ChallengerDto> resDtos = codeReviewQueryUseCase.byMissionId(missionId);
+        List<ChallengerDto> resDtos = missionQueryUseCase.byMissionId(missionId);
         return ResponseEntity.ok(resDtos);
     }
 }

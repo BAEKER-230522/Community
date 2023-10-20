@@ -1,8 +1,9 @@
-package com.baeker.Community.category.application.service;
+package com.baeker.Community.category.application.service.codeReview;
 
-import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewCreateUseCase;
+import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewCreateUseCase;
 import com.baeker.Community.category.application.prot.out.CodeReviewRepositoryPort;
 import com.baeker.Community.category.domain.CodeReview;
+import com.baeker.Community.category.domain.Mission;
 import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
 import lombok.RequiredArgsConstructor;
@@ -19,18 +20,18 @@ public class CodeReviewCreateService implements CodeReviewCreateUseCase {
     private final CodeReviewRepositoryPort repository;
 
     @Override
-    public void setting(SettingMissionDto dto) {
-        for (SettingChallengerDto challengers : dto.getMemberList())
+    public void setting(Mission mission, List<SettingChallengerDto> challengerList) {
+        for (SettingChallengerDto challenger : challengerList)
             challengeSetting(
-                    challengers.getMemberId(),
-                    challengers.getProblemStatusIdList()
+                    mission,
+                    challenger.getProblemStatusIdList()
             );
     }
 
-    private void challengeSetting(Long memberId, List<Long> problemStatusIdList) {
+    private void challengeSetting(Mission mission, List<Long> problemStatusIdList) {
         for (Long problemStatusId : problemStatusIdList)
             repository.save(
-                    CodeReview.setting(memberId, problemStatusId)
+                    CodeReview.setting(mission, problemStatusId)
             );
     }
 }

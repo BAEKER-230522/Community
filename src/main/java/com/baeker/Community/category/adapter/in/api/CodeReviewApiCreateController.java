@@ -1,6 +1,7 @@
 package com.baeker.Community.category.adapter.in.api;
 
-import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewCreateUseCase;
+import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewCreateUseCase;
+import com.baeker.Community.category.application.prot.in.mission.MissionCreateUseCase;
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CodeReviewApiCreateController {
 
-    private final CodeReviewCreateUseCase missionCreateUseCase;
+    private final MissionCreateUseCase missionCreateUseCase;
 
 
     @Operation(summary = "미션 생성시 게시판 세팅 api")

@@ -47,7 +47,7 @@ public class QBaseCategory extends EntityPathBase<BaseCategory> {
 
     public QBaseCategory(Class<? extends BaseCategory> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.post = inits.isInitialized("post") ? new com.baeker.Community.post.domain.QPost(forProperty("post")) : null;
+        this.post = inits.isInitialized("post") ? new com.baeker.Community.post.domain.QPost(forProperty("post"), inits.get("post")) : null;
     }
 
 }

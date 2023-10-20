@@ -1,6 +1,6 @@
 package com.baeker.Community.post.adapter.in.web;
 
-import com.baeker.Community.category.application.prot.in.CodeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewQueryUseCase;
 import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
