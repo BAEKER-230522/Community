@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class CreateCodeReviewDto {
 
+    private Long missionId;
     private Long problemStatusId;
     private String title;
     private String content;

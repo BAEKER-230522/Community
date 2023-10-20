@@ -29,7 +29,7 @@ public class QCodeReview extends EntityPathBase<CodeReview> {
 
     public final NumberPath<Long> memberId = createNumber("memberId", Long.class);
 
-    public final QMission mission;
+    public final NumberPath<Long> missionId = createNumber("missionId", Long.class);
 
     // inherited
     public final com.baeker.Community.post.domain.QPost post;
@@ -56,7 +56,6 @@ public class QCodeReview extends EntityPathBase<CodeReview> {
         super(type, metadata, inits);
         this._super = new com.baeker.Community.global.baseEntity.QBaseCategory(type, metadata, inits);
         this.id = _super.id;
-        this.mission = inits.isInitialized("mission") ? new QMission(forProperty("mission")) : null;
         this.post = _super.post;
     }
 

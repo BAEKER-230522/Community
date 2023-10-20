@@ -1,7 +1,5 @@
 package com.baeker.Community.post.adapter.in.web;
 
-import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewQueryUseCase;
-import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.jwt.JwtDecrypt;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 public class PostCreateController {
 
     private final PostCreateUseCase postCreateUseCase;
-    private final CodeReviewQueryUseCase codeReviewQueryUseCase;
     private final JwtDecrypt decrypt;
 
     @Operation(summary = "미션 코드리뷰 게시물 작성")
@@ -30,8 +27,7 @@ public class PostCreateController {
             @RequestBody @Valid CreateCodeReviewDto dto
     ) {
         Long memberId = decrypt.getMemberId(token);
-        CodeReview codeReview = codeReviewQueryUseCase.byProblemStatusId(dto.getProblemStatusId());
-        CodeReviewDto resDto = postCreateUseCase.write(memberId, dto, codeReview);
+        CodeReviewDto resDto = postCreateUseCase.write(memberId, dto);
         return ResponseEntity.ok(resDto);
     }
 }

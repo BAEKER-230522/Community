@@ -50,6 +50,10 @@ public class Post extends BaseComm {
                 .build();
     }
 
+    public void addCodeReview(CodeReview codeReview) {
+        this.codeReview = codeReview;
+    }
+
     public void follow(Long memberId) {
         if (this.followList.contains(memberId))
             unfollow(memberId);

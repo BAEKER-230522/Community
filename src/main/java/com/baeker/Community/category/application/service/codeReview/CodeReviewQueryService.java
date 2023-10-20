@@ -4,13 +4,10 @@ import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewQu
 import com.baeker.Community.category.application.prot.out.CodeReviewQueryRepositoryPort;
 import com.baeker.Community.category.application.prot.out.CodeReviewRepositoryPort;
 import com.baeker.Community.category.domain.CodeReview;
-import com.baeker.Community.category.domain.Mission;
-import com.baeker.Community.global.dto.resDto.ChallengerDto;
 import com.baeker.Community.global.exception.service.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,10 +25,5 @@ public class CodeReviewQueryService implements CodeReviewQueryUseCase {
             return byProblemStatusId.get();
 
         throw new NotFoundException("존재하지 않는 게시물");
-    }
-
-    @Override
-    public List<ChallengerDto> byMission(Mission mission) {
-        return queryRepository.byMission(mission);
     }
 }
