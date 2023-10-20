@@ -39,10 +39,10 @@ public class CodeReviewQueryRepositoryImpl implements CodeReviewQueryRepositoryP
     @Override
     public List<ChallengerDto> byMission(Mission mission) {
         List<Tuple> result = query
-                .select(cr.memberId, codeReviewDto())
+                .select(cr.memberId, testing())
                 .from(cr)
                 .join(cr.mission, m)
-                .join(cr.post, p)
+//                .join(cr.post, p)
                 .where(cr.mission.eq(mission))
                 .groupBy(cr.memberId)
                 .fetch();
@@ -67,6 +67,12 @@ public class CodeReviewQueryRepositoryImpl implements CodeReviewQueryRepositoryP
                 p.title,
                 p.content,
                 p.commentList
+        );
+    }
+
+    private QCodeReviewDto testing() {
+        return new QCodeReviewDto(
+                cr.problemStatusId
         );
     }
 }

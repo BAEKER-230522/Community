@@ -50,4 +50,9 @@ public class CodeReviewDto {
         this.content = content;
         this.comments = comments;
     }
+
+    @QueryProjection
+    public CodeReviewDto(Long problemStatusId) {
+        this.problemStatusId = problemStatusId;
+    }
 }
