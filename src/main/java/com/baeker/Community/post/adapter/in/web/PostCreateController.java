@@ -24,7 +24,7 @@ public class PostCreateController {
     @PostMapping("/v1/code-review")
     public ResponseEntity<CodeReviewDto> createMission(
             @RequestHeader("Authorization") String token,
-            @RequestBody @Valid CreateCodeReviewDto dto
+            @RequestBody CreateCodeReviewDto dto
     ) {
         Long memberId = decrypt.getMemberId(token);
         CodeReviewDto resDto = postCreateUseCase.write(memberId, dto);
