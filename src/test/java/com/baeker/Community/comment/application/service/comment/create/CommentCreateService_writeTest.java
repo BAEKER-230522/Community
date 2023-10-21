@@ -2,9 +2,7 @@ package com.baeker.Community.comment.application.service.comment.create;
 
 import com.baeker.Community.comment.application.service.comment.CommentCreateService;
 import com.baeker.Community.comment.application.service.comment.repository.CommentMock;
-import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.domain.Post;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
