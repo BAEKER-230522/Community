@@ -77,6 +77,11 @@ public class Post extends BaseComm {
                 .size();
     }
 
+    public int getCommentCount() {
+        return this.commentList
+                .size();
+    }
+
 
     //-- 단위 테스트용 생성 method --//
     public static Post forTest(Long memberId, Long postId, String title, String content) {
