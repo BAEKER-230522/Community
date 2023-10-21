@@ -76,4 +76,15 @@ public class Post extends BaseComm {
         return this.followList
                 .size();
     }
+
+
+    //-- 단위 테스트용 생성 method --//
+    public static Post forTest(Long memberId, Long postId, String title, String content) {
+        return Post.builder()
+                .id(postId)
+                .memberId(memberId)
+                .title(title)
+                .content(content)
+                .build();
+    }
 }

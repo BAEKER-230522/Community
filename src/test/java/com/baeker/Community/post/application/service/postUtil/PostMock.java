@@ -1,4 +1,4 @@
-package com.baeker.Community.post.application.service.repositoryMock;
+package com.baeker.Community.post.application.service.postUtil;
 
 import com.baeker.Community.post.application.port.out.PostRepositoryPort;
 import com.baeker.Community.post.domain.Post;
