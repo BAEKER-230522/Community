@@ -2,11 +2,8 @@ package com.baeker.Community.comment.application.service.comment;
 
 import com.baeker.Community.comment.application.port.in.comment.CommentQueryUseCase;
 import com.baeker.Community.comment.domain.Comment;
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +12,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentQueryService implements CommentQueryUseCase {
 
-    private final MongoTemplate mongoTemplate;
 
 
     @Override

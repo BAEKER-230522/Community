@@ -1,6 +1,6 @@
 package com.baeker.Community.comment.application.port.in.comment;
 
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 
 public interface CommentCreateUseCase {
 

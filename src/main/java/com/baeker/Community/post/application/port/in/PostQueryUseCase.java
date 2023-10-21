@@ -1,16 +1,9 @@
 package com.baeker.Community.post.application.port.in;
 
-import com.baeker.Community.global.dto.resDto.PostDto;
-import com.baeker.Community.post.domain.post.Post;
-
-import java.util.List;
+import com.baeker.Community.post.domain.Post;
 
 public interface PostQueryUseCase {
 
-    Post byId(String postId);
+    Post byId(Long postId);
 
-
-    Post byProblemStatusId(Long problemStatusId);
-
-    List<PostDto> byMemberId(Long memberId);
 }

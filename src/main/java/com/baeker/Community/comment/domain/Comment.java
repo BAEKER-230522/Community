@@ -1,41 +1,40 @@
 package com.baeker.Community.comment.domain;
 
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.global.baseEntity.BaseComm;
+import com.baeker.Community.post.domain.Post;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
-
+import static jakarta.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
-@Document
+@Entity
 @Getter
-@Builder(toBuilder = true, access = PRIVATE)
+@SuperBuilder(toBuilder = true)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class Comment {
+public class Comment extends BaseComm {
 
-    @Id
-    private String id;
     private Long memberId;
-    private LocalDateTime createDate;
-    private String comment;
+    private String content;
 
-    @DBRef
+    @ManyToOne(fetch = LAZY)
     private Post post;
 
-    public static Comment create(Long memberId, Post post, String comment) {
-        return Comment.builder()
+
+    public static Comment create(Long memberId, Post post, String content) {
+        Comment comment = Comment.builder()
                 .memberId(memberId)
-                .createDate(LocalDateTime.now())
-                .comment(comment)
+                .content(content)
                 .post(post)
                 .build();
+
+        post.getCommentList().add(comment);
+        return comment;
     }
 }

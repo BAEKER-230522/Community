@@ -19,10 +19,12 @@ custom:
     secret-key: ENC(+GbV3Ykx/t5XFlaFHBZnXTzsSf9b3YChS2cVPTvCgwQmevtbB1Hfw91VMC/fTizxVssJvYiAMeQICsuoSrH5zNLh/jxJsXq/)
 
   db:
-    host: localhost
-    db: community
-    usr: ENC(XdP7alZ9UNQG7MsDRJgGJA==)
-    pw: ENC(XdP7alZ9UNQG7MsDRJgGJA==)
+    url: jdbc:mysql://127.0.0.1:3306/bk__comm?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
+    usr: ENC(MrlF9UZUaHufCgWLRE3ipQ==)
+    pw: ENC(dhw6nRBS+50xHhqPVFnZdw==)
+
+  jpa:
+    ddl-auto: create
 
 server:
   port: 8086
@@ -32,14 +34,22 @@ spring:
   profiles:
     default: dev
 
-  data:
-    mongodb:
-      host: ${custom.db.host}
-      port: 27017
-      authentication-database: admin
-      database: ${custom.db.db}
-      username: ${custom.db.usr}
-      password: ${custom.db.pw}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${custom.db.url}
+    username: ${custom.db.usr}
+    password: ${custom.db.pw}
+    hikari:
+      maximum-pool-size: 51
+      minimum-idle: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: ${custom.jpa.ddl-auto}
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
 
 jasypt:
   encryptor:

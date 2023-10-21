@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateCommentReqDto {
 
-    private String postId;
+    private Long postId;
     private String comment;
 }

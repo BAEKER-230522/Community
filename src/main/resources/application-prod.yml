@@ -1,9 +1,11 @@
 custom:
   db:
-    host: bk-mongo.1ll.ca
-    db: community
-    usr: ENC(TuSTzDfaXulxyLygEX1Tww==)
-    pw: ENC(4RNpu1OuY0cWyZvwNor1Ew==)
+    url: RDB
+    usr: ENC()
+    pw: ENC()
+
+  jpa:
+    ddl-auto: update
 
 
 spring:

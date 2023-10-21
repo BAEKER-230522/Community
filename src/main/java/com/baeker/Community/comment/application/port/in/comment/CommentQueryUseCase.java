@@ -1,7 +1,7 @@
 package com.baeker.Community.comment.application.port.in.comment;
 
 import com.baeker.Community.comment.domain.Comment;
-import com.baeker.Community.post.domain.post.Post;
+import com.baeker.Community.post.domain.Post;
 
 import java.util.List;
 
