@@ -27,6 +27,14 @@ public class MockMvcRequest<T> {
         ).andDo(print());
     }
 
+    public static ResultActions patch(MockMvc mvc, String url, String jwt, Long pathVariable) throws Exception {
+        return mvc.perform(MockMvcRequestBuilders
+                .patch(url, pathVariable)
+                .contentType(APPLICATION_JSON)
+                .header("Authorization", jwt)
+        ).andDo(print());
+    }
+
     private static String toJasonString(Object reqDto) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(reqDto);
