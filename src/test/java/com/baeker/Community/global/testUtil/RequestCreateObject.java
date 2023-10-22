@@ -14,4 +14,10 @@ public class RequestCreateObject {
         ResultActions result = post(mvc, url + "/v1/code-review", jwt, dto);
         return MockMvcRequest.toResDto(result, CodeReviewDto.class).getId();
     }
+
+    public static Long createCodeReview(MockMvc mvc, String url, int title, String jwt) throws Exception {
+        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, 1L, "post" + title, "hello");
+        ResultActions result = post(mvc, url + "/v1/code-review", jwt, dto);
+        return MockMvcRequest.toResDto(result, CodeReviewDto.class).getId();
+    }
 }

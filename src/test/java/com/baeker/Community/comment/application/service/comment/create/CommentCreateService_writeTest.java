@@ -1,7 +1,7 @@
 package com.baeker.Community.comment.application.service.comment.create;
 
 import com.baeker.Community.comment.application.service.comment.CommentCreateService;
-import com.baeker.Community.comment.application.service.comment.repository.CommentMock;
+import com.baeker.Community.comment.application.service.comment.repositoryMock.CommentMock;
 import com.baeker.Community.post.domain.Post;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

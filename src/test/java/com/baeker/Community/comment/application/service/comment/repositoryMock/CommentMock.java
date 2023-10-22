@@ -1,4 +1,4 @@
-package com.baeker.Community.comment.application.service.comment.repository;
+package com.baeker.Community.comment.application.service.comment.repositoryMock;
 
 import com.baeker.Community.comment.application.port.out.CommentRepositoryPort;
 import com.baeker.Community.comment.domain.Comment;

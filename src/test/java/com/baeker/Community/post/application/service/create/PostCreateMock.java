@@ -1,7 +1,7 @@
 package com.baeker.Community.post.application.service.create;
 
 import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewCreateUseCase;
-import com.baeker.Community.post.application.service.repository.PostMock;
+import com.baeker.Community.post.application.service.repositoryMock.PostMock;
 import org.mockito.Mockito;
 
 import static org.mockito.ArgumentMatchers.any;
