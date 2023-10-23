@@ -1,10 +1,10 @@
 package com.baeker.Community.global.dto.resDto;
 
+import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.post.domain.Post;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -38,6 +38,19 @@ public class CodeReviewDto {
         this.comments = post.getCommentList();
     }
 
+    public CodeReviewDto(CodeReview codeReview) {
+        Post post = codeReview.getPost();
+        this.id = post.getId();
+        this.memberId = post.getMemberId();
+        this.problemStatusId = codeReview.getProblemStatusId();
+        this.createDate = post.getCreateDate();
+        this.pageView = post.getPageView();
+        this.follower = post.getFollowCount();
+        this.title = post.getTitle();
+        this.content = post.getContent();
+        this.comments = post.getCommentList();
+    }
+
     @QueryProjection
     public CodeReviewDto(Long id, Long memberId, Long problemStatusId, LocalDateTime createDate, int pageView, int follower, String title, String content, List<Comment> comments) {
         this.id = id;
@@ -49,5 +62,11 @@ public class CodeReviewDto {
         this.title = title;
         this.content = content;
         this.comments = comments;
+    }
+
+    @QueryProjection
+    public CodeReviewDto(Long postId, List<Comment> commentList) {
+        this.id = postId;
+        this.comments = commentList;
     }
 }

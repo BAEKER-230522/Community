@@ -1,6 +1,7 @@
 package com.baeker.Community.global.testUtil;
 
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
+import com.baeker.Community.global.dto.reqDto.CreateCommentReqDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -19,5 +20,10 @@ public class RequestCreateObject {
         CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, 1L, "post" + title, "hello");
         ResultActions result = post(mvc, url + "/v1/code-review", jwt, dto);
         return MockMvcRequest.toResDto(result, CodeReviewDto.class).getId();
+    }
+
+    public static void createComment(MockMvc mvc, String url, Long postId, String jwt) throws Exception {
+        CreateCommentReqDto dto = new CreateCommentReqDto(postId, "comment");
+        ResultActions result = post(mvc, url + "/v1", jwt, dto);
     }
 }
