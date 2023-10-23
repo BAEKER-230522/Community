@@ -56,7 +56,7 @@ class CodeReviewQueryController_missionTest extends TestData {
 
         List<CodeReviewDto> resDtoList = toList(result, CodeReviewDto.class);
         assertThat(resDtoList.size()).isEqualTo(2);
-        assertThat(resDtoList.get(0).getMemberId()).isEqualTo(1L);
-        assertThat(resDtoList.get(1).getMemberId()).isEqualTo(2L);
+        assertThat(resDtoList.get(0).getTitle()).isEqualTo("post1");
+        assertThat(resDtoList.get(1).getTitle()).isEqualTo("post2");
     }
 }

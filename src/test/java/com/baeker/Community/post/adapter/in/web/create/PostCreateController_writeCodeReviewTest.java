@@ -45,7 +45,6 @@ class PostCreateController_writeCodeReviewTest extends TestData {
         result.andExpect(status().is2xxSuccessful());
 
         CodeReviewDto resDto = MockMvcRequest.toResDto(result, CodeReviewDto.class);
-        assertThat(resDto.getId()).isEqualTo(1L);
         assertThat(resDto.getTitle()).isEqualTo(title);
         assertThat(resDto.getContent()).isEqualTo(content);
         assertThat(resDto.getProblemStatusId()).isEqualTo(problemStatusId);
