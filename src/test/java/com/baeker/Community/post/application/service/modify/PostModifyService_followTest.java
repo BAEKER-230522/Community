@@ -2,7 +2,7 @@ package com.baeker.Community.post.application.service.modify;
 
 import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.application.service.PostModifyService;
-import com.baeker.Community.post.application.service.repository.PostMock;
+import com.baeker.Community.post.application.service.repositoryMock.PostMock;
 import com.baeker.Community.post.domain.Post;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

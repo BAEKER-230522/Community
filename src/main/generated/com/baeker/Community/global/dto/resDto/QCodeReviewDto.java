@@ -17,5 +17,9 @@ public class QCodeReviewDto extends ConstructorExpression<CodeReviewDto> {
         super(CodeReviewDto.class, new Class<?>[]{long.class, long.class, long.class, java.time.LocalDateTime.class, int.class, int.class, String.class, String.class, java.util.List.class}, id, memberId, problemStatusId, createDate, pageView, follower, title, content, comments);
     }
 
+    public QCodeReviewDto(com.querydsl.core.types.Expression<Long> postId, com.querydsl.core.types.Expression<? extends java.util.List<com.baeker.Community.comment.domain.Comment>> commentList) {
+        super(CodeReviewDto.class, new Class<?>[]{long.class, java.util.List.class}, postId, commentList);
+    }
+
 }
 

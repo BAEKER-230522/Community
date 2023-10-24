@@ -38,8 +38,8 @@ public class Post extends BaseComm {
     @ElementCollection
     private List<Long> followList = new ArrayList<>();
 
-    @OneToMany(cascade = ALL)
     @Builder.Default
+    @OneToMany(cascade = ALL, mappedBy = "post")
     private List<Comment> commentList = new ArrayList<>();
 
     public static Post write(Long memberId, CreateCodeReviewDto dto) {

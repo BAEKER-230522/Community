@@ -19,4 +19,9 @@ public class PostModifyService implements PostModifyUseCase {
         post.follow(memberId);
         repository.save(post);
     }
+
+    @Override
+    public void post() {
+
+    }
 }

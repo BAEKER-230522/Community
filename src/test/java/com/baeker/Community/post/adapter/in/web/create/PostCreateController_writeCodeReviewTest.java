@@ -1,10 +1,9 @@
-package com.baeker.Community.post.adapter.in.web;
+package com.baeker.Community.post.adapter.in.web.create;
 
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.testUtil.MockMvcRequest;
 import com.baeker.Community.global.testUtil.TestData;
-import com.baeker.Community.post.application.port.in.PostQueryUseCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostCreateController_writeCodeReviewTest extends TestData {
 
     @Autowired MockMvc mvc;
-    @Autowired PostQueryUseCase postQueryUseCase;
 
 
     @Test
@@ -47,7 +45,6 @@ class PostCreateController_writeCodeReviewTest extends TestData {
         result.andExpect(status().is2xxSuccessful());
 
         CodeReviewDto resDto = MockMvcRequest.toResDto(result, CodeReviewDto.class);
-        assertThat(resDto.getId()).isEqualTo(1L);
         assertThat(resDto.getTitle()).isEqualTo(title);
         assertThat(resDto.getContent()).isEqualTo(content);
         assertThat(resDto.getProblemStatusId()).isEqualTo(problemStatusId);

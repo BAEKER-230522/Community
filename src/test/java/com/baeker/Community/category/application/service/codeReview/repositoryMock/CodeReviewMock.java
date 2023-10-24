@@ -1,4 +1,4 @@
-package com.baeker.Community.category.application.service.codeReview.repository;
+package com.baeker.Community.category.application.service.codeReview.repositoryMock;
 
 import com.baeker.Community.category.application.prot.out.CodeReviewRepositoryPort;
 import com.baeker.Community.category.domain.CodeReview;
