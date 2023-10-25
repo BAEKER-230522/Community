@@ -12,7 +12,7 @@ public class FollowerDto {
     private List<Long> followerList;
 
     public FollowerDto(Post post) {
-        List<Long> followers = post.getFollowList();
+        List<Long> followers = post.getFollows();
         this.count = followers.size();
         this.followerList = followers;
     }

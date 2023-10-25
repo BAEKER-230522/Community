@@ -1,7 +1,8 @@
 package com.baeker.Community.post.application.service.create;
 
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
-import com.baeker.Community.post.application.service.PostCreateService;
+import com.baeker.Community.post.application.service.post.PostCreateService;
+import com.baeker.Community.post.application.service.repositoryMock.PostMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,16 +10,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-@DisplayName("코드 리뷰 게시글 작성 단위 테스트")
+@DisplayName("단위: 코드 리뷰 게시글 작성")
 @ExtendWith(MockitoExtension.class)
-class PostCreateService_writeTest extends PostCreateMock {
+class PostCreateService_writeTest extends PostMock {
 
     @InjectMocks
     PostCreateService createService;
 
     @BeforeEach
     void setup() {
-        writeCodeReviewMocking();
         savePostMocking();
     }
 
@@ -29,7 +29,7 @@ class PostCreateService_writeTest extends PostCreateMock {
         CreateCodeReviewDto dto = getCodeReviewDto();
 
 
-        createService.write(memberId, dto);
+        createService.codeReview(memberId, dto);
     }
 
 

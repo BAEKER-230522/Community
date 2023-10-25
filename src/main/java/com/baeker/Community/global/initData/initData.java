@@ -1,6 +1,5 @@
 package com.baeker.Community.global.initData;
 
-import com.baeker.Community.category.application.prot.in.codeReview.CodeReviewCreateUseCase;
 import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
 import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
 import jakarta.annotation.PostConstruct;
@@ -30,7 +29,6 @@ public class initData {
     @RequiredArgsConstructor
     static class InitService {
 
-        private final CodeReviewCreateUseCase missionCreateUseCase;
 
         public void mission1_setting(Long missionId) {
             Long problemStatusId = 1L;

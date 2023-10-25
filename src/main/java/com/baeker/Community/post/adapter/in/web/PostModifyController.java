@@ -1,8 +1,8 @@
 package com.baeker.Community.post.adapter.in.web;
 
 import com.baeker.Community.global.jwt.JwtDecrypt;
-import com.baeker.Community.post.application.port.in.PostModifyUseCase;
-import com.baeker.Community.post.application.port.in.PostQueryUseCase;
+import com.baeker.Community.post.application.port.in.post.PostModifyUseCase;
+import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
 import com.baeker.Community.post.domain.Post;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

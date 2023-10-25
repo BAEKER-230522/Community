@@ -17,7 +17,7 @@ import static com.baeker.Community.global.testUtil.MockMvcRequest.post;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@DisplayName("코드리뷰 게시물 작성 통합 테스트")
+@DisplayName("통합: 코드리뷰 게시물 작성")
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
