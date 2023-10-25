@@ -1,7 +1,7 @@
 package com.baeker.Community.post.adapter.in.web;
 
 import com.baeker.Community.global.testUtil.TestData;
-import com.baeker.Community.post.application.port.in.PostQueryUseCase;
+import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
 import com.baeker.Community.post.domain.Post;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ import static com.baeker.Community.global.testUtil.RequestCreateObject.createCod
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@DisplayName("게시물 추천 통합 테스트")
+@DisplayName("통합: 게시물 추천")
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
@@ -43,7 +43,7 @@ class PostModifyController_followTest extends TestData {
 
         Post post = postQueryUseCase.byId(postId);
         assertThat(post.getFollowCount()).isEqualTo(1);
-        assertThat(post.getFollowList().get(0)).isEqualTo(2L);
+        assertThat(post.getFollows().get(0)).isEqualTo(2L);
     }
 
     @Test

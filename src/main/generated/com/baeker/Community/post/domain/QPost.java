@@ -18,13 +18,9 @@ public class QPost extends EntityPathBase<Post> {
 
     private static final long serialVersionUID = -1322146672L;
 
-    private static final PathInits INITS = PathInits.DIRECT2;
-
     public static final QPost post = new QPost("post");
 
     public final com.baeker.Community.global.baseEntity.QBaseComm _super = new com.baeker.Community.global.baseEntity.QBaseComm(this);
-
-    public final com.baeker.Community.category.domain.QCodeReview codeReview;
 
     public final ListPath<com.baeker.Community.comment.domain.Comment, com.baeker.Community.comment.domain.QComment> commentList = this.<com.baeker.Community.comment.domain.Comment, com.baeker.Community.comment.domain.QComment>createList("commentList", com.baeker.Community.comment.domain.Comment.class, com.baeker.Community.comment.domain.QComment.class, PathInits.DIRECT2);
 
@@ -33,7 +29,7 @@ public class QPost extends EntityPathBase<Post> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createDate = _super.createDate;
 
-    public final ListPath<Long, NumberPath<Long>> followList = this.<Long, NumberPath<Long>>createList("followList", Long.class, NumberPath.class, PathInits.DIRECT2);
+    public final ListPath<Long, NumberPath<Long>> follows = this.<Long, NumberPath<Long>>createList("follows", Long.class, NumberPath.class, PathInits.DIRECT2);
 
     //inherited
     public final NumberPath<Long> id = _super.id;
@@ -48,24 +44,15 @@ public class QPost extends EntityPathBase<Post> {
     public final StringPath title = createString("title");
 
     public QPost(String variable) {
-        this(Post.class, forVariable(variable), INITS);
+        super(Post.class, forVariable(variable));
     }
 
     public QPost(Path<? extends Post> path) {
-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+        super(path.getType(), path.getMetadata());
     }
 
     public QPost(PathMetadata metadata) {
-        this(metadata, PathInits.getFor(metadata, INITS));
-    }
-
-    public QPost(PathMetadata metadata, PathInits inits) {
-        this(Post.class, metadata, inits);
-    }
-
-    public QPost(Class<? extends Post> type, PathMetadata metadata, PathInits inits) {
-        super(type, metadata, inits);
-        this.codeReview = inits.isInitialized("codeReview") ? new com.baeker.Community.category.domain.QCodeReview(forProperty("codeReview")) : null;
+        super(Post.class, metadata);
     }
 
 }

@@ -1,9 +1,8 @@
 package com.baeker.Community.post.domain;
 
-import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.baseEntity.BaseComm;
-import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
+import com.baeker.Community.global.dto.reqDto.ModifyPostDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,80 +15,57 @@ import java.util.List;
 
 import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.FetchType.LAZY;
+import static jakarta.persistence.InheritanceType.SINGLE_TABLE;
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
 @Entity
 @Getter
 @SuperBuilder(toBuilder = true)
+@Inheritance(strategy = SINGLE_TABLE)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class Post extends BaseComm {
+public abstract class Post extends BaseComm {
 
     private Long memberId;
     private String title;
     private String content;
     private int pageView;
 
-    @OneToOne(fetch = LAZY, mappedBy = "post")
-    private CodeReview codeReview;
+    @Builder.Default
+    @ElementCollection(fetch = LAZY)
+    private List<Long> follows = new ArrayList<>();
 
     @Builder.Default
-    @ElementCollection
-    private List<Long> followList = new ArrayList<>();
-
-    @Builder.Default
-    @OneToMany(cascade = ALL, mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = ALL)
     private List<Comment> commentList = new ArrayList<>();
 
-    public static Post write(Long memberId, CreateCodeReviewDto dto) {
-        return Post.builder()
-                .memberId(memberId)
-                .title(dto.getTitle())
-                .content(dto.getContent())
-                .build();
-    }
 
-    public void addCodeReview(CodeReview codeReview) {
-        this.codeReview = codeReview;
+    public Post modifyContent(ModifyPostDto dto) {
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
+        return this;
     }
 
     public void follow(Long memberId) {
-        if (this.followList.contains(memberId))
+        if (this.follows.contains(memberId))
             unfollow(memberId);
         else
             doFollow(memberId);
     }
 
     private void doFollow(Long memberId) {
-        this.followList
+        this.follows
                 .add(memberId);
     }
 
     private void unfollow(Long memberId) {
-        this.followList
+        this.follows
                 .remove(memberId);
     }
 
-
     public int getFollowCount() {
-        return this.followList
+        return this.follows
                 .size();
-    }
-
-    public int getCommentCount() {
-        return this.commentList
-                .size();
-    }
-
-
-    //-- 단위 테스트용 생성 method --//
-    public static Post forTest(Long memberId, Long postId, String title, String content) {
-        return Post.builder()
-                .id(postId)
-                .memberId(memberId)
-                .title(title)
-                .content(content)
-                .build();
     }
 }

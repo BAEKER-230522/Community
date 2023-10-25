@@ -1,6 +1,7 @@
 package com.baeker.Community.comment.domain;
 
 import com.baeker.Community.global.baseEntity.BaseComm;
+import com.baeker.Community.global.dto.reqDto.CreateCommentDto;
 import com.baeker.Community.post.domain.Post;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -26,8 +27,7 @@ public class Comment extends BaseComm {
     @ManyToOne(fetch = LAZY)
     private Post post;
 
-
-    public static Comment create(Long memberId, Post post, String content) {
+    public static Comment write(Long memberId, Post post, String content) {
         Comment comment = Comment.builder()
                 .memberId(memberId)
                 .content(content)
@@ -37,4 +37,5 @@ public class Comment extends BaseComm {
         post.getCommentList().add(comment);
         return comment;
     }
+
 }

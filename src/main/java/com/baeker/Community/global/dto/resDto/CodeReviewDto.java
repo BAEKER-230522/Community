@@ -1,9 +1,7 @@
 package com.baeker.Community.global.dto.resDto;
 
-import com.baeker.Community.category.domain.CodeReview;
 import com.baeker.Community.comment.domain.Comment;
-import com.baeker.Community.post.domain.Post;
-import com.querydsl.core.annotations.QueryProjection;
+import com.baeker.Community.post.domain.CodeReview;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +16,7 @@ public class CodeReviewDto {
 
     private Long id;
     private Long memberId;
+    private Long missionId;
     private Long problemStatusId;
     private LocalDateTime createDate;
     private int pageView;
@@ -26,47 +25,29 @@ public class CodeReviewDto {
     private String content;
     private List<Comment> comments;
 
-    public CodeReviewDto(Post post, Long problemStatusId) {
-        this.id = post.getId();
-        this.memberId = post.getMemberId();
-        this.problemStatusId = problemStatusId;
-        this.createDate = post.getCreateDate();
-        this.pageView = post.getPageView();
-        this.follower = post.getFollowCount();
-        this.title = post.getTitle();
-        this.content = post.getContent();
-        this.comments = post.getCommentList();
+    public CodeReviewDto(Long postId, CodeReview codeReview) {
+        this.id = postId;
+        this.memberId = codeReview.getMemberId();
+        this.missionId = codeReview.getMissionId();
+        this.problemStatusId = codeReview.getProblemStatusId();
+        this.createDate = codeReview.getCreateDate();
+        this.pageView = codeReview.getPageView();
+        this.follower = codeReview.getFollowCount();
+        this.title = codeReview.getTitle();
+        this.content = codeReview.getContent();
+        this.comments = codeReview.getCommentList();
     }
 
     public CodeReviewDto(CodeReview codeReview) {
-        Post post = codeReview.getPost();
-        this.id = post.getId();
-        this.memberId = post.getMemberId();
+        this.id = codeReview.getId();
+        this.memberId = codeReview.getMemberId();
+        this.missionId = codeReview.getMissionId();
         this.problemStatusId = codeReview.getProblemStatusId();
-        this.createDate = post.getCreateDate();
-        this.pageView = post.getPageView();
-        this.follower = post.getFollowCount();
-        this.title = post.getTitle();
-        this.content = post.getContent();
-        this.comments = post.getCommentList();
-    }
-
-    @QueryProjection
-    public CodeReviewDto(Long id, Long memberId, Long problemStatusId, LocalDateTime createDate, int pageView, int follower, String title, String content, List<Comment> comments) {
-        this.id = id;
-        this.memberId = memberId;
-        this.problemStatusId = problemStatusId;
-        this.createDate = createDate;
-        this.pageView = pageView;
-        this.follower = follower;
-        this.title = title;
-        this.content = content;
-        this.comments = comments;
-    }
-
-    @QueryProjection
-    public CodeReviewDto(Long postId, List<Comment> commentList) {
-        this.id = postId;
-        this.comments = commentList;
+        this.createDate = codeReview.getCreateDate();
+        this.pageView = codeReview.getPageView();
+        this.follower = codeReview.getFollowCount();
+        this.title = codeReview.getTitle();
+        this.content = codeReview.getContent();
+        this.comments = codeReview.getCommentList();
     }
 }

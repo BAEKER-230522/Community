@@ -1,7 +1,7 @@
 package com.baeker.Community.post.application.service.modify;
 
 import com.baeker.Community.global.testUtil.CreateObject;
-import com.baeker.Community.post.application.service.PostModifyService;
+import com.baeker.Community.post.application.service.post.PostModifyService;
 import com.baeker.Community.post.application.service.repositoryMock.PostMock;
 import com.baeker.Community.post.domain.Post;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("게시물 추천 단위 테스트")
+@DisplayName("단위: 게시물 추천")
 @ExtendWith(MockitoExtension.class)
 class PostModifyService_followTest extends PostMock {
 
