@@ -1,10 +1,12 @@
 package com.baeker.Community.global.dto.resDto;
 
+import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.post.domain.CodeReview;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static lombok.AccessLevel.PROTECTED;
 
@@ -21,7 +23,7 @@ public class CodeReviewDto {
     private int follower;
     private String title;
     private String content;
-//    private List<Comment> comments;
+    private List<Comment> comments;
 
     public CodeReviewDto(Long postId, CodeReview codeReview) {
         this.id = postId;
@@ -33,7 +35,7 @@ public class CodeReviewDto {
         this.follower = codeReview.getFollowCount();
         this.title = codeReview.getTitle();
         this.content = codeReview.getContent();
-//        this.comments = codeReview.getCommentList();
+        this.comments = codeReview.getCommentList();
     }
 
     public CodeReviewDto(CodeReview codeReview) {
@@ -46,6 +48,6 @@ public class CodeReviewDto {
         this.follower = codeReview.getFollowCount();
         this.title = codeReview.getTitle();
         this.content = codeReview.getContent();
-//        this.comments = codeReview.getCommentList();
+        this.comments = codeReview.getCommentList();
     }
 }

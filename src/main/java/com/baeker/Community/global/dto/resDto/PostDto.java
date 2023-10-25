@@ -1,11 +1,13 @@
 package com.baeker.Community.global.dto.resDto;
 
+import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.post.domain.Post;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static lombok.AccessLevel.PROTECTED;
 
@@ -20,6 +22,7 @@ public class PostDto {
     private int follower;
     private String title;
     private String content;
+    private List<Comment> commentList;
 
     public PostDto(Post post) {
         this.id = post.getId();
@@ -29,5 +32,6 @@ public class PostDto {
         this.follower = post.getFollowCount();
         this.title = post.getTitle();
         this.content = post.getContent();
+        this.commentList = post.getCommentList();
     }
 }

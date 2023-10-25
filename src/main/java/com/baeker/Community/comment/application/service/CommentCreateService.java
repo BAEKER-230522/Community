@@ -3,7 +3,6 @@ package com.baeker.Community.comment.application.service;
 import com.baeker.Community.comment.application.port.in.CommentCreateUSeCase;
 import com.baeker.Community.comment.application.port.out.CommentRepositoryPort;
 import com.baeker.Community.comment.domain.Comment;
-import com.baeker.Community.global.dto.reqDto.CreateCommentDto;
 import com.baeker.Community.global.dto.resDto.CommentDto;
 import com.baeker.Community.post.domain.Post;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +18,9 @@ public class CommentCreateService implements CommentCreateUSeCase {
 
 
     @Override
-    public CommentDto write(Long memberId, Post post, CreateCommentDto dto) {
+    public CommentDto write(Long memberId, Post post, String content) {
         Comment comment = repository.save(
-                Comment.write(memberId, post, dto)
+                Comment.write(memberId, post, content)
         );
         return new CommentDto(comment);
     }

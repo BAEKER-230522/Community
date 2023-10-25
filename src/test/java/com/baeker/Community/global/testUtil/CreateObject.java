@@ -1,5 +1,6 @@
 package com.baeker.Community.global.testUtil;
 
+import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.post.domain.CodeReview;
 import com.baeker.Community.post.domain.Post;
 

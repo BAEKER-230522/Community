@@ -5,4 +5,5 @@ import com.baeker.Community.post.domain.CodeReview;
 public interface CodeReviewQueryUseCase {
 
     CodeReview byProblemStatusId(Long problemStatusId);
+
 }

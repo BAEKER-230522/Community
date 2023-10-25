@@ -27,10 +27,10 @@ public class Comment extends BaseComm {
     @ManyToOne(fetch = LAZY)
     private Post post;
 
-    public static Comment write(Long memberId, Post post, CreateCommentDto dto) {
+    public static Comment write(Long memberId, Post post, String content) {
         Comment comment = Comment.builder()
                 .memberId(memberId)
-                .content(dto.getContent())
+                .content(content)
                 .post(post)
                 .build();
 
