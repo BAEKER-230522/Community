@@ -1,6 +1,7 @@
 package com.baeker.Community.post.domain;
 
 import com.baeker.Community.global.baseEntity.BaseComm;
+import com.baeker.Community.global.dto.reqDto.ModifyPostDto;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,6 +37,12 @@ public abstract class Post extends BaseComm {
     @ElementCollection(fetch = LAZY)
     private List<Long> follows = new ArrayList<>();
 
+
+    public Post modifyContent(ModifyPostDto dto) {
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
+        return this;
+    }
 
     public void follow(Long memberId) {
         if (this.follows.contains(memberId))

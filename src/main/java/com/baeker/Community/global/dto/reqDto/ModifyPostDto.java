@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class SettingMissionDto {
+@AllArgsConstructor
+public class ModifyPostDto {
 
-    private Long missionId;
-    private List<SettingChallengerDto> memberList;
+    private Long postId;
+    private String title;
+    private String content;
 }

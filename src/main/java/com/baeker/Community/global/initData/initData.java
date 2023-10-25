@@ -1,7 +1,6 @@
 package com.baeker.Community.global.initData;
 
 import com.baeker.Community.global.dto.reqDto.SettingChallengerDto;
-import com.baeker.Community.global.dto.reqDto.SettingMissionDto;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;

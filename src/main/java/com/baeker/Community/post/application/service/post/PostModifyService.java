@@ -1,5 +1,8 @@
 package com.baeker.Community.post.application.service.post;
 
+import com.baeker.Community.global.dto.reqDto.ModifyPostDto;
+import com.baeker.Community.global.dto.resDto.PostDto;
+import com.baeker.Community.global.exception.service.NoPermissionException;
 import com.baeker.Community.post.application.port.in.post.PostModifyUseCase;
 import com.baeker.Community.post.application.port.out.PostRepositoryPort;
 import com.baeker.Community.post.domain.Post;
@@ -21,7 +24,18 @@ public class PostModifyService implements PostModifyUseCase {
     }
 
     @Override
-    public void post() {
+    public PostDto post(Long memberId, Post post, ModifyPostDto dto) {
+        isWriter(memberId, post);
 
+        Post modifyPost = repository.save(
+                post.modifyContent(dto)
+        );
+        return new PostDto(modifyPost);
+    }
+
+
+    private void isWriter(Long memberId, Post post) {
+        if (post.getMemberId() != memberId)
+            throw new NoPermissionException("권한이 없습니다.");
     }
 }

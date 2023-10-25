@@ -1,5 +1,7 @@
 package com.baeker.Community.post.adapter.in.web;
 
+import com.baeker.Community.global.dto.reqDto.ModifyPostDto;
+import com.baeker.Community.global.dto.resDto.PostDto;
 import com.baeker.Community.global.jwt.JwtDecrypt;
 import com.baeker.Community.post.application.port.in.post.PostModifyUseCase;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
@@ -20,6 +22,18 @@ public class PostModifyController {
     private final PostQueryUseCase postQueryUseCase;
     private final JwtDecrypt decrypt;
 
+
+    @Operation(summary = "게시물 수정")
+    @PatchMapping("/v1/post")
+    public ResponseEntity<PostDto> modifyPost(
+            @RequestHeader("Authorization") String token,
+            @RequestBody ModifyPostDto dto
+    ) {
+        Long memberId = decrypt.getMemberId(token);
+        Post post = postQueryUseCase.byId(dto.getPostId());
+        PostDto resDto = postModifyUseCase.post(memberId, post, dto);
+        return ResponseEntity.ok(resDto);
+    }
 
     @Operation(summary = "게시물 추천, 추천 취소")
     @PatchMapping("/v1/follow/{postId}")
