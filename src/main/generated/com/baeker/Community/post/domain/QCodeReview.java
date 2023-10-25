@@ -22,6 +22,9 @@ public class QCodeReview extends EntityPathBase<CodeReview> {
     public final QPost _super = new QPost(this);
 
     //inherited
+    public final ListPath<com.baeker.Community.comment.domain.Comment, com.baeker.Community.comment.domain.QComment> comment = _super.comment;
+
+    //inherited
     public final StringPath content = _super.content;
 
     //inherited

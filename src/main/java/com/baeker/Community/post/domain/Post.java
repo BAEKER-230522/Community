@@ -1,11 +1,9 @@
 package com.baeker.Community.post.domain;
 
+import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.baseEntity.BaseComm;
 import com.baeker.Community.global.dto.reqDto.ModifyPostDto;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Inheritance;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,6 +13,7 @@ import lombok.experimental.SuperBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.InheritanceType.SINGLE_TABLE;
 import static lombok.AccessLevel.PRIVATE;
@@ -36,6 +35,10 @@ public abstract class Post extends BaseComm {
     @Builder.Default
     @ElementCollection(fetch = LAZY)
     private List<Long> follows = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "post", cascade = ALL)
+    private List<Comment> commentList = new ArrayList<>();
 
 
     public Post modifyContent(ModifyPostDto dto) {
