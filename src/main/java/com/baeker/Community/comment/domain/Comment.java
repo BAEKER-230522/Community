@@ -9,7 +9,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDateTime;
+
 import static jakarta.persistence.FetchType.LAZY;
+import static java.time.LocalDateTime.now;
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -37,4 +40,10 @@ public class Comment extends BaseEntity {
         return comment;
     }
 
+    public Comment modifyContent(String content) {
+        return this.toBuilder()
+                .modifyDate(now())
+                .content(content)
+                .build();
+    }
 }

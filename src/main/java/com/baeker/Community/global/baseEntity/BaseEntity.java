@@ -28,4 +28,8 @@ public abstract class BaseEntity {
     @CreatedDate
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
+
+    public void updateModifyDate() {
+        this.modifyDate = LocalDateTime.now();
+    }
 }

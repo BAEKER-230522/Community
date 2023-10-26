@@ -31,14 +31,4 @@ public class CodeReview extends Post {
                 .content(dto.getContent())
                 .build();
     }
-
-    //-- test 용 객체 생성 --//
-    public static Post forTest(Long memberId, Long postId, String title, String content) {
-        return CodeReview.builder()
-                .id(postId)
-                .memberId(memberId)
-                .title(title)
-                .content(content)
-                .build();
-    }
 }

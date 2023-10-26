@@ -7,12 +7,20 @@ import com.baeker.Community.post.domain.Post;
 public class CreateObject {
 
     public static Post createPost(Long memberId, Long postId) {
-        return CodeReview
-                .forTest(memberId, postId, "post", "hello");
+        return CodeReview.builder()
+                .id(postId)
+                .memberId(memberId)
+                .title("post")
+                .content("hello")
+                .build();
     }
 
-    public static Post createPost(Long memberId) {
-        return CodeReview
-                .forTest(memberId, 1L, "post", "hello");
+    public static Comment createComment(Long memberId, Long commentId, Post post) {
+        return Comment.builder()
+                .id(commentId)
+                .memberId(memberId)
+                .post(post)
+                .content("hello")
+                .build();
     }
 }

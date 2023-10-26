@@ -47,6 +47,7 @@ public abstract class Post extends BaseEntity {
     public Post modifyContent(ModifyPostDto dto) {
         this.title = dto.getTitle();
         this.content = dto.getContent();
+        this.updateModifyDate();
         return this;
     }
 
