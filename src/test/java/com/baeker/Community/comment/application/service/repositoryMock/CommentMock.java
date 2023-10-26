@@ -5,6 +5,7 @@ import com.baeker.Community.comment.domain.Comment;
 import org.mockito.Mockito;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 public class CommentMock {
@@ -19,5 +20,9 @@ public class CommentMock {
                     Comment comment = (Comment) invocation.getArgument(0);
                     return comment;
                 });
+    }
+
+    public void deleteCommentMocking() {
+        doNothing().when(repository).delete(any());
     }
 }
