@@ -1,4 +1,4 @@
-package com.baeker.Community.post.adapter.in.web;
+package com.baeker.Community.post.adapter.in;
 
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;

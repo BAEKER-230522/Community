@@ -13,7 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("단위: 게시물 추천")
+@DisplayName("단위 - 게시물 추천")
 @ExtendWith(MockitoExtension.class)
 class PostModifyService_followTest extends PostMock {
 

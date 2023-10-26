@@ -10,7 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-@DisplayName("단위: 코드 리뷰 게시글 작성")
+@DisplayName("단위 - 코드 리뷰 게시글 작성")
 @ExtendWith(MockitoExtension.class)
 class PostCreateService_writeTest extends PostMock {
 
