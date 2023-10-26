@@ -46,4 +46,8 @@ public class Comment extends BaseEntity {
                 .content(content)
                 .build();
     }
+
+    public void delete() {
+        this.post.deleteComment(this);
+    }
 }

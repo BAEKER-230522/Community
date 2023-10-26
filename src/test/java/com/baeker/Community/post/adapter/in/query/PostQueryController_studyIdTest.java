@@ -2,7 +2,6 @@ package com.baeker.Community.post.adapter.in.query;
 
 import com.baeker.Community.global.dto.resDto.StudyPostDto;
 import com.baeker.Community.global.testUtil.TestData;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

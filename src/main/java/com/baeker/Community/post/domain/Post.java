@@ -44,6 +44,7 @@ public abstract class Post extends BaseEntity {
     private List<Comment> commentList = new ArrayList<>();
 
 
+
     public Post modifyContent(ModifyPostDto dto) {
         this.title = dto.getTitle();
         this.content = dto.getContent();
@@ -75,5 +76,10 @@ public abstract class Post extends BaseEntity {
     public int getFollowCount() {
         return this.follows
                 .size();
+    }
+
+    public void deleteComment(Comment comment) {
+        this.getCommentList()
+                .remove(comment);
     }
 }
