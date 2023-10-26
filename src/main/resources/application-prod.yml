@@ -1,11 +1,11 @@
 custom:
   db:
-    url: RDB
-    usr: ENC()
-    pw: ENC()
+    url: jdbc:mysql://database-2.cducnzmmkuvl.ap-northeast-2.rds.amazonaws.com:3306/comm?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    usr: ENC(plDde76MscNwKMt9v4A6Rw==)
+    pw: ENC(OH+qshDPtFh1h1gDdWExzz/t0BlOzVbo)
 
   jpa:
-    ddl-auto: update
+    ddl-auto: create
 
 
 spring:
