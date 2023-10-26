@@ -22,6 +22,9 @@ public class PostCreateService implements PostCreateUseCase {
 
     @Override
     public CodeReviewDto codeReview(Long memberId, CreateCodeReviewDto dto) {
+
+        // study 회원인지 확인
+
         CodeReview codeReview = repository.save(
                 CodeReview.write(memberId, dto)
         );
@@ -30,6 +33,9 @@ public class PostCreateService implements PostCreateUseCase {
 
     @Override
     public StudyPostDto studyPost(Long memberId, CreateStudyPostDto dto) {
+
+        // study 회원인지 확인
+
         StudyPost studyPost = repository.save(
                 StudyPost.write(memberId, dto)
         );
