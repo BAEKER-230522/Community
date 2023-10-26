@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -33,11 +34,13 @@ public class CodeReviewQueryService implements CodeReviewQueryUseCase {
 
     @Override
     public List<CodeReviewDto> byMission(Long missionId, Long memberId) {
-        List<CodeReviewDto> resDto = queryRepository.byMissionAndMemberId(missionId, memberId);
+        List<CodeReview> codeReivewList = repository.findByMissionIdAndMemberId(missionId, memberId);
 
-        if (resDto.size() > 0)
-            return resDto;
+        if (codeReivewList.size() == 0)
+            throw new NotFoundException("등록한 게시물이 없습니다.");
 
-        throw new NotFoundException("등록한 게시물이 없습니다.");
+        return codeReivewList.stream()
+                .map(CodeReviewDto::new)
+                .collect(Collectors.toList());
     }
 }
