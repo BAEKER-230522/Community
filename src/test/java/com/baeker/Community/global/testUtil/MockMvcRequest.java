@@ -27,6 +27,16 @@ public class MockMvcRequest {
         ).andDo(print());
     }
 
+    public static ResultActions patch(MockMvc mvc, String url, String jwt, Object reqDto) throws Exception {
+        String dto = toJasonString(reqDto);
+        return mvc.perform(MockMvcRequestBuilders
+                .patch(url)
+                .contentType(APPLICATION_JSON)
+                .header("Authorization", jwt)
+                .content(dto)
+        ).andDo(print());
+    }
+
     public static ResultActions patch(MockMvc mvc, String url, String jwt, Long pathVariable) throws Exception {
         return mvc.perform(MockMvcRequestBuilders
                 .patch(url, pathVariable)
