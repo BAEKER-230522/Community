@@ -66,6 +66,14 @@ public class MockMvcRequest {
         ).andDo(print());
     }
 
+    public static ResultActions delete(MockMvc mvc, String url, String jwt, Long pathVariable) throws Exception {
+        return mvc.perform(MockMvcRequestBuilders
+                .delete(url, pathVariable)
+                .contentType(APPLICATION_JSON)
+                .header("Authorization", jwt)
+        ).andDo(print());
+    }
+
 
 
     private static String toJasonString(Object reqDto) throws JsonProcessingException {
