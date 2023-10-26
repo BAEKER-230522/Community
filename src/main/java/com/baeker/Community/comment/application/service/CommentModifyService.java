@@ -18,7 +18,7 @@ public class CommentModifyService implements CommentModifyUseCase {
 
 
     @Override
-    public CommentDto comment(Long memberId, Comment comment, String content) {
+    public CommentDto content(Long memberId, Comment comment, String content) {
         isWriter(memberId, comment);
 
         Comment modifyComment = repository.save(

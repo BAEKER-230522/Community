@@ -42,7 +42,7 @@ class CommentModifyService_contentTest extends CommentMock {
         Comment comment = createComment(memberId2, commentId, post);
 
 
-        modifyService.comment(memberId2, comment, content);
+        modifyService.content(memberId2, comment, content);
     }
 
     @Test
@@ -58,7 +58,7 @@ class CommentModifyService_contentTest extends CommentMock {
         Comment comment = createComment(memberId2, commentId, post);
 
 
-        assertThatThrownBy(() -> modifyService.comment(memberId1, comment, content))
+        assertThatThrownBy(() -> modifyService.content(memberId1, comment, content))
                 .isInstanceOf(NoPermissionException.class)
                 .hasMessageContaining("수정 권한이 없습니다.");
     }

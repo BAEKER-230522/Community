@@ -5,5 +5,5 @@ import com.baeker.Community.global.dto.resDto.CommentDto;
 
 public interface CommentModifyUseCase {
 
-    CommentDto comment(Long memberId, Comment comment, String content);
+    CommentDto content(Long memberId, Comment comment, String content);
 }
