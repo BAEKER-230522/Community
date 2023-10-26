@@ -10,9 +10,6 @@ public class TestData {
     @Value("${custom.mapping.post.web_usr}")
     public String POST_USER_URL;
 
-    @Value("${custom.mapping.mission.web_pub}")
-    public String MISSION_PUBLIC_URL;
-
     @Value("${custom.mapping.comment.web_usr}")
     public String COMMENT_USER_URL;
 
