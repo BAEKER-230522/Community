@@ -45,6 +45,13 @@ public class MockMvcRequest {
         ).andDo(print());
     }
 
+    public static ResultActions patch(MockMvc mvc, String url, Long pathVariable) throws Exception {
+        return mvc.perform(MockMvcRequestBuilders
+                .patch(url, pathVariable)
+                .contentType(APPLICATION_JSON)
+        ).andDo(print());
+    }
+
     public static ResultActions get(MockMvc mvc, String url, Long pathVariable1) throws Exception {
         return mvc.perform(MockMvcRequestBuilders
                 .get(url, pathVariable1)

@@ -54,6 +54,10 @@ public abstract class Post extends BaseComm {
             doFollow(memberId);
     }
 
+    public void addPageView() {
+        this.pageView++;
+    }
+
     private void doFollow(Long memberId) {
         this.follows
                 .add(memberId);

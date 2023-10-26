@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface CodeReviewQueryUseCase {
 
+    CodeReview byId(Long postId);
+
     CodeReview byProblemStatusId(Long problemStatusId);
     List<CodeReviewDto> byMission(Long missionId, Long memberId);
 }
