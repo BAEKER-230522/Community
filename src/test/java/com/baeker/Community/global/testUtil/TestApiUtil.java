@@ -3,6 +3,7 @@ package com.baeker.Community.global.testUtil;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.reqDto.CreateCommentDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
+import com.baeker.Community.global.dto.resDto.CommentDto;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -23,9 +24,10 @@ public class TestApiUtil {
         return MockMvcRequest.toResDto(result, CodeReviewDto.class).getId();
     }
 
-    public static void createComment(MockMvc mvc, String url, Long postId, String jwt) throws Exception {
+    public static Long createComment(MockMvc mvc, String url, Long postId, String jwt) throws Exception {
         CreateCommentDto dto = new CreateCommentDto(postId, "comment");
-        post(mvc, url + "/v1", jwt, dto);
+        ResultActions result = post(mvc, url + "/v1", jwt, dto);
+        return MockMvcRequest.toResDto(result, CommentDto.class).getCommentId();
     }
 
     public static void follow(MockMvc mvc, String url, Long postId, String jwt) throws Exception {
