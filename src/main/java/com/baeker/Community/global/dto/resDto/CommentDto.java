@@ -1,6 +1,7 @@
 package com.baeker.Community.global.dto.resDto;
 
 import com.baeker.Community.comment.domain.Comment;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,6 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class CommentDto {
 
@@ -24,5 +24,14 @@ public class CommentDto {
         this.createDate = comment.getCreateDate();
         this.modifyDate = comment.getModifyDate();
         this.content = comment.getContent();
+    }
+
+    @QueryProjection
+    public CommentDto(Long commentId, Long postId, LocalDateTime createDate, LocalDateTime modifyDate, String content) {
+        this.commentId = commentId;
+        this.postId = postId;
+        this.createDate = createDate;
+        this.modifyDate = modifyDate;
+        this.content = content;
     }
 }

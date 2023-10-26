@@ -1,4 +1,4 @@
-package com.baeker.Community.post.adapter.in.web.create;
+package com.baeker.Community.post.adapter.in.create;
 
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
@@ -17,7 +17,7 @@ import static com.baeker.Community.global.testUtil.MockMvcRequest.post;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@DisplayName("통합: 코드리뷰 게시물 작성")
+@DisplayName("통합 - 코드리뷰 게시물 작성")
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc

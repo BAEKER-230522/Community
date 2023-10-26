@@ -1,4 +1,4 @@
-package com.baeker.Community.post.adapter.in.web;
+package com.baeker.Community.post.adapter.in.modify;
 
 import com.baeker.Community.global.testUtil.TestData;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
@@ -13,11 +13,11 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.baeker.Community.global.testUtil.MockMvcRequest.patch;
-import static com.baeker.Community.global.testUtil.RequestCreateObject.createCodeReview;
+import static com.baeker.Community.global.testUtil.TestApiUtil.createCodeReview;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@DisplayName("통합: 게시물 추천")
+@DisplayName("통합 - 게시물 추천")
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc

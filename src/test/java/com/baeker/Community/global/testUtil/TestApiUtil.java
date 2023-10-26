@@ -6,9 +6,10 @@ import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import static com.baeker.Community.global.testUtil.MockMvcRequest.patch;
 import static com.baeker.Community.global.testUtil.MockMvcRequest.post;
 
-public class RequestCreateObject {
+public class TestApiUtil {
 
     public static Long createCodeReview(MockMvc mvc, String url, Long missionId, Long problemStatusId, int title, String jwt) throws Exception {
         CreateCodeReviewDto dto = new CreateCodeReviewDto(missionId, problemStatusId, "post" + title, "hello");
@@ -24,6 +25,10 @@ public class RequestCreateObject {
 
     public static void createComment(MockMvc mvc, String url, Long postId, String jwt) throws Exception {
         CreateCommentDto dto = new CreateCommentDto(postId, "comment");
-        ResultActions result = post(mvc, url + "/v1", jwt, dto);
+        post(mvc, url + "/v1", jwt, dto);
+    }
+
+    public static void follow(MockMvc mvc, String url, Long postId, String jwt) throws Exception {
+        patch(mvc, url + "/v1/follow/{postId}", jwt, postId);
     }
 }
