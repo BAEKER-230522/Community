@@ -2,6 +2,7 @@ package com.baeker.Community.global.dto.resDto;
 
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.post.domain.CodeReview;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -56,5 +57,19 @@ public class CodeReviewDto {
                 .stream()
                 .map(CommentDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @QueryProjection
+    public CodeReviewDto(Long id, Long memberId, Long missionId, Long problemStatusId, LocalDateTime createDate, int pageView, int follower, String title, String content) {
+        this.id = id;
+        this.memberId = memberId;
+        this.missionId = missionId;
+        this.problemStatusId = problemStatusId;
+        this.createDate = createDate;
+        this.pageView = pageView;
+        this.follower = follower;
+        this.title = title;
+        this.content = content;
+//        this.comments = comments;
     }
 }

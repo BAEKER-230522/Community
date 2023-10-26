@@ -55,4 +55,14 @@ public class PostQueryController {
         Post post = postQueryUseCase.byId(postId);
         return ResponseEntity.ok(post.getFollows());
     }
+
+    @Operation(summary = "mission id, member id 로 코드리뷰 목록 조회")
+    @GetMapping("/v1/mission/{missionId}/{memberId}")
+    public ResponseEntity<List<CodeReviewDto>> findByMission(
+            @PathVariable Long missionId,
+            @PathVariable Long memberId
+    ) {
+        List<CodeReviewDto> resDtos = codeReviewQueryUseCase.byMission(missionId, memberId);
+        return ResponseEntity.ok(resDtos);
+    }
 }
