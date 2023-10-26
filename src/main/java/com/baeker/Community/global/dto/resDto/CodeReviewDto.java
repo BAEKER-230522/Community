@@ -21,33 +21,19 @@ public class CodeReviewDto {
     private Long missionId;
     private Long problemStatusId;
     private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
     private int pageView;
     private int follower;
     private String title;
     private String content;
     private List<CommentDto> comments;
 
-    public CodeReviewDto(Long postId, CodeReview codeReview) {
-        this.id = postId;
-        this.memberId = codeReview.getMemberId();
-        this.missionId = codeReview.getMissionId();
-        this.problemStatusId = codeReview.getProblemStatusId();
-        this.createDate = codeReview.getCreateDate();
-        this.pageView = codeReview.getPageView();
-        this.follower = codeReview.getFollowCount();
-        this.title = codeReview.getTitle();
-        this.content = codeReview.getContent();
-        this.comments = codeReview.getCommentList()
-                .stream()
-                .map(CommentDto::new)
-                .collect(Collectors.toList());
-    }
-
     public CodeReviewDto(CodeReview codeReview) {
         this.id = codeReview.getId();
         this.memberId = codeReview.getMemberId();
         this.missionId = codeReview.getMissionId();
         this.problemStatusId = codeReview.getProblemStatusId();
+        this.modifyDate = codeReview.getModifyDate();
         this.createDate = codeReview.getCreateDate();
         this.pageView = codeReview.getPageView();
         this.follower = codeReview.getFollowCount();
