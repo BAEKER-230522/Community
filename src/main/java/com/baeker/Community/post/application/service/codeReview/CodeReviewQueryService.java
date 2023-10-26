@@ -3,7 +3,6 @@ package com.baeker.Community.post.application.service.codeReview;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.exception.service.NotFoundException;
 import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
-import com.baeker.Community.post.application.port.out.CodeReviewQueryRepositoryPort;
 import com.baeker.Community.post.application.port.out.CodeReviewRepositoryPort;
 import com.baeker.Community.post.domain.CodeReview;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +19,17 @@ import java.util.stream.Collectors;
 public class CodeReviewQueryService implements CodeReviewQueryUseCase {
 
     private final CodeReviewRepositoryPort repository;
-    private final CodeReviewQueryRepositoryPort queryRepository;
+
+
+    @Override
+    public CodeReview byId(Long codeReviewId) {
+        Optional<CodeReview> byId = repository.findById(codeReviewId);
+
+        if (byId.isPresent())
+            return byId.get();
+
+        throw new NotFoundException("존재하지 않는 게시물");
+    }
 
     @Override
     public CodeReview byProblemStatusId(Long problemStatusId) {

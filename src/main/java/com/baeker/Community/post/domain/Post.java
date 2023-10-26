@@ -1,9 +1,12 @@
 package com.baeker.Community.post.domain;
 
 import com.baeker.Community.comment.domain.Comment;
-import com.baeker.Community.global.baseEntity.BaseComm;
+import com.baeker.Community.global.baseEntity.BaseEntity;
 import com.baeker.Community.global.dto.reqDto.ModifyPostDto;
-import jakarta.persistence.*;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,7 +28,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Inheritance(strategy = SINGLE_TABLE)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public abstract class Post extends BaseComm {
+public abstract class Post extends BaseEntity {
 
     private Long memberId;
     private String title;
@@ -41,9 +44,11 @@ public abstract class Post extends BaseComm {
     private List<Comment> commentList = new ArrayList<>();
 
 
+
     public Post modifyContent(ModifyPostDto dto) {
         this.title = dto.getTitle();
         this.content = dto.getContent();
+        this.updateModifyDate();
         return this;
     }
 
@@ -52,6 +57,10 @@ public abstract class Post extends BaseComm {
             unfollow(memberId);
         else
             doFollow(memberId);
+    }
+
+    public void addPageView() {
+        this.pageView++;
     }
 
     private void doFollow(Long memberId) {
@@ -67,5 +76,10 @@ public abstract class Post extends BaseComm {
     public int getFollowCount() {
         return this.follows
                 .size();
+    }
+
+    public void deleteComment(Comment comment) {
+        this.getCommentList()
+                .remove(comment);
     }
 }

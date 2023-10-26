@@ -15,15 +15,15 @@
 
 <br>
 
-## 데이터 모델
+## ERD
 
-- Mongo DB 를 사용한 데이터 모델링입니다.
-- 계층형 구조를 채택해 모델링을 했습니다.
-    - MEMBER 는 최상의 계층의 문서로 회원의 커뮤니티 활동 내역을 참조하고 있습니다.
-    - 데이터를 저장했을 때 잦은 수정이 필요한가, 수정될 필요가 없는가를 기준으로 문서를 분리했습니다.
+- 게시글 Post 를 상속해 카테고리를 나눴습니다.
+  - Code Review : 스터디 미션 해결 후 해결 코드 게시물 
+  - Solution : 특정 알고리즘 문제의 해결 코드 게시물
+  - Study Post : 스터디 전용 게시판
+  - Free Post : 자유 게시판
 
-![Group 1](https://github.com/BAEKER-230522/Member/assets/115536240/8814d9ec-bde5-49ac-bc61-5ee4f19a9a42)
-
+<img width="596" alt="erd" src="https://github.com/choideakook/Project_Inhub/assets/115536240/e22eef86-affd-4e4a-9fe4-08bf121b40e0">
 <br>
 
 ## 핵심 요구사항

@@ -14,9 +14,10 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 public class PostDto {
 
-    private Long id;
+    private Long postId;
     private Long memberId;
     private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
     private int pageView;
     private int follower;
     private String title;
@@ -24,9 +25,10 @@ public class PostDto {
     private List<CommentDto> comments;
 
     public PostDto(Post post) {
-        this.id = post.getId();
+        this.postId = post.getId();
         this.memberId = post.getMemberId();
         this.createDate = post.getCreateDate();
+        this.modifyDate = post.getModifyDate();
         this.pageView = post.getPageView();
         this.follower = post.getFollowCount();
         this.title = post.getTitle();

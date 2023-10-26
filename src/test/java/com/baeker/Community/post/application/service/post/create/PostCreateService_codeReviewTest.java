@@ -1,4 +1,4 @@
-package com.baeker.Community.post.application.service.create;
+package com.baeker.Community.post.application.service.post.create;
 
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.post.application.service.post.PostCreateService;
@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @DisplayName("단위 - 코드 리뷰 게시글 작성")
 @ExtendWith(MockitoExtension.class)
-class PostCreateService_writeTest extends PostMock {
+class PostCreateService_codeReviewTest extends PostMock {
 
     @InjectMocks
     PostCreateService createService;
@@ -25,16 +25,19 @@ class PostCreateService_writeTest extends PostMock {
     @Test
     @DisplayName("게시글 작성 성공")
     void no1() {
-        Long memberId = 1L;
-        CreateCodeReviewDto dto = getCodeReviewDto();
+        Long
+                memberId = 1L,
+                missionId = 1L,
+                problemStatusId = 1L;
+        CreateCodeReviewDto dto = getCodeReviewDto(missionId, problemStatusId);
 
 
         createService.codeReview(memberId, dto);
     }
 
 
-    private CreateCodeReviewDto getCodeReviewDto() {
-        return new CreateCodeReviewDto(1L, 1L, "post", "hello");
+    private CreateCodeReviewDto getCodeReviewDto(Long missionId, Long problemStatusId) {
+        return new CreateCodeReviewDto(missionId, problemStatusId, "post", "hello");
     }
 
 }

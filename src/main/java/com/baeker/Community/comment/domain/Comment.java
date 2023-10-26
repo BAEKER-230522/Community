@@ -1,7 +1,6 @@
 package com.baeker.Community.comment.domain;
 
-import com.baeker.Community.global.baseEntity.BaseComm;
-import com.baeker.Community.global.dto.reqDto.CreateCommentDto;
+import com.baeker.Community.global.baseEntity.BaseEntity;
 import com.baeker.Community.post.domain.Post;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -10,7 +9,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDateTime;
+
 import static jakarta.persistence.FetchType.LAZY;
+import static java.time.LocalDateTime.now;
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -19,7 +21,7 @@ import static lombok.AccessLevel.PROTECTED;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor(access = PROTECTED)
 @AllArgsConstructor(access = PRIVATE)
-public class Comment extends BaseComm {
+public class Comment extends BaseEntity {
 
     private Long memberId;
     private String content;
@@ -38,4 +40,14 @@ public class Comment extends BaseComm {
         return comment;
     }
 
+    public Comment modifyContent(String content) {
+        return this.toBuilder()
+                .modifyDate(now())
+                .content(content)
+                .build();
+    }
+
+    public void delete() {
+        this.post.deleteComment(this);
+    }
 }

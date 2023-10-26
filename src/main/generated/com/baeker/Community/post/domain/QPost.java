@@ -20,7 +20,7 @@ public class QPost extends EntityPathBase<Post> {
 
     public static final QPost post = new QPost("post");
 
-    public final com.baeker.Community.global.baseEntity.QBaseComm _super = new com.baeker.Community.global.baseEntity.QBaseComm(this);
+    public final com.baeker.Community.global.baseEntity.QBaseEntity _super = new com.baeker.Community.global.baseEntity.QBaseEntity(this);
 
     public final ListPath<com.baeker.Community.comment.domain.Comment, com.baeker.Community.comment.domain.QComment> commentList = this.<com.baeker.Community.comment.domain.Comment, com.baeker.Community.comment.domain.QComment>createList("commentList", com.baeker.Community.comment.domain.Comment.class, com.baeker.Community.comment.domain.QComment.class, PathInits.DIRECT2);
 

@@ -50,6 +50,7 @@ class PostQueryController_problemStatusIdTest extends TestData {
         assertThat(resDto.getMissionId()).isEqualTo(missionId);
         assertThat(resDto.getProblemStatusId()).isEqualTo(problemStatusId);
         assertThat(resDto.getTitle()).isEqualTo("post1");
+        assertThat(resDto.getPageView()).isEqualTo(1);
 
         List<CommentDto> comments = resDto.getComments();
         assertThat(comments.size()).isEqualTo(1);

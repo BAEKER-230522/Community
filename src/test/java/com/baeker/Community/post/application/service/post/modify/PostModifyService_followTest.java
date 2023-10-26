@@ -1,4 +1,4 @@
-package com.baeker.Community.post.application.service.modify;
+package com.baeker.Community.post.application.service.post.modify;
 
 import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.application.service.post.PostModifyService;

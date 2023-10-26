@@ -33,6 +33,10 @@ public class PostModifyService implements PostModifyUseCase {
         return new PostDto(modifyPost);
     }
 
+    @Override
+    public void addPageView(Post post) {
+        post.addPageView();
+    }
 
     private void isWriter(Long memberId, Post post) {
         if (post.getMemberId() != memberId)

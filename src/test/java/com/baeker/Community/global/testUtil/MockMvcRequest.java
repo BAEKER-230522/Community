@@ -45,6 +45,13 @@ public class MockMvcRequest {
         ).andDo(print());
     }
 
+    public static ResultActions patch(MockMvc mvc, String url, Long pathVariable) throws Exception {
+        return mvc.perform(MockMvcRequestBuilders
+                .patch(url, pathVariable)
+                .contentType(APPLICATION_JSON)
+        ).andDo(print());
+    }
+
     public static ResultActions get(MockMvc mvc, String url, Long pathVariable1) throws Exception {
         return mvc.perform(MockMvcRequestBuilders
                 .get(url, pathVariable1)
@@ -56,6 +63,14 @@ public class MockMvcRequest {
         return mvc.perform(MockMvcRequestBuilders
                 .get(url, pathVariable1, pathVariable2)
                 .contentType(APPLICATION_JSON)
+        ).andDo(print());
+    }
+
+    public static ResultActions delete(MockMvc mvc, String url, String jwt, Long pathVariable) throws Exception {
+        return mvc.perform(MockMvcRequestBuilders
+                .delete(url, pathVariable)
+                .contentType(APPLICATION_JSON)
+                .header("Authorization", jwt)
         ).andDo(print());
     }
 

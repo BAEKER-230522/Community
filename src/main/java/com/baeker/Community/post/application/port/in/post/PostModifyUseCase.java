@@ -9,4 +9,6 @@ public interface PostModifyUseCase {
     void follow(Long memberId, Post post);
 
     PostDto post(Long memberId, Post post, ModifyPostDto dto);
+
+    void addPageView(Post post);
 }

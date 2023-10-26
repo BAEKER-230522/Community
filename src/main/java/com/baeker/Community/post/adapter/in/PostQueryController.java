@@ -2,8 +2,11 @@ package com.baeker.Community.post.adapter.in;
 
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.dto.resDto.PostDto;
+import com.baeker.Community.global.dto.resDto.StudyPostDto;
 import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
+import com.baeker.Community.post.application.port.in.post.PostModifyUseCase;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
+import com.baeker.Community.post.application.port.in.study.StudyPostQueryUseCase;
 import com.baeker.Community.post.domain.CodeReview;
 import com.baeker.Community.post.domain.Post;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,7 +27,9 @@ import java.util.List;
 public class PostQueryController {
 
     private final PostQueryUseCase postQueryUseCase;
+    private final PostModifyUseCase postModifyUseCase;
     private final CodeReviewQueryUseCase codeReviewQueryUseCase;
+    private final StudyPostQueryUseCase studyPostQueryUseCase;
 
 
     @Operation(summary = "post id 로 게시물 조회")
@@ -33,6 +38,7 @@ public class PostQueryController {
             @PathVariable Long postId
     ) {
         Post post = postQueryUseCase.byId(postId);
+        postModifyUseCase.addPageView(post);
         PostDto resDto = new PostDto(post);
         return ResponseEntity.ok(resDto);
     }
@@ -43,9 +49,20 @@ public class PostQueryController {
             @PathVariable Long problemStatusId
     ) {
         CodeReview codeReview = codeReviewQueryUseCase.byProblemStatusId(problemStatusId);
+        postModifyUseCase.addPageView(codeReview);
         CodeReviewDto resDto = new CodeReviewDto(codeReview);
         return ResponseEntity.ok(resDto);
     }
+
+    @Operation(summary = "study id 로 게시물 조회")
+    @GetMapping("/v1/study/{studyId}")
+    public ResponseEntity<List<StudyPostDto>> findByStudyId(
+            @PathVariable Long studyId
+    ) {
+        List<StudyPostDto> resDtos = studyPostQueryUseCase.byStudyId(studyId);
+        return ResponseEntity.ok(resDtos);
+    }
+
 
     @Operation(summary = "게시물을 추천한 회원 목록")
     @GetMapping("/v1/follower/{postId}")
