@@ -2,9 +2,7 @@ package com.baeker.Community.post.adapter.in.query;
 
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CommentDto;
-import com.baeker.Community.global.testUtil.MockMvcRequest;
 import com.baeker.Community.global.testUtil.TestData;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +10,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static com.baeker.Community.global.testUtil.MockMvcRequest.get;
 import static com.baeker.Community.global.testUtil.MockMvcRequest.toResDto;
-import static com.baeker.Community.global.testUtil.RequestCreateObject.createCodeReview;
-import static com.baeker.Community.global.testUtil.RequestCreateObject.createComment;
+import static com.baeker.Community.global.testUtil.TestApiUtil.createCodeReview;
+import static com.baeker.Community.global.testUtil.TestApiUtil.createComment;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
