@@ -22,7 +22,7 @@ public class QComment extends EntityPathBase<Comment> {
 
     public static final QComment comment = new QComment("comment");
 
-    public final com.baeker.Community.global.baseEntity.QBaseComm _super = new com.baeker.Community.global.baseEntity.QBaseComm(this);
+    public final com.baeker.Community.global.baseEntity.QBaseEntity _super = new com.baeker.Community.global.baseEntity.QBaseEntity(this);
 
     public final StringPath content = createString("content");
 

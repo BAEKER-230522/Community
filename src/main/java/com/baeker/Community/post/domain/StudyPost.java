@@ -31,9 +31,10 @@ public class StudyPost extends Post {
     }
 
     //-- test 용 객체 생성 --//
-    public static Post forTest(Long memberId, Long postId, String title, String content) {
+    public static Post forTest(Long memberId, Long postId, Long studyId, String title, String content) {
         return StudyPost.builder()
                 .id(postId)
+                .studyId(studyId)
                 .memberId(memberId)
                 .title(title)
                 .content(content)

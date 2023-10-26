@@ -1,4 +1,4 @@
-package com.baeker.Community.post.adapter.in;
+package com.baeker.Community.post.adapter.in.modify;
 
 import com.baeker.Community.global.testUtil.TestData;
 import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
