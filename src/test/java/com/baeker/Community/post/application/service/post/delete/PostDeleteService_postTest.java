@@ -1,6 +1,7 @@
-package com.baeker.Community.post.application.service.post;
+package com.baeker.Community.post.application.service.post.delete;
 
 import com.baeker.Community.global.exception.service.NoPermissionException;
+import com.baeker.Community.post.application.service.post.PostDeleteService;
 import com.baeker.Community.post.application.service.repositoryMock.PostMock;
 import com.baeker.Community.post.domain.Post;
 import org.junit.jupiter.api.BeforeEach;

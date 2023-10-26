@@ -1,5 +1,6 @@
-package com.baeker.Community.comment.application.service;
+package com.baeker.Community.comment.application.service.delete;
 
+import com.baeker.Community.comment.application.service.CommentDeleteService;
 import com.baeker.Community.comment.application.service.repositoryMock.CommentMock;
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.exception.service.NoPermissionException;

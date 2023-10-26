@@ -1,4 +1,4 @@
-package com.baeker.Community.comment.adapter.in.web;
+package com.baeker.Community.comment.adapter.in.web.delete;
 
 import com.baeker.Community.global.testUtil.TestData;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
