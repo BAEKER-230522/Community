@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-class PostCreateController_writeCodeReviewTest extends TestData {
+class PostCreateController_codeReviewTest extends TestData {
 
     @Autowired MockMvc mvc;
 
