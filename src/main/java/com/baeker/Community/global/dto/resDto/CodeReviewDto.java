@@ -1,8 +1,6 @@
 package com.baeker.Community.global.dto.resDto;
 
-import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.post.domain.CodeReview;
-import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +14,7 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 public class CodeReviewDto {
 
-    private Long id;
+    private Long postId;
     private Long memberId;
     private Long missionId;
     private Long problemStatusId;
@@ -29,7 +27,7 @@ public class CodeReviewDto {
     private List<CommentDto> comments;
 
     public CodeReviewDto(CodeReview codeReview) {
-        this.id = codeReview.getId();
+        this.postId = codeReview.getId();
         this.memberId = codeReview.getMemberId();
         this.missionId = codeReview.getMissionId();
         this.problemStatusId = codeReview.getProblemStatusId();

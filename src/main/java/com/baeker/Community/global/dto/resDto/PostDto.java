@@ -14,7 +14,7 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 public class PostDto {
 
-    private Long id;
+    private Long postId;
     private Long memberId;
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
@@ -25,7 +25,7 @@ public class PostDto {
     private List<CommentDto> comments;
 
     public PostDto(Post post) {
-        this.id = post.getId();
+        this.postId = post.getId();
         this.memberId = post.getMemberId();
         this.createDate = post.getCreateDate();
         this.modifyDate = post.getModifyDate();

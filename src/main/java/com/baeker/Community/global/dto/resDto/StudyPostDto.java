@@ -1,6 +1,5 @@
 package com.baeker.Community.global.dto.resDto;
 
-import com.baeker.Community.post.domain.CodeReview;
 import com.baeker.Community.post.domain.StudyPost;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,7 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 public class StudyPostDto {
 
-    private Long id;
+    private Long postId;
     private Long studyId;
     private Long memberId;
     private LocalDateTime createDate;
@@ -27,7 +26,7 @@ public class StudyPostDto {
     private List<CommentDto> comments;
 
     public StudyPostDto(StudyPost studyPost) {
-        this.id = studyPost.getId();
+        this.postId = studyPost.getId();
         this.studyId = studyPost.getStudyId();
         this.memberId = studyPost.getMemberId();
         this.createDate = studyPost.getCreateDate();

@@ -17,25 +17,25 @@ public class TestApiUtil {
     public static Long createCodeReview(MockMvc mvc, String url, Long missionId, Long problemStatusId, int title, String jwt) throws Exception {
         CreateCodeReviewDto dto = new CreateCodeReviewDto(missionId, problemStatusId, "post" + title, "content");
         ResultActions result = post(mvc, url + "/v1/code-review", jwt, dto);
-        return MockMvcRequest.toResDto(result, CodeReviewDto.class).getId();
+        return MockMvcRequest.toResDto(result, CodeReviewDto.class).getPostId();
     }
 
     public static Long createCodeReview(MockMvc mvc, String url, int title, String jwt) throws Exception {
         CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, 1L, "post" + title, "content");
         ResultActions result = post(mvc, url + "/v1/code-review", jwt, dto);
-        return MockMvcRequest.toResDto(result, CodeReviewDto.class).getId();
+        return MockMvcRequest.toResDto(result, CodeReviewDto.class).getPostId();
     }
     
     public static Long createStudyPost(MockMvc mvc, String url, int title, String jwt) throws Exception {
         CreateStudyPostDto dto = new CreateStudyPostDto(1L, "post" + title, "content");
         ResultActions result = post(mvc, url + "/v1/study", jwt, dto);
-        return MockMvcRequest.toResDto(result, StudyPostDto.class).getId();
+        return MockMvcRequest.toResDto(result, StudyPostDto.class).getPostId();
     }
 
     public static Long createStudyPost(MockMvc mvc, String url, Long studyId, int title, String jwt) throws Exception {
         CreateStudyPostDto dto = new CreateStudyPostDto(studyId, "post" + title, "content");
         ResultActions result = post(mvc, url + "/v1/study", jwt, dto);
-        return MockMvcRequest.toResDto(result, StudyPostDto.class).getId();
+        return MockMvcRequest.toResDto(result, StudyPostDto.class).getPostId();
     }
 
     public static Long createComment(MockMvc mvc, String url, Long postId, String jwt) throws Exception {
