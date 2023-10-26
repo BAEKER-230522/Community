@@ -16,11 +16,14 @@ public class CreateObject {
     }
 
     public static Comment createComment(Long memberId, Long commentId, Post post) {
-        return Comment.builder()
+        Comment comment = Comment.builder()
                 .id(commentId)
                 .memberId(memberId)
                 .post(post)
                 .content("hello")
                 .build();
+
+        post.getCommentList().add(comment);
+        return comment;
     }
 }
