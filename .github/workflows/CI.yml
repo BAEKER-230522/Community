@@ -3,6 +3,7 @@ name: 지속 통합
 on:
   pull_request:
     branches:
+      - main
       - develop
       - dk
       - park
