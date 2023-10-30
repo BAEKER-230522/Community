@@ -15,13 +15,13 @@ import static com.baeker.Community.global.testUtil.MockMvcRequest.post;
 public class TestApiUtil {
 
     public static Long createCodeReview(MockMvc mvc, String url, Long missionId, Long problemStatusId, int title, String jwt) throws Exception {
-        CreateCodeReviewDto dto = new CreateCodeReviewDto(missionId, problemStatusId, "post" + title, "content");
+        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, missionId, problemStatusId, "post" + title, "content");
         ResultActions result = post(mvc, url + "/v1/code-review", jwt, dto);
         return MockMvcRequest.toResDto(result, CodeReviewDto.class).getPostId();
     }
 
     public static Long createCodeReview(MockMvc mvc, String url, int title, String jwt) throws Exception {
-        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, 1L, "post" + title, "content");
+        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, 1L, 1L, "post" + title, "content");
         ResultActions result = post(mvc, url + "/v1/code-review", jwt, dto);
         return MockMvcRequest.toResDto(result, CodeReviewDto.class).getPostId();
     }

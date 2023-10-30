@@ -8,7 +8,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-public class PostMock {
+public class PostMock extends StudyClientMock{
 
     private PostRepositoryPort repository =
             Mockito.mock(PostRepositoryPort.class);

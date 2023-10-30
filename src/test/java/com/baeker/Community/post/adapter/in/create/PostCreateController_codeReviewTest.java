@@ -51,6 +51,6 @@ class PostCreateController_codeReviewTest extends TestData {
     }
 
     private CreateCodeReviewDto toDto(Long missionId, Long problemStatusId, String title, String content) {
-        return new CreateCodeReviewDto(missionId, problemStatusId, title, content);
+        return new CreateCodeReviewDto(1L, missionId, problemStatusId, title, content);
     }
 }
