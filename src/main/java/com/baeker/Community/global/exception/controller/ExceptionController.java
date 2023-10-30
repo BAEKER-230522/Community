@@ -1,6 +1,7 @@
 package com.baeker.Community.global.exception.controller;
 
 import com.baeker.Community.global.exception.jwt.InvalidJwtException;
+import com.baeker.Community.global.exception.service.InvalidDuplicateException;
 import com.baeker.Community.global.exception.service.NoPermissionException;
 import com.baeker.Community.global.exception.service.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,12 @@ public class ExceptionController {
 
     @ExceptionHandler(NoPermissionException.class)
     public ResponseEntity<ErrorResponse> noPermissionException(NoPermissionException e) {
+        log.error(e.getMessage());
+        return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
+    }
+
+    @ExceptionHandler(InvalidDuplicateException.class)
+    public ResponseEntity<ErrorResponse> invalidDuplicateHandler(NotFoundException e) {
         log.error(e.getMessage());
         return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
     }
