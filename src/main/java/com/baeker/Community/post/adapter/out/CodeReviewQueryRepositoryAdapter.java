@@ -2,7 +2,7 @@ package com.baeker.Community.post.adapter.out;
 
 import com.baeker.Community.comment.domain.QComment;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
-import com.baeker.Community.post.application.port.out.CodeReviewQueryRepositoryPort;
+import com.baeker.Community.post.application.port.out.persistence.CodeReviewQueryRepositoryPort;
 import com.baeker.Community.post.domain.QCodeReview;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

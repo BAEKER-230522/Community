@@ -1,4 +1,4 @@
-package com.baeker.Community.post.application.port.out;
+package com.baeker.Community.post.application.port.out.persistence;
 
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 

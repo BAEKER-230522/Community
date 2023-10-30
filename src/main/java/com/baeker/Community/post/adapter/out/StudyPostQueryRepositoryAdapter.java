@@ -1,7 +1,7 @@
 package com.baeker.Community.post.adapter.out;
 
 import com.baeker.Community.global.dto.resDto.StudyPostDto;
-import com.baeker.Community.post.application.port.out.StudyPostQueryRepositoryPort;
+import com.baeker.Community.post.application.port.out.persistence.StudyPostQueryRepositoryPort;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

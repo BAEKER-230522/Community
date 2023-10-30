@@ -4,8 +4,11 @@ custom:
     usr: ENC(plDde76MscNwKMt9v4A6Rw==)
     pw: ENC(OH+qshDPtFh1h1gDdWExzz/t0BlOzVbo)
 
+  feign:
+    study: http://study:8082/pub/study/api/study
+
   jpa:
-    ddl-auto: create
+    ddl-auto: update
 
 
 spring:
