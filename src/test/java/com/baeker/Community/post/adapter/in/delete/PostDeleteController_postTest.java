@@ -3,7 +3,7 @@ package com.baeker.Community.post.adapter.in.delete;
 import com.baeker.Community.comment.application.port.in.CommentQueryUseCase;
 import com.baeker.Community.global.dto.resDto.StudyPostDto;
 import com.baeker.Community.global.exception.service.NotFoundException;
-import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.global.testUtil.TestObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.study.StudyPostQueryUseCase;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,6 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostDeleteController_postTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
+    @Autowired TestObject create;
     @Autowired StudyPostQueryUseCase studyPostQueryUseCase;
     @Autowired CommentQueryUseCase commentQueryUseCase;
 
@@ -44,9 +45,12 @@ class PostDeleteController_postTest extends ApiStudyClientMock {
     @Test
     @DisplayName("게시글 삭제 성공")
     void no1() throws Exception {
-        Long studyId = 1L;
-        createStudyPost(mvc, POST_USER_URL, studyId, 1, jwt1);
-        Long postId = createStudyPost(mvc, POST_USER_URL, studyId, 2, jwt2);
+        Long
+                studyId = 1L,
+                member1 = 1L,
+                member2 = 2L;
+        create.studyPost(member1, studyId, 1);
+        Long postId = create.studyPost(member2, studyId, 2);
 
 
         ResultActions result = delete(mvc, POST_USER_URL +
@@ -62,10 +66,14 @@ class PostDeleteController_postTest extends ApiStudyClientMock {
     @Test
     @DisplayName("추천이 있는 게시물 삭제 성공")
     void no2() throws Exception {
-        Long studyId = 1L;
-        Long postId = createStudyPost(mvc, POST_USER_URL, studyId, 1, jwt1);
-        follow(mvc, POST_USER_URL, postId, jwt2);
-        follow(mvc, POST_USER_URL, postId, jwt3);
+        Long
+                studyId = 1L,
+                member1 = 1L,
+                member2 = 2L,
+                member3 = 3L;
+        Long postId = create.studyPost(member1, studyId, 1);
+        create.follow(member2, postId);
+        create.follow(member3, postId);
 
 
         ResultActions result = delete(mvc, POST_USER_URL +
@@ -80,10 +88,14 @@ class PostDeleteController_postTest extends ApiStudyClientMock {
     @Test
     @DisplayName("댓글이 있는 게시물 삭제 성공")
     void no3() throws Exception {
-        Long studyId = 1L;
-        Long postId = createStudyPost(mvc, POST_USER_URL, studyId, 1, jwt1);
-        Long commentId = createComment(mvc, COMMENT_USER_URL, postId, jwt2);
-        createComment(mvc, COMMENT_USER_URL, postId, jwt3);
+        Long
+                studyId = 1L,
+                member1 = 1L,
+                member2 = 2L,
+                member3 = 3L;
+        Long postId = create.studyPost(member1, studyId, 1);
+        Long commentId = create.comment(member2, postId);
+        create.comment(member3, postId);
 
 
         ResultActions result = delete(mvc, POST_USER_URL +
@@ -102,8 +114,10 @@ class PostDeleteController_postTest extends ApiStudyClientMock {
     @Test
     @DisplayName("삭제 권한이 없을 경우")
     void no4() throws Exception {
-        Long studyId = 1L;
-        Long postId = createStudyPost(mvc, POST_USER_URL, studyId, 1, jwt1);
+        Long
+                studyId = 1L,
+                member1 = 1L;
+        Long postId = create.studyPost(member1, studyId, 1);
 
 
         ResultActions result = delete(mvc, POST_USER_URL +

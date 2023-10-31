@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static com.baeker.Community.global.testUtil.MockMvcRequest.post;
 import static com.baeker.Community.global.testUtil.MockMvcRequest.toResDto;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DisplayName("통합 - 스터디 전용 게시물 생성")
@@ -47,11 +48,9 @@ class PostCreateController_studyPostTest extends ApiStudyClientMock {
         ResultActions result = post(mvc, POST_USER_URL + "/v1/study", jwt1, dto);
 
 
-        result.andExpect(status().is2xxSuccessful());
-
-        StudyPostDto resDto = toResDto(result, StudyPostDto.class);
-        assertThat(resDto.getStudyId()).isEqualTo(studyId);
-        assertThat(resDto.getTitle()).isEqualTo(title);
-        assertThat(resDto.getContent()).isEqualTo(content);
+        result.andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("data.studyId").value(studyId))
+                .andExpect(jsonPath("data.title").value(title))
+                .andExpect(jsonPath("data.content").value(content));
     }
 }

@@ -50,12 +50,11 @@ class PostCreateController_codeReviewTest extends ApiStudyClientMock {
                 "/v1/code-review", jwt1, dto);
 
 
-        result.andExpect(status().is2xxSuccessful());
-
-        CodeReviewDto resDto = MockMvcRequest.toResDto(result, CodeReviewDto.class);
-        assertThat(resDto.getTitle()).isEqualTo(title);
-        assertThat(resDto.getContent()).isEqualTo(content);
-        assertThat(resDto.getProblemStatusId()).isEqualTo(problemStatusId);
+        result
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("data.title").value(title))
+                .andExpect(jsonPath("data.content").value(content))
+                .andExpect(jsonPath("data.problemStatusId").value(problemStatusId));
     }
 
     @Test

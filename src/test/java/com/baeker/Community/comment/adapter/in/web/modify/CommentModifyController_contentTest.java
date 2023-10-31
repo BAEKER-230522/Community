@@ -50,10 +50,9 @@ class CommentModifyController_contentTest extends ApiStudyClientMock {
                 "/v1/content", jwt2, dto);
 
 
-        result.andExpect(status().is2xxSuccessful());
-
-        CommentDto resDto = toResDto(result, CommentDto.class);
-        assertThat(resDto.getContent()).isEqualTo(modifyContent);
+        result
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("data.content").value(modifyContent));
     }
 
     @Test

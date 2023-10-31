@@ -3,7 +3,9 @@ package com.baeker.Community.post.adapter.in.query;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CommentDto;
 import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.global.testUtil.TestObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,6 +23,7 @@ import static com.baeker.Community.global.testUtil.MockMvcRequest.toResDto;
 import static com.baeker.Community.global.testUtil.TestApiUtil.createCodeReview;
 import static com.baeker.Community.global.testUtil.TestApiUtil.createComment;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DisplayName("통합 - 코드리뷰 조회")
@@ -29,8 +32,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class PostQueryController_problemStatusIdTest extends ApiStudyClientMock {
 
-    @Autowired
-    MockMvc mvc;
+    @Autowired MockMvc mvc;
+    @Autowired TestObject create;
 
     @BeforeEach
     void setup() {
@@ -42,26 +45,26 @@ class PostQueryController_problemStatusIdTest extends ApiStudyClientMock {
     @DisplayName("problem status id 로 조회 성공")
     void no1() throws Exception {
         Long
+                memberId = 1L,
                 missionId = 1L,
                 problemStatusId = 1L;
-        Long postId = createCodeReview(mvc, POST_USER_URL, missionId, problemStatusId, 1, jwt1);
-        createComment(mvc, COMMENT_USER_URL, postId, jwt2);
+        Long postId = create.codeReview(memberId, missionId, problemStatusId, 1);
+        create.comment(memberId, postId);
 
 
         ResultActions result = get(mvc, POST_PUBLIC_URL +
                 "/v1/problem-status/{problemStatusId}", problemStatusId);
 
 
-        result.andExpect(status().is2xxSuccessful());
+        result
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("data.missionId").value(missionId))
+                .andExpect(jsonPath("data.problemStatusId").value(problemStatusId))
+                .andExpect(jsonPath("data.title").value("post1"))
+                .andExpect(jsonPath("data.pageView").value(1))
 
-        CodeReviewDto resDto = toResDto(result, CodeReviewDto.class);
-        assertThat(resDto.getMissionId()).isEqualTo(missionId);
-        assertThat(resDto.getProblemStatusId()).isEqualTo(problemStatusId);
-        assertThat(resDto.getTitle()).isEqualTo("post1");
-        assertThat(resDto.getPageView()).isEqualTo(1);
 
-        List<CommentDto> comments = resDto.getComments();
-        assertThat(comments.size()).isEqualTo(1);
-        assertThat(comments.get(0).getContent()).isEqualTo("comment");
+                .andExpect(jsonPath("data.comments", Matchers.iterableWithSize(1)))
+                .andExpect(jsonPath("data.comments[0].content").value("comment"));
     }
 }

@@ -1,10 +1,9 @@
 package com.baeker.Community.post.adapter.in.modify;
 
-import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.global.testUtil.TestObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
 import com.baeker.Community.post.domain.CodeReview;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostModifyController_pageViewTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
+    @Autowired TestObject create;
     @Autowired CodeReviewQueryUseCase codeReviewQueryUseCase;
 
     @BeforeEach
@@ -38,7 +38,7 @@ class PostModifyController_pageViewTest extends ApiStudyClientMock {
     @Test
     @DisplayName("조회수 증가 성공")
     void no1() throws Exception {
-        Long postId = createCodeReview(mvc, POST_USER_URL, 1, jwt1);
+        Long postId = create.codeReview();
         CodeReview codeReview = codeReviewQueryUseCase.byId(postId);
         Long problemStatusId = codeReview.getProblemStatusId();
 
