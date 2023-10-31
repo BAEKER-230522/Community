@@ -3,7 +3,6 @@ package com.baeker.Community.post.adapter.in.create;
 import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.testUtil.MockMvcRequest;
-import com.baeker.Community.global.testUtil.TestData;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -69,7 +68,6 @@ class PostCreateController_codeReviewTest extends ApiStudyClientMock {
 
         ResultActions result = post(mvc, POST_USER_URL +
                 "/v1/code-review", jwt1, dto);
-
 
         result
                 .andExpect(status().isBadRequest())

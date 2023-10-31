@@ -56,6 +56,14 @@ class PostQueryController_postIdTest extends ApiStudyClientMock {
         List<CommentDto> comments = resDto.getComments();
         assertThat(comments.size()).isEqualTo(1);
         assertThat(comments.get(0).getContent()).isEqualTo("comment");
+    }
 
+    @Test
+    @DisplayName("존재하지 않는 id")
+    void no2() throws Exception {
+        ResultActions result = get(mvc, POST_PUBLIC_URL + "/v1/post/{postId}", 1L);
+
+
+        result.andExpect(status().isBadRequest());
     }
 }

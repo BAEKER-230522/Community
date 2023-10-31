@@ -32,7 +32,7 @@ public class ExceptionController {
     }
 
     @ExceptionHandler(InvalidDuplicateException.class)
-    public ResponseEntity<ErrorResponse> invalidDuplicateHandler(NotFoundException e) {
+    public ResponseEntity<ErrorResponse> invalidDuplicateHandler(InvalidDuplicateException e) {
         log.error(e.getMessage());
         return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
     }
