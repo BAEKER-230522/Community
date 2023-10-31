@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,7 +47,7 @@ public class CodeReviewQueryService implements CodeReviewQueryUseCase {
         List<CodeReview> codeReivewList = repository.findByMissionIdAndMemberId(missionId, memberId);
 
         if (codeReivewList.size() == 0)
-            throw new NotFoundException("등록한 게시물이 없습니다.");
+            return new ArrayList<>();
 
         return codeReivewList.stream()
                 .map(CodeReviewDto::new)
