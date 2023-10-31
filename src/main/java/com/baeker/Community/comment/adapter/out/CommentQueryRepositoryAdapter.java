@@ -32,6 +32,7 @@ public class CommentQueryRepositoryAdapter implements CommentQueryRepositoryPort
         return new QCommentDto(
                 cm.id,
                 cm.post.id,
+                cm.memberId,
                 cm.createDate,
                 cm.modifyDate,
                 cm.content

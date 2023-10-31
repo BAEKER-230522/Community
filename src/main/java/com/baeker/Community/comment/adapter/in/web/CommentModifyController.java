@@ -3,6 +3,7 @@ package com.baeker.Community.comment.adapter.in.web;
 import com.baeker.Community.comment.application.port.in.CommentModifyUseCase;
 import com.baeker.Community.comment.application.port.in.CommentQueryUseCase;
 import com.baeker.Community.comment.domain.Comment;
+import com.baeker.Community.global.dto.ResponseData;
 import com.baeker.Community.global.dto.reqDto.ModifyCommentDto;
 import com.baeker.Community.global.dto.resDto.CommentDto;
 import com.baeker.Community.global.jwt.JwtDecrypt;
@@ -25,13 +26,13 @@ public class CommentModifyController {
 
     @Operation(summary = "댓글 수정")
     @PatchMapping("/v1/content")
-    public ResponseEntity<CommentDto> modifyContent(
+    public ResponseData<CommentDto> modifyContent(
             @RequestHeader("Authorization") String token,
             @RequestBody ModifyCommentDto dto
     ) {
         Long memberId = decrypt.getMemberId(token);
         Comment comment = commentQueryUseCase.byId(dto.getCommentId());
         CommentDto resDto = commentModifyUseCase.content(memberId, comment, dto.getContent());
-        return ResponseEntity.ok(resDto);
+        return ResponseData.ok(resDto);
     }
 }

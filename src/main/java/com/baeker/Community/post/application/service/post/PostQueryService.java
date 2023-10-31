@@ -2,7 +2,7 @@ package com.baeker.Community.post.application.service.post;
 
 import com.baeker.Community.global.exception.service.NotFoundException;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
-import com.baeker.Community.post.application.port.out.PostRepositoryPort;
+import com.baeker.Community.post.application.port.out.persistence.PostRepositoryPort;
 import com.baeker.Community.post.domain.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

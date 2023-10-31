@@ -4,7 +4,7 @@ import com.baeker.Community.global.dto.reqDto.ModifyPostDto;
 import com.baeker.Community.global.dto.resDto.PostDto;
 import com.baeker.Community.global.exception.service.NoPermissionException;
 import com.baeker.Community.post.application.port.in.post.PostModifyUseCase;
-import com.baeker.Community.post.application.port.out.PostRepositoryPort;
+import com.baeker.Community.post.application.port.out.persistence.PostRepositoryPort;
 import com.baeker.Community.post.domain.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

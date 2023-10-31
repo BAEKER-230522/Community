@@ -1,9 +1,10 @@
 package com.baeker.Community.post.adapter.in.modify;
 
-import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.global.testUtil.CreateObject;
+import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
 import com.baeker.Community.post.domain.CodeReview;
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.baeker.Community.global.testUtil.MockMvcRequest.patch;
-import static com.baeker.Community.global.testUtil.TestApiUtil.createCodeReview;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -22,15 +22,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-class PostModifyController_pageViewTest extends TestData {
+class PostModifyController_pageViewTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
+    @Autowired
+    CreateObject create;
     @Autowired CodeReviewQueryUseCase codeReviewQueryUseCase;
+
+    @BeforeEach
+    void setup() {
+        memberCheckMocking();
+    }
+
 
     @Test
     @DisplayName("조회수 증가 성공")
     void no1() throws Exception {
-        Long postId = createCodeReview(mvc, POST_USER_URL, 1, jwt1);
+        Long postId = create.codeReview();
         CodeReview codeReview = codeReviewQueryUseCase.byId(postId);
         Long problemStatusId = codeReview.getProblemStatusId();
 

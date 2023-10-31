@@ -1,5 +1,6 @@
 package com.baeker.Community.post.adapter.in;
 
+import com.baeker.Community.global.dto.ResponseData;
 import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
 import com.baeker.Community.post.application.port.in.post.PostModifyUseCase;
 import com.baeker.Community.post.domain.CodeReview;
@@ -23,11 +24,11 @@ public class PostPublicModifyController {
 
     @Operation(summary = "코드리뷰 게시물 조회수 추가")
     @PatchMapping("/v1/pageView/{problemStatusId}")
-    public ResponseEntity addPageView(
+    public ResponseData addPageView(
             @PathVariable Long problemStatusId
     ) {
         CodeReview codeReview = codeReviewQueryUseCase.byProblemStatusId(problemStatusId);
         postModifyUseCase.addPageView(codeReview);
-        return ResponseEntity.noContent().build();
+        return ResponseData.noContent();
     }
 }
