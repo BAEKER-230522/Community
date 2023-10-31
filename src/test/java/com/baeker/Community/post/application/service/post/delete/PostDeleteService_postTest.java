@@ -11,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.baeker.Community.global.testUtil.CreateObject.createPost;
+import static com.baeker.Community.global.testUtil.CreateObjectUnit.createPost;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("단위 - 게시물 삭제")

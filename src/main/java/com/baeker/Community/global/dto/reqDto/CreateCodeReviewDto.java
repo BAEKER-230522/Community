@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateCodeReviewDto {
 
+    private Long studyId;
     private Long missionId;
     private Long problemStatusId;
     private String title;

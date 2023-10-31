@@ -3,10 +3,7 @@ package com.baeker.Community.post.domain;
 import com.baeker.Community.comment.domain.Comment;
 import com.baeker.Community.global.baseEntity.BaseEntity;
 import com.baeker.Community.global.dto.reqDto.ModifyPostDto;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,8 +29,10 @@ public abstract class Post extends BaseEntity {
 
     private Long memberId;
     private String title;
-    private String content;
     private int pageView;
+
+    @Column(length = 50000)
+    private String content;
 
     @Builder.Default
     @ElementCollection(fetch = LAZY)

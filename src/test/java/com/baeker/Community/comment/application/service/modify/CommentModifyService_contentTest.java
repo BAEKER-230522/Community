@@ -12,8 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.baeker.Community.global.testUtil.CreateObject.createComment;
-import static com.baeker.Community.global.testUtil.CreateObject.createPost;
+import static com.baeker.Community.global.testUtil.CreateObjectUnit.createComment;
+import static com.baeker.Community.global.testUtil.CreateObjectUnit.createPost;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("단위 - 댓글 수정")

@@ -1,7 +1,9 @@
 package com.baeker.Community.post.adapter.in.query;
 
-import com.baeker.Community.global.dto.resDto.StudyPostDto;
-import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.global.testUtil.CreateObject;
+import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,46 +13,54 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 import static com.baeker.Community.global.testUtil.MockMvcRequest.get;
-import static com.baeker.Community.global.testUtil.MockMvcRequest.toList;
-import static com.baeker.Community.global.testUtil.TestApiUtil.*;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DisplayName("통합 - study id 로 게시물 목록 조회")
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-class PostQueryController_studyIdTest extends TestData {
+class PostQueryController_studyIdTest extends ApiStudyClientMock {
 
+    @Autowired MockMvc mvc;
     @Autowired
-    MockMvc mvc;
+    CreateObject create;
+
+    @BeforeEach
+    void setup() {
+        memberCheckMocking();
+    }
+
 
     @Test
     @DisplayName("목록 조회 성공")
     void no1() throws Exception {
-        Long studyId = 1L;
-        Long postId1 = createStudyPost(mvc, POST_USER_URL, studyId, 1, jwt1);
-        Long postId2 = createStudyPost(mvc, POST_USER_URL, studyId, 2, jwt2);
-        createComment(mvc, COMMENT_USER_URL, postId1, jwt3);
-        follow(mvc, POST_USER_URL, postId2, jwt3);
+        Long
+                member1 = 1L,
+                member2 = 2L,
+                member3 = 3L,
+                studyId = 1L;
+        Long postId1 = create.studyPost(member1, 1);
+        Long postId2 = create.studyPost(member2, 2);
+        create.comment(member3, postId1);
+        create.follow(member3, postId2);
 
 
         ResultActions result = get(mvc, POST_PUBLIC_URL +
                 "/v1/study/{studyId}", studyId);
 
 
-        result.andExpect(status().is2xxSuccessful());
+        result
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("data").isArray())
+                .andExpect(jsonPath("data", Matchers.iterableWithSize(2)))
 
-        List<StudyPostDto> resDtos = toList(result, StudyPostDto.class);
-        assertThat(resDtos.size()).isEqualTo(2);
-        assertThat(resDtos.get(0).getTitle()).isEqualTo("post1");
-        assertThat(resDtos.get(0).getComments().size()).isEqualTo(1);
-        assertThat(resDtos.get(0).getComments().get(0).getContent()).isEqualTo("comment");
+                .andExpect(jsonPath("data[0].title").value("post1"))
+                .andExpect(jsonPath("data[0].comments", Matchers.iterableWithSize(1)))
+                .andExpect(jsonPath("data[0].comments[0].content").value("comment"))
 
-        assertThat(resDtos.get(1).getTitle()).isEqualTo("post2");
-        assertThat(resDtos.get(1).getFollower()).isEqualTo(1);
+                .andExpect(jsonPath("data[1].title").value("post2"))
+                .andExpect(jsonPath("data[1].follower").value(1));
     }
 }
