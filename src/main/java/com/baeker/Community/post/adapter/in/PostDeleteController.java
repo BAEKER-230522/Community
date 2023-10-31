@@ -1,5 +1,6 @@
 package com.baeker.Community.post.adapter.in;
 
+import com.baeker.Community.global.dto.ResponseData;
 import com.baeker.Community.global.jwt.JwtDecrypt;
 import com.baeker.Community.post.application.port.in.post.PostDeleteUseCase;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;

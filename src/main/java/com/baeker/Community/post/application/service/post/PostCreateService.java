@@ -27,8 +27,8 @@ public class PostCreateService implements PostCreateUseCase {
 
     @Override
     public CodeReviewDto codeReview(Long memberId, CreateCodeReviewDto dto) {
-        isNew(dto.getProblemStatusId());
-        isMember(memberId, dto.getStudyId());
+//        isNew(dto.getProblemStatusId());
+//        isMember(memberId, dto.getStudyId());
 
         CodeReview codeReview = repository.save(
                 CodeReview.write(memberId, dto)
