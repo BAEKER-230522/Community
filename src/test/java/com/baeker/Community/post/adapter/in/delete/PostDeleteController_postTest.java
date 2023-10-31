@@ -4,7 +4,9 @@ import com.baeker.Community.comment.application.port.in.CommentQueryUseCase;
 import com.baeker.Community.global.dto.resDto.StudyPostDto;
 import com.baeker.Community.global.exception.service.NotFoundException;
 import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.study.StudyPostQueryUseCase;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +29,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-class PostDeleteController_postTest extends TestData {
+class PostDeleteController_postTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
     @Autowired StudyPostQueryUseCase studyPostQueryUseCase;
     @Autowired CommentQueryUseCase commentQueryUseCase;
+
+    @BeforeEach
+    void setup() {
+        memberCheckMocking();
+    }
 
 
     @Test

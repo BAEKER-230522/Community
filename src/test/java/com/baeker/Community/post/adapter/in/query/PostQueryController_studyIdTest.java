@@ -2,6 +2,8 @@ package com.baeker.Community.post.adapter.in.query;
 
 import com.baeker.Community.global.dto.resDto.StudyPostDto;
 import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-class PostQueryController_studyIdTest extends TestData {
+class PostQueryController_studyIdTest extends ApiStudyClientMock {
 
     @Autowired
     MockMvc mvc;
+
+    @BeforeEach
+    void setup() {
+        memberCheckMocking();
+    }
+
 
     @Test
     @DisplayName("목록 조회 성공")

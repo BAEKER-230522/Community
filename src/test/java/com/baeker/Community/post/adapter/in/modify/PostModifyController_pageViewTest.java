@@ -1,9 +1,11 @@
 package com.baeker.Community.post.adapter.in.modify;
 
 import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.codeReview.CodeReviewQueryUseCase;
 import com.baeker.Community.post.domain.CodeReview;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-class PostModifyController_pageViewTest extends TestData {
+class PostModifyController_pageViewTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
     @Autowired CodeReviewQueryUseCase codeReviewQueryUseCase;
+
+    @BeforeEach
+    void setup() {
+        memberCheckMocking();
+    }
+
 
     @Test
     @DisplayName("조회수 증가 성공")

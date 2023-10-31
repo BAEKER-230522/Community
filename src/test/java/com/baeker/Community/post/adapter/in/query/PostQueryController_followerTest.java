@@ -1,8 +1,10 @@
 package com.baeker.Community.post.adapter.in.query;
 
 import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
 import com.baeker.Community.post.domain.Post;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-class PostQueryController_followerTest extends TestData {
+class PostQueryController_followerTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
     @Autowired PostQueryUseCase postQueryUseCase;
+
+    @BeforeEach
+    void setup() {
+        memberCheckMocking();
+    }
 
 
     @Test
