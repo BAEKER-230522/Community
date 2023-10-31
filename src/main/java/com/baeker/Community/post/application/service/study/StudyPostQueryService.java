@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +28,7 @@ public class StudyPostQueryService implements StudyPostQueryUseCase {
         List<StudyPost> studyPostList = repository.findByStudyId(studyId);
 
         if (studyPostList.size()== 0)
-            throw new NotFoundException("등록된 게시물이 없습니다.");
+            return new ArrayList<>();
 
         return studyPostList.stream()
                 .map(StudyPostDto::new)
