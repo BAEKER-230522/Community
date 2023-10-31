@@ -6,6 +6,7 @@ import com.baeker.Community.global.exception.service.NotFoundException;
 import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.study.StudyPostQueryUseCase;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -79,10 +80,10 @@ class PostDeleteController_postTest extends ApiStudyClientMock {
         ResultActions result = delete(mvc, POST_USER_URL +
                 "/v1/{postId}", jwt1, postId);
 
+
         result.andExpect(status().is2xxSuccessful());
-        assertThatThrownBy(() -> studyPostQueryUseCase.byStudyId(studyId))
-                .isInstanceOf(NotFoundException.class)
-                .hasMessageContaining("등록된 게시물이 없습니다.");
+        List<StudyPostDto> postList = studyPostQueryUseCase.byStudyId(studyId);
+        assertThat(postList.size()).isEqualTo(0);
     }
 
     @Test
@@ -101,10 +102,10 @@ class PostDeleteController_postTest extends ApiStudyClientMock {
         ResultActions result = delete(mvc, POST_USER_URL +
                 "/v1/{postId}", jwt1, postId);
 
+
         result.andExpect(status().is2xxSuccessful());
-        assertThatThrownBy(() -> studyPostQueryUseCase.byStudyId(studyId))
-                .isInstanceOf(NotFoundException.class)
-                .hasMessageContaining("등록된 게시물이 없습니다.");
+        List<StudyPostDto> postList = studyPostQueryUseCase.byStudyId(studyId);
+        assertThat(postList.size()).isEqualTo(0);
 
         assertThatThrownBy(() -> commentQueryUseCase.byId(commentId))
                 .isInstanceOf(NotFoundException.class)
