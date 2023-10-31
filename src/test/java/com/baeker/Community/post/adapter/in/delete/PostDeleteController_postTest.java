@@ -3,7 +3,7 @@ package com.baeker.Community.post.adapter.in.delete;
 import com.baeker.Community.comment.application.port.in.CommentQueryUseCase;
 import com.baeker.Community.global.dto.resDto.StudyPostDto;
 import com.baeker.Community.global.exception.service.NotFoundException;
-import com.baeker.Community.global.testUtil.TestObject;
+import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.study.StudyPostQueryUseCase;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static com.baeker.Community.global.testUtil.MockMvcRequest.delete;
-import static com.baeker.Community.global.testUtil.TestApiUtil.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -32,7 +31,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostDeleteController_postTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
-    @Autowired TestObject create;
+    @Autowired
+    CreateObject create;
     @Autowired StudyPostQueryUseCase studyPostQueryUseCase;
     @Autowired CommentQueryUseCase commentQueryUseCase;
 

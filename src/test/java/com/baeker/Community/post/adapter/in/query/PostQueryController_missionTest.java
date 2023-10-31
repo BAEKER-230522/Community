@@ -1,6 +1,6 @@
 package com.baeker.Community.post.adapter.in.query;
 
-import com.baeker.Community.global.testUtil.TestObject;
+import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostQueryController_missionTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
-    @Autowired TestObject create;
+    @Autowired
+    CreateObject create;
 
     @BeforeEach
     void setup() {

@@ -1,7 +1,6 @@
 package com.baeker.Community.post.adapter.in.query;
 
-import com.baeker.Community.global.dto.resDto.StudyPostDto;
-import com.baeker.Community.global.testUtil.TestObject;
+import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,12 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 import static com.baeker.Community.global.testUtil.MockMvcRequest.get;
-import static com.baeker.Community.global.testUtil.MockMvcRequest.toList;
-import static com.baeker.Community.global.testUtil.TestApiUtil.*;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -30,7 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostQueryController_studyIdTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
-    @Autowired TestObject create;
+    @Autowired
+    CreateObject create;
 
     @BeforeEach
     void setup() {

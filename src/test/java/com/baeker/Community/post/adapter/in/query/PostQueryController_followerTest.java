@@ -1,7 +1,6 @@
 package com.baeker.Community.post.adapter.in.query;
 
-import com.baeker.Community.global.testUtil.TestData;
-import com.baeker.Community.global.testUtil.TestObject;
+import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
 import com.baeker.Community.post.domain.Post;
@@ -17,8 +16,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.baeker.Community.global.testUtil.MockMvcRequest.get;
-import static com.baeker.Community.global.testUtil.TestApiUtil.createCodeReview;
-import static com.baeker.Community.global.testUtil.TestApiUtil.follow;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -30,7 +27,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostQueryController_followerTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
-    @Autowired TestObject create;
+    @Autowired
+    CreateObject create;
     @Autowired PostQueryUseCase postQueryUseCase;
 
     @BeforeEach

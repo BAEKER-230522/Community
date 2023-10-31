@@ -1,7 +1,6 @@
 package com.baeker.Community.comment.adapter.in.web.delete;
 
-import com.baeker.Community.global.testUtil.TestData;
-import com.baeker.Community.global.testUtil.TestObject;
+import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
 import com.baeker.Community.post.domain.Post;
@@ -16,8 +15,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.baeker.Community.global.testUtil.MockMvcRequest.delete;
-import static com.baeker.Community.global.testUtil.TestApiUtil.createCodeReview;
-import static com.baeker.Community.global.testUtil.TestApiUtil.createComment;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,7 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CommentDeleteController_commentTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
-    @Autowired TestObject create;
+    @Autowired
+    CreateObject create;
     @Autowired PostQueryUseCase postQueryUseCase;
 
     @BeforeEach

@@ -1,7 +1,7 @@
 package com.baeker.Community.post.adapter.in.modify;
 
 import com.baeker.Community.global.dto.reqDto.ModifyPostDto;
-import com.baeker.Community.global.testUtil.TestObject;
+import com.baeker.Community.global.testUtil.CreateObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,8 +14,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.baeker.Community.global.testUtil.MockMvcRequest.patch;
-import static com.baeker.Community.global.testUtil.TestApiUtil.createCodeReview;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -26,7 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostModifyController_postTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
-    @Autowired TestObject create;
+    @Autowired
+    CreateObject create;
 
     @BeforeEach
     void setup() {

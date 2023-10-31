@@ -1,6 +1,6 @@
 package com.baeker.Community.post.application.service.post.modify;
 
-import com.baeker.Community.global.testUtil.CreateObject;
+import com.baeker.Community.global.testUtil.CreateObjectUnit;
 import com.baeker.Community.post.application.service.post.PostModifyService;
 import com.baeker.Community.post.application.service.repositoryMock.PostMock;
 import com.baeker.Community.post.domain.Post;
@@ -31,7 +31,7 @@ class PostModifyService_followTest extends PostMock {
         Long
                 memberId = 1L,
                 postId = 1L;
-        Post post = CreateObject.createPost(memberId, postId);
+        Post post = CreateObjectUnit.createPost(memberId, postId);
 
         modifyService.follow(memberId, post);
 
@@ -44,7 +44,7 @@ class PostModifyService_followTest extends PostMock {
         Long
                 memberId = 1L,
                 postId = 1L;
-        Post post = CreateObject.createPost(memberId, postId);
+        Post post = CreateObjectUnit.createPost(memberId, postId);
 
         modifyService.follow(memberId, post);
         modifyService.follow(memberId, post);
