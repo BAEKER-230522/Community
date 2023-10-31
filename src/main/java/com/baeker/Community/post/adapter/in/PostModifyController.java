@@ -38,13 +38,13 @@ public class PostModifyController {
 
     @Operation(summary = "게시물 추천, 추천 취소")
     @PatchMapping("/v1/follow/{postId}")
-    public ResponseEntity follow(
+    public ResponseData follow(
             @RequestHeader("Authorization") String token,
             @PathVariable Long postId
     ) {
         Long memberId = decrypt.getMemberId(token);
         Post post = postQueryUseCase.byId(postId);
         postModifyUseCase.follow(memberId, post);
-        return ResponseEntity.noContent().build();
+        return ResponseData.noContent();
     }
 }

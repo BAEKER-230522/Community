@@ -8,7 +8,6 @@ import com.baeker.Community.post.domain.Post;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "POST")
@@ -24,13 +23,13 @@ public class PostDeleteController {
 
     @Operation(summary = "게시글 삭제")
     @DeleteMapping("/v1/{postId}")
-    public ResponseEntity deletePost(
+    public ResponseData deletePost(
             @RequestHeader("Authorization") String token,
             @PathVariable Long postId
     ) {
         Long memberId = decrypt.getMemberId(token);
         Post post = postQueryUseCase.byId(postId);
         postDeleteUseCase.post(memberId, post);
-        return ResponseEntity.noContent().build();
+        return ResponseData.noContent();
     }
 }
