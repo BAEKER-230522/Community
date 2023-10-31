@@ -3,6 +3,7 @@ package com.baeker.Community.comment.adapter.in.web.modify;
 import com.baeker.Community.global.dto.reqDto.ModifyCommentDto;
 import com.baeker.Community.global.dto.resDto.CommentDto;
 import com.baeker.Community.global.testUtil.TestData;
+import com.baeker.Community.global.testUtil.TestObject;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,8 +29,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class CommentModifyController_contentTest extends ApiStudyClientMock {
 
-    @Autowired
-    MockMvc mvc;
+    @Autowired MockMvc mvc;
+    @Autowired TestObject create;
 
     @BeforeEach
     void setup() {
@@ -41,8 +42,8 @@ class CommentModifyController_contentTest extends ApiStudyClientMock {
     @DisplayName("댓글 수정 성공")
     void no1() throws Exception {
         String modifyContent = "modify content";
-        Long postId = createCodeReview(mvc, POST_USER_URL, 1, jwt1);
-        Long commentId = createComment(mvc, COMMENT_USER_URL, postId, jwt2);
+        Long postId = create.codeReview();
+        Long commentId = create.comment(2L, postId);
         ModifyCommentDto dto = new ModifyCommentDto(commentId, modifyContent);
 
 
@@ -59,8 +60,8 @@ class CommentModifyController_contentTest extends ApiStudyClientMock {
     @DisplayName("댓글 수정 권한이 없을 경우")
     void no2() throws Exception {
         String modifyContent = "modify content";
-        Long postId = createCodeReview(mvc, POST_USER_URL, 1, jwt1);
-        Long commentId = createComment(mvc, COMMENT_USER_URL, postId, jwt2);
+        Long postId = create.codeReview();
+        Long commentId = create.comment(2L, postId);
         ModifyCommentDto dto = new ModifyCommentDto(commentId, modifyContent);
 
 
