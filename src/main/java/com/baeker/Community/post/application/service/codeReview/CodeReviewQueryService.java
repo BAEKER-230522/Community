@@ -7,6 +7,7 @@ import com.baeker.Community.post.application.port.out.persistence.CodeReviewRepo
 import com.baeker.Community.post.domain.CodeReview;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -14,8 +15,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static org.springframework.transaction.annotation.Propagation.REQUIRES_NEW;
+
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = true, propagation = REQUIRES_NEW)
 @RequiredArgsConstructor
 public class CodeReviewQueryService implements CodeReviewQueryUseCase {
 
