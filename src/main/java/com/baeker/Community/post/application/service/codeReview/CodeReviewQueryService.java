@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import static org.springframework.transaction.annotation.Propagation.REQUIRES_NEW;
 
 @Service
-@Transactional(readOnly = true, propagation = REQUIRES_NEW)
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class CodeReviewQueryService implements CodeReviewQueryUseCase {
 
@@ -42,7 +42,7 @@ public class CodeReviewQueryService implements CodeReviewQueryUseCase {
         if (byProblemStatusId.isPresent())
             return byProblemStatusId.get();
 
-        throw new NotFoundException("존재하지 않는 게시물");
+        return null;
     }
 
     @Override

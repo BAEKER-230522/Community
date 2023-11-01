@@ -4,6 +4,7 @@ import com.baeker.Community.global.dto.reqDto.CreateCodeReviewDto;
 import com.baeker.Community.global.dto.resDto.CodeReviewDto;
 import com.baeker.Community.global.testUtil.MockMvcRequest;
 import com.baeker.Community.post.adapter.in.requestMock.ApiStudyClientMock;
+import com.baeker.Community.post.application.port.in.post.PostQueryUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class PostCreateController_codeReviewTest extends ApiStudyClientMock {
 
     @Autowired MockMvc mvc;
+    @Autowired
+    PostQueryUseCase use;
 
     @BeforeEach
     void setup() {
