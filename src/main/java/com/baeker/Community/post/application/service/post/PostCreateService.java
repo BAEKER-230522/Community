@@ -47,12 +47,11 @@ public class PostCreateService implements PostCreateUseCase {
     }
 
 
-
     private void isNew(Long problemStatusId) {
-        try {
-            codeReviewQueryUseCase.byProblemStatusId(problemStatusId);
+        CodeReview codeReview = codeReviewQueryUseCase.byProblemStatusId(problemStatusId);
+
+        if (codeReview != null)
             throw new InvalidDuplicateException("이미 등록된 게시물");
-        } catch (NotFoundException e) {}
     }
 
     private void isMember(Long memberId, Long studyId) {
