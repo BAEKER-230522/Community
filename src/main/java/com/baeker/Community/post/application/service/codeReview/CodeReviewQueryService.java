@@ -7,12 +7,15 @@ import com.baeker.Community.post.application.port.out.persistence.CodeReviewRepo
 import com.baeker.Community.post.domain.CodeReview;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static org.springframework.transaction.annotation.Propagation.REQUIRES_NEW;
 
 @Service
 @Transactional(readOnly = true)
@@ -39,7 +42,7 @@ public class CodeReviewQueryService implements CodeReviewQueryUseCase {
         if (byProblemStatusId.isPresent())
             return byProblemStatusId.get();
 
-        throw new NotFoundException("존재하지 않는 게시물");
+        return null;
     }
 
     @Override
