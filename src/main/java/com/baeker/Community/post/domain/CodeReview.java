@@ -21,12 +21,14 @@ public class CodeReview extends Post {
 
     private Long missionId;
     private Long problemStatusId;
+    private String language;
 
     public static CodeReview write(Long memberId, CreateCodeReviewDto dto) {
         return CodeReview.builder()
                 .memberId(memberId)
                 .missionId(dto.getMissionId())
                 .problemStatusId(dto.getProblemStatusId())
+                .language(dto.getLanguage())
                 .title(dto.getTitle())
                 .content(dto.getContent())
                 .build();

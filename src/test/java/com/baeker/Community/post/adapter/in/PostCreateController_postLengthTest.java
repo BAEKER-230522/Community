@@ -51,6 +51,6 @@ class PostCreateController_postLengthTest extends ApiStudyClientMock {
 
 
     private static CreateCodeReviewDto createDto(String content) {
-        return new CreateCodeReviewDto(1L, 1L, 1L, "post", content);
+        return new CreateCodeReviewDto(1L, 1L, 1L, "java", "post", content);
     }
 }

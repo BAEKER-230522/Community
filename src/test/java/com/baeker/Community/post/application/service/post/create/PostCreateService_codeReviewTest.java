@@ -73,10 +73,10 @@ class PostCreateService_codeReviewTest extends PostCreateMock {
 
 
     private CreateCodeReviewDto getCodeReviewDto(Long problemStatusId) {
-        return new CreateCodeReviewDto(1L, 1L, problemStatusId, "post", "hello");
+        return new CreateCodeReviewDto(1L, 1L, problemStatusId, "java", "post", "hello");
     }
 
     private CreateCodeReviewDto getCodeReviewDto(Long problemStatusId, Long studyId) {
-        return new CreateCodeReviewDto(studyId, 1L, problemStatusId, "post", "hello");
+        return new CreateCodeReviewDto(studyId, 1L, problemStatusId, "java", "post", "hello");
     }
 }
