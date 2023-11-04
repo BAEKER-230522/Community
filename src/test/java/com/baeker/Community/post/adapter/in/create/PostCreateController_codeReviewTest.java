@@ -79,10 +79,10 @@ class PostCreateController_codeReviewTest extends ApiStudyClientMock {
 
 
     private CreateCodeReviewDto toDto(Long studyId, Long missionId, Long problemStatusId, String title, String content) {
-        return new CreateCodeReviewDto(studyId, missionId, problemStatusId, title, content);
+        return new CreateCodeReviewDto(studyId, missionId, problemStatusId, "java", title, content);
     }
 
     private CreateCodeReviewDto toDto(Long problemStatusId) {
-        return new CreateCodeReviewDto(1L, 1L, problemStatusId, "title", "content");
+        return new CreateCodeReviewDto(1L, 1L, problemStatusId, "java", "title", "content");
     }
 }

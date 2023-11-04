@@ -33,17 +33,17 @@ public class CreateObject {
     }
 
     public Long codeReview(Long memberId, Long missionId, Long problemStatusId, int title) {
-        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, missionId, problemStatusId, "post" + title, "content");
+        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, missionId, problemStatusId, "java", "post" + title, "content");
         return postCreateUseCase.codeReview(memberId, dto).getPostId();
     }
 
     public Long codeReview(Long memberId) {
-        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, 1L, 1L, "post1", "content");
+        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, 1L, 1L, "java", "post1", "content");
         return postCreateUseCase.codeReview(memberId, dto).getPostId();
     }
 
     public Long codeReview() {
-        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, 1L, 1L, "post1", "content");
+        CreateCodeReviewDto dto = new CreateCodeReviewDto(1L, 1L, 1L, "java", "post1", "content");
         return postCreateUseCase.codeReview(1L, dto).getPostId();
     }
 
