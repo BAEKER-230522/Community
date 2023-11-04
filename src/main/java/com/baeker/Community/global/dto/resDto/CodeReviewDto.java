@@ -22,6 +22,7 @@ public class CodeReviewDto {
     private LocalDateTime modifyDate;
     private int pageView;
     private int follower;
+    private String language;
     private String title;
     private String content;
     private List<CommentDto> comments;
@@ -35,6 +36,7 @@ public class CodeReviewDto {
         this.createDate = codeReview.getCreateDate();
         this.pageView = codeReview.getPageView();
         this.follower = codeReview.getFollowCount();
+        this.language = codeReview.getLanguage();
         this.title = codeReview.getTitle();
         this.content = codeReview.getContent();
         this.comments = codeReview.getCommentList()
