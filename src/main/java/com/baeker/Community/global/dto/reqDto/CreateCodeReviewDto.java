@@ -12,6 +12,7 @@ public class CreateCodeReviewDto {
     private Long studyId;
     private Long missionId;
     private Long problemStatusId;
+    private String language;
     private String title;
     private String content;
 }

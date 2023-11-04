@@ -36,6 +36,8 @@ public class QCodeReview extends EntityPathBase<CodeReview> {
     //inherited
     public final NumberPath<Long> id = _super.id;
 
+    public final StringPath language = createString("language");
+
     //inherited
     public final NumberPath<Long> memberId = _super.memberId;
 
